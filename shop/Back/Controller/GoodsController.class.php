@@ -10,6 +10,9 @@ use Think\Controller;
 class GoodsController extends Controller{
 //    列表展示
     public function showlist(){
+//        test mysql db
+//        $goods = D('Goods');
+//        dump($goods);
         $this->display();
     }
     //    添加商品
