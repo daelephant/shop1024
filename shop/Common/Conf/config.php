@@ -11,6 +11,8 @@ return array(
     'BACK_JS_URL'  => '/Back/Public/js/',
     'BACK_IMG_URL' => '/Back/Public/img/',
     'PLUGIN_URL' => '/plugin/',
+//    给shop/common定义访问路径
+    'COMMON_URL' => '/Common/',
 
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
 

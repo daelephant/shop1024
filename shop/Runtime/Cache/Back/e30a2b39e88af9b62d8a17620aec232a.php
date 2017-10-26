@@ -34,10 +34,55 @@
             </span>
         </div>
         <div></div>
-
+        <style type="text/css">
+            #tabbar-div {
+                background: none repeat scroll 0 0 #80BDCB;
+                height: 27px;
+                padding-left: 10px;
+                padding-top: 1px;
+            }
+            #tabbar-div p {
+                margin: 2px 0 0;
+            }
+            .tab-front {
+                background: none repeat scroll 0 0 #BBDDE5;
+                border-right: 2px solid #278296;
+                cursor: pointer;
+                font-weight: bold;
+                line-height: 20px;
+                padding: 4px 15px 4px 18px;
+            }
+            .tab-back {
+                border-right: 1px solid #FFFFFF;
+                color: #FFFFFF;
+                cursor: pointer;
+                line-height: 20px;
+                padding: 4px 15px 4px 18px;
+            }
+            .tab-hover {
+                background: none repeat scroll 0 0 #94C9D3;
+                border-right: 1px solid #FFFFFF;
+                color: #FFFFFF;
+                cursor: pointer;
+                line-height: 20px;
+                padding: 4px 15px 4px 18px;
+            }
+        </style>
+        <div id="tabbar-div">
+            <p>
+                <span id="general-tab" class="tab-front">通用信息</span>
+                <span id="detail-tab" class="tab-back">详细描述</span>
+                <span id="mix-tab" class="tab-back">其他信息</span>
+                <span id="properties-tab" class="tab-back">商品属性</span>
+                <span id="gallery-tab" class="tab-back">商品相册</span>
+                <span id="linkgoods-tab" class="tab-back">关联商品</span>
+                <span id="groupgoods-tab" class="tab-back">配件</span>
+                <span id="article-tab" class="tab-back">关联文章</span>
+            </p>
+        </div>
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="" method="post" enctype="multipart/form-data">
-            <table border="1" width="100%" class="table_a">
+            <form action="/index.php/Back/Goods/tianjia" method="post" enctype="multipart/form-data">
+            <table border="1" width="100%" class="table_a" id="general-tab-tb">
                 <tr>
                     <td>商品名称</td>
                     <td><input type="text" name="goods_name" /></td>
@@ -68,14 +113,18 @@
                     <td>商品价格</td>
                     <td><input type="text" name="goods_price" /></td>
                 </tr>
-                <tr>
-                    <td>商品重量</td>
-                    <td><input type="text" name="goods_weight" /></td>
-                </tr>
+
                 <!--<tr>-->
                     <!--<td>商品图片</td>-->
                     <!--<td><input type="file" name="goods_image" /></td>-->
                 <!--</tr>-->
+
+                    <td colspan="2" align="center">
+                        <input type="submit" value="添加">
+                    </td>
+                </tr>  
+            </table>
+            <table style="display: none;" border="1" width="100%" class="table_a" id="datail-tab-tb" >
                 <tr>
                     <td>商品详细描述</td>
                     <td>
@@ -86,11 +135,25 @@
                     var ue =UE.getEditor('goods_introduce');
                 </script>
                 <tr>
-                    <td colspan="2" align="center">
-                        <input type="submit" value="添加">
-                    </td>
-                </tr>  
             </table>
+                <table style="display: none;" border="1" width="100%" class="table_a" id="mix-tab-tb" >
+                    <tr>
+                        <td>商品重量</td>
+                        <td><input type="text" name="goods_weight" /></td>
+                    </tr>
+                </table>
+                <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >
+                    <tr>
+                        <td>商品相关属性</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <table style="display: none;" border="1" width="100%" class="table_a" id="gallery-tab-tb" >
+                    <tr>
+                        <td>商品相册</td>
+                        <td></td>
+                    </tr>
+                </table>
             </form>
         </div>
     </body>
