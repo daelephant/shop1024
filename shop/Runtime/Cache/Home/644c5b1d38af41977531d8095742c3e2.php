@@ -1,10 +1,14 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>京西商城</title>
+	<!--第一种引入方式echo-->
 	<link rel="stylesheet" href="<?php echo CSS_URL;?>base.css" type="text/css">
-	<link rel="stylesheet" href="/Home/public/style/global.css" type="text/css">
+	<!--第二种引入方式TP框架自定义配置变量-->
+	<link rel="stylesheet" href="<?php echo (C("CSS_URL")); ?>global.css" type="text/css">
+	<!--第三种引入方式绝对路径，不受框架束缚 -->
 	<link rel="stylesheet" href="/Home/public/style/header.css" type="text/css">
 	<link rel="stylesheet" href="/Home/public/style/index.css" type="text/css">
 	<link rel="stylesheet" href="/Home/public/style/bottomnav.css" type="text/css">
@@ -19,7 +23,7 @@
 	<div class="topnav">
 		<div class="topnav_bd w1210 bc">
 			<div class="topnav_left">
-				
+
 			</div>
 			<div class="topnav_right fr">
 				<ul>
@@ -34,7 +38,7 @@
 		</div>
 	</div>
 	<!-- 顶部导航 end -->
-	
+
 	<div style="clear:both;"></div>
 
 	<!-- 头部 start -->

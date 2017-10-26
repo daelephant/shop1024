@@ -10,6 +10,7 @@ return array(
     'BACK__URL'    => '/Back/Public/css/',
     'BACK_JS_URL'  => '/Back/Public/js/',
     'BACK_IMG_URL' => '/Back/Public/img/',
+    'PLUGIN_URL' => '/plugin/',
 
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
 

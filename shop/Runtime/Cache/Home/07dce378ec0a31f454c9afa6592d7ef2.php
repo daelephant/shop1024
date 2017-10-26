@@ -14,7 +14,7 @@
 	<div class="topnav">
 		<div class="topnav_bd w990 bc">
 			<div class="topnav_left">
-				
+
 			</div>
 			<div class="topnav_right fr">
 				<ul>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<!-- 顶部导航 end -->
-	
+
 	<div style="clear:both;"></div>
 
 	<!-- 页面头部 start -->
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<!-- 页面头部 end -->
-	
+
 	<!-- 登录主体部分start -->
 	<div class="login w990 bc mt10">
 		<div class="login_hd">
@@ -118,7 +118,7 @@
 			<a href="">京西论坛</a>
 		</p>
 		<p class="copyright">
-			 © 2005-2013 京东网上商城 版权所有，并保留所有权利。  ICP备案证书号:京ICP证070359号 
+			 © 2005-2013 京东网上商城 版权所有，并保留所有权利。  ICP备案证书号:京ICP证070359号
 		</p>
 		<p class="auth">
 			<a href=""><img src="/Home/public/images/xin.png" alt="" /></a>
