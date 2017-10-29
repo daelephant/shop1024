@@ -43,9 +43,9 @@
             //加载事件里面定义click事件，点击标签实现切换对应内容的jquery实现逻辑。
             $(function(){
                 $('#tabbar-div span').click(function(){
-                    $('#tabbar-div span').attr('class','tab-black');//全部标签变暗
+                    $('#tabbar-div span').attr('class','tab-back');//全部标签变暗
                     $(this).attr('class','tab-front');//当前被点击标签  高亮
-                    $('.table_a').hide();//全部table变暗
+                    $('.table_a').hide();//全部table变暗隐藏
                     var idflag = $(this).attr('id');//当前被点击标签对应的table高亮
                     $('#'+idflag+"-tb").show();
                 });
