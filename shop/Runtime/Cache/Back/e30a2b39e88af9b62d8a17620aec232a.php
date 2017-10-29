@@ -119,20 +119,23 @@
                     </td>
                 </tr>
             </table>
+                <table style="display: none;" border="1" width="100%" class="table_a" id="detail-tab-tb" >
+                   
+                    <tr>
+                        <td>商品详细描述</td>
+                        <td>
+                            <textarea style="width: 730px;height: 320px;" name="goods_introduce" id="goods_introduce"></textarea>
+                        </td>
+                    </tr>
+                    <script type="text/javascript">
+                        var ue =UE.getEditor('goods_introduce');
+                    </script>
+                </table>
             <table style="display: none;" border="1" width="100%" class="table_a" id="mix-tab-tb" >
                 <tr>
-                    <td>商品重量1</td>
+                    <td>商品重量</td>
                     <td><input type="text" name="goods_weight" /></td>
                 </tr>
-                <tr>
-                    <td>商品详细描述</td>
-                    <td>
-                        <textarea style="width: 730px;height: 320px;" name="goods_introduce" id="goods_introduce"></textarea>
-                    </td>
-                </tr>
-                <script type="text/javascript">
-                    var ue =UE.getEditor('goods_introduce');
-                </script>
             </table>
             <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >
                 <tr>
