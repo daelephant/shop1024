@@ -14,6 +14,9 @@ return array(
 //    给shop/common定义访问路径
     'COMMON_URL' => '/Common/',
 
+    //定义网站的域名地址（方便图片显示）
+    'SITE_URL' => 'http://www.shop1024.com/',
+
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
 
     /* 数据库设置 来源：ThinkPHP/Conf/convention.php */

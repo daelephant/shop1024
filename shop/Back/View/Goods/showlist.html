@@ -36,23 +36,23 @@
                 <tbody><tr style="font-weight: bold;">
                         <td>序号</td>
                         <td>商品名称</td>
-                        <!--<td>库存</td>-->
                         <td>价格</td>
-                        <!--<td>图片</td>-->
-                        <!--<td>缩略图</td>-->
+                    <td>重量</td>
+                        <td>图片</td>
+                        <td>缩略图</td>
                         <td>描述</td>
                         <td>创建时间</td>
-                        <td align="center">操作</td>
+                        <td align="center" colspan="2">操作</td>
                     </tr>
 
                 <foreach name="info" item="v">
                     <tr id="product4">
                         <td>{$v.goods_id}</td>
                         <td><a href="#">{$v.goods_name}</a></td>
-                        <!--<td>100</td>-->
                         <td>{$v.goods_price}</td>
-                        <!--<td><img src="/Back/Public/img/20121018-174455-91962.jpg" height="60" width="60"></td>-->
-                        <!--<td><img src="/Back/Public/img/20121018-174455-10118.jpg" height="40" width="40"></td>-->
+                        <td>{$v.goods_weight}</td>
+                        <td><img src="{$Think.config.SITE_URL}{$v.goods_big_logo|substr=###,2}" alt="暂无图片" width="100" height="100"  ></td>
+                        <td><img src="{$Think.config.SITE_URL}{$v.goods_small_logo|substr=###,2}" alt="暂无图片" width="60" height="60"  ></td>
                         <td>{$v.goods_introduce|htmlspecialchars_decode}</td>
                         <td>{$v.add_time}</td>
                         <td><a href="#" >修改</a></td>
