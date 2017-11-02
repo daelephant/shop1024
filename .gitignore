@@ -1,0 +1,10 @@
+# 此为注释 – 将被 Git 忽略
+
+#*.a       # 忽略所有 .a 结尾的文件
+#!lib.a    # 但 lib.a 除外
+#/tod      # 仅仅忽略项目根目录下的 tod 文件，不包括 subdir/tod
+#build/    # 忽略 build/ 目录下的所有文件
+#doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+
+*.log         # 忽略所有 .log 结尾的文件
+Runtime/      # 忽略 Runtime/ 目录下的所有文件
