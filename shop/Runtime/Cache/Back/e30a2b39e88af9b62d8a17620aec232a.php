@@ -43,9 +43,9 @@
             //加载事件里面定义click事件，点击标签实现切换对应内容的jquery实现逻辑。
             $(function(){
                 $('#tabbar-div span').click(function(){
-                    $('#tabbar-div span').attr('class','tab-black');//全部标签变暗
+                    $('#tabbar-div span').attr('class','tab-back');//全部标签变暗
                     $(this).attr('class','tab-front');//当前被点击标签  高亮
-                    $('.table_a').hide();//全部table变暗
+                    $('.table_a').hide();//全部table变暗隐藏
                     var idflag = $(this).attr('id');//当前被点击标签对应的table高亮
                     $('#'+idflag+"-tb").show();
                 });
@@ -113,14 +113,9 @@
                     <td>商品logo图片</td>
                     <td><input type="file" name="goods_logo" /></td>
                 </tr>
-
-                    <td colspan="2" align="center">
-                        <input type="submit" value="添加">
-                    </td>
-                </tr>
             </table>
                 <table style="display: none;" border="1" width="100%" class="table_a" id="detail-tab-tb" >
-                   
+
                     <tr>
                         <td>商品详细描述</td>
                         <td>
@@ -149,6 +144,13 @@
                     <td></td>
                 </tr>
             </table>
+                <table  width="100%">
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" value="添加">
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </body>
