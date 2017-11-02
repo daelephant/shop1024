@@ -138,11 +138,20 @@
                     <td></td>
                 </tr>
             </table>
+                <script type="text/javascript">
+                    //增加相册项目
+                    function add_item(){
+                        var s ="<tr><td><span style='cursor: pointer;' onclick='$(this).parent().parent().remove()'>[-]</span>商品相册</td><td><input type='file' name='goods_pics[]' /></td></tr>";
+                        $('#gallery-tab-tb').append(s);
+                    }
+
+                </script>
             <table style="display: none;" border="1" width="100%" class="table_a" id="gallery-tab-tb" >
                 <tr>
-                    <td>商品相册</td>
-                    <td></td>
+                    <td><span style='cursor: pointer;' onclick="add_item()">[+]</span>商品相册</td>
+                    <td><input type="file" name="goods_pics[]" /></td>
                 </tr>
+
             </table>
                 <table  width="100%">
                     <tr>
