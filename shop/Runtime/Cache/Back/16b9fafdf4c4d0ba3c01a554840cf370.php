@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -15,7 +15,7 @@
             <span>
                 <span style="float: left;">当前位置是：商品管理-》商品列表</span>
                 <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="__CONTROLLER__/tianjia">【添加商品】</a>
+                    <a style="text-decoration: none;" href="/index.php/Back/Goods/tianjia">【添加商品】</a>
                 </span>
             </span>
         </div>
@@ -45,21 +45,19 @@
                         <td align="center" colspan="2">操作</td>
                     </tr>
 
-                <foreach name="info" item="v">
-                    <tr id="product4">
-                        <td>{$v.goods_id}</td>
-                        <td><a href="#">{$v.goods_name}</a></td>
-                        <td>{$v.goods_price}</td>
-                        <td>{$v.goods_weight}</td>
-                        <td><img src="{$Think.config.SITE_URL}{$v.goods_big_logo|substr=###,2}" alt="暂无图片" width="100" height="100"  ></td>
-                        <td><img src="{$Think.config.SITE_URL}{$v.goods_small_logo|substr=###,2}" alt="暂无图片" width="60" height="60"  ></td>
-                        <td>{$v.goods_introduce|htmlspecialchars_decode}</td>
-                        <td>{$v.add_time}</td>
-                        <td><a href="{:U('upd',array('goods_id'=>$v['goods_id']))}">修改</a> </td>
-                        <!--<td><a href="__CONTROLLER__/upd/goods_id/{$v.goods_id}" >修改</a></td>-->
+                <?php if(is_array($info)): foreach($info as $key=>$v): ?><tr id="product4">
+                        <td><?php echo ($v["goods_id"]); ?></td>
+                        <td><a href="#"><?php echo ($v["goods_name"]); ?></a></td>
+                        <td><?php echo ($v["goods_price"]); ?></td>
+                        <td><?php echo ($v["goods_weight"]); ?></td>
+                        <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_big_logo"],2)); ?>" alt="暂无图片" width="100" height="100"  ></td>
+                        <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_small_logo"],2)); ?>" alt="暂无图片" width="60" height="60"  ></td>
+                        <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
+                        <td><?php echo ($v["add_time"]); ?></td>
+                        <td><a href="<?php echo U('upd',array('goods_id'=>$v['goods_id']));?>">修改</a> </td>
+                        <!--<td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v["goods_id"]); ?>" >修改</a></td>-->
                         <td><a href="#" >删除</a></td>
-                    </tr>
-                </foreach>
+                    </tr><?php endforeach; endif; ?>
                      <tr>
                         <td colspan="20" style="text-align: center;">
                             [1]
