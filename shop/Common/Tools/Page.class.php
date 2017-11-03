@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cyx
- * Date: 2017-11-03
- * Time: 11:12
- * 自定义分页类
- */
-//命名空间（会转换成目录部分，进而获得本身类文件）
-namespace Commom\Tools;
-class Page{
+
+//命名空间(以下命名空间最后会转换为目录的部分，进而获得本身类文件)
+namespace Common\Tools;
+
+class Page {
 
     private $total; //数据表中总记录数
     private $listRows; //每页显示行数
@@ -19,7 +14,7 @@ class Page{
     private $listNum = 8;
     private $offset = 0;
     /*
-     * $total
+     * $total 
      * $listRows
      */
     public function __construct($total, $listRows = 10, $pa = "") {
@@ -53,7 +48,7 @@ class Page{
     function __get($args) {
         if ($args == "limit")
             return $this->limit;
-        else if ($args == 'offset')//实现让model类进行外部调用私有属性
+        else if ($args == 'offset')
             return $this -> offset;
         else
             return null;

@@ -11,12 +11,9 @@ class GoodsController extends Controller{
 //    列表展示
     public function showlist(){
         $goods = new \Model\GoodsModel();
-        //$info = $goods->select();
-        $nowinfo = $goods -> fetchData();
-
+        $nowinfo = $goods->fetchData();
         $info = $nowinfo['pageinfo'];//当前页数据信息
         $pagelist = $nowinfo['pagelist'];//页码列表信息
-
 
 
         $this->assign('info',$info);

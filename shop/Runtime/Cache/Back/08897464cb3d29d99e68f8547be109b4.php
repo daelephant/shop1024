@@ -37,7 +37,7 @@
                         <td>序号</td>
                         <td>商品名称</td>
                         <td>价格</td>
-                    <td>重量</td>
+                        <td>重量</td>
                         <td>图片</td>
                         <td>缩略图</td>
                         <td>描述</td>
@@ -53,13 +53,13 @@
                         <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_big_logo"],2)); ?>" alt="暂无图片" width="100" height="100"  ></td>
                         <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_small_logo"],2)); ?>" alt="暂无图片" width="60" height="60"  ></td>
                         <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
-                        <td><?php echo ($v["add_time"]); ?></td>
+                        <td><?php echo (date("Y-m-d H:i:s",$v["add_time"])); ?></td>
                         <td><a href="#" >修改</a></td>
                         <td><a href="#" >删除</a></td>
                     </tr><?php endforeach; endif; ?>
                      <tr>
                         <td colspan="20" style="text-align: center;">
-                            [1]
+                            <?php echo ($pagelist); ?>
                         </td>
                     </tr>
                 </tbody>
