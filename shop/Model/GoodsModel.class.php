@@ -88,5 +88,22 @@ class GoodsModel extends Model{
             }
         }
     }
+    //给后台获取商品列表信息，有分页要求
+    function fetchData(){
+        //1获取商品总条数
+        $total = $this->count();
+        $per = 5;//每页5条数据
+        //2实例化分页类Page对象
+        
+        //3获取分页信息
+        $pageinfo = $this -> order('goods_id desc')->limit($page->offset,$per)->select();
+        //4获取页码列表信息
+        $pagelist = $page->fpage(3,4,5,6,7,8);
+        return array(
+            'pageinfo' => $pageinfo,
+            '$pagelist' => $pagelist
+
+        );
+    }
 
 }

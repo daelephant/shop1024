@@ -36,22 +36,22 @@
                 <tbody><tr style="font-weight: bold;">
                         <td>序号</td>
                         <td>商品名称</td>
-                        <!--<td>库存</td>-->
                         <td>价格</td>
-                        <!--<td>图片</td>-->
-                        <!--<td>缩略图</td>-->
+                    <td>重量</td>
+                        <td>图片</td>
+                        <td>缩略图</td>
                         <td>描述</td>
                         <td>创建时间</td>
-                        <td align="center">操作</td>
+                        <td align="center" colspan="2">操作</td>
                     </tr>
 
                 <?php if(is_array($info)): foreach($info as $key=>$v): ?><tr id="product4">
                         <td><?php echo ($v["goods_id"]); ?></td>
                         <td><a href="#"><?php echo ($v["goods_name"]); ?></a></td>
-                        <!--<td>100</td>-->
                         <td><?php echo ($v["goods_price"]); ?></td>
-                        <!--<td><img src="/Back/Public/img/20121018-174455-91962.jpg" height="60" width="60"></td>-->
-                        <!--<td><img src="/Back/Public/img/20121018-174455-10118.jpg" height="40" width="40"></td>-->
+                        <td><?php echo ($v["goods_weight"]); ?></td>
+                        <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_big_logo"],2)); ?>" alt="暂无图片" width="100" height="100"  ></td>
+                        <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_small_logo"],2)); ?>" alt="暂无图片" width="60" height="60"  ></td>
                         <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
                         <td><?php echo ($v["add_time"]); ?></td>
                         <td><a href="#" >修改</a></td>
