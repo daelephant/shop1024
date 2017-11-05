@@ -54,8 +54,7 @@
                         <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_small_logo"],2)); ?>" alt="暂无图片" width="60" height="60"  ></td>
                         <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
                         <td><?php echo (date("Y-m-d H:i:s",$v["add_time"])); ?></td>
-                        <!--<td><a href="<?php echo U('upd',array('goods_id'=>$v['goods_id']));?>" >修改</a></td>-->
-                        <td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>" >修改</a></td>
+                        <td><a href="#" >修改</a></td>
                         <td><a href="#" >删除</a></td>
                     </tr><?php endforeach; endif; ?>
                      <tr>

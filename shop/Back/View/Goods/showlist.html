@@ -37,7 +37,7 @@
                         <td>序号</td>
                         <td>商品名称</td>
                         <td>价格</td>
-                    <td>重量</td>
+                        <td>重量</td>
                         <td>图片</td>
                         <td>缩略图</td>
                         <td>描述</td>
@@ -54,15 +54,15 @@
                         <td><img src="{$Think.config.SITE_URL}{$v.goods_big_logo|substr=###,2}" alt="暂无图片" width="100" height="100"  ></td>
                         <td><img src="{$Think.config.SITE_URL}{$v.goods_small_logo|substr=###,2}" alt="暂无图片" width="60" height="60"  ></td>
                         <td>{$v.goods_introduce|htmlspecialchars_decode}</td>
-                        <td>{$v.add_time}</td>
-                        <td><a href="{:U('upd',array('goods_id'=>$v['goods_id']))}">修改</a> </td>
-                        <!--<td><a href="__CONTROLLER__/upd/goods_id/{$v.goods_id}" >修改</a></td>-->
+                        <td>{$v.add_time|date="Y-m-d H:i:s",###}</td>
+                        <!--<td><a href="{:U('upd',array('goods_id'=>$v['goods_id']))}" >修改</a></td>-->
+                        <td><a href="__CONTROLLER__/upd/goods_id/{$v['goods_id']}" >修改</a></td>
                         <td><a href="#" >删除</a></td>
                     </tr>
                 </foreach>
                      <tr>
                         <td colspan="20" style="text-align: center;">
-                            [1]
+                            {$pagelist}
                         </td>
                     </tr>
                 </tbody>

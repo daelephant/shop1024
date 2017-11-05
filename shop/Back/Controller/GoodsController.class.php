@@ -11,8 +11,13 @@ class GoodsController extends Controller{
 //    列表展示
     public function showlist(){
         $goods = new \Model\GoodsModel();
-        $info = $goods->select();
+        $nowinfo = $goods->fetchData();
+        $info = $nowinfo['pageinfo'];//当前页数据信息
+        $pagelist = $nowinfo['pagelist'];//页码列表信息
+
+
         $this->assign('info',$info);
+        $this->assign('pagelist',$pagelist);
         $this->display();
     }
     //    添加商品
@@ -37,7 +42,43 @@ class GoodsController extends Controller{
     }
     //    修改商品
     public function upd(){
-        $this->display();
+        //两个逻辑：展示，收集
+        $goods = new \Model\GoodsModel();//使用new的好处：本身自己定义的方法可以调用，父类的好的方法也可以调用，D（） M（）只能调用父类方法
+        if($_POST){
+            $data = $goods->create();//收集数据
+            if($goods->save($data)){
+                $this->success('修改成功',U('showlist'),2);
+            }else{
+                $this->error('修改失败',U('upd',array('goods_id'=>$data['goods_id'])),2);
+            }
+        }else {
+            $goods_id = I('get.goods_id');// 相当于 $_GET['goods_id']
+            $info = $goods->find($goods_id);//查询被修改的商品信息
+
+            /*获取相册信息，在另外一张表里*/
+            $picsinfo = D('GoodsPics')->where(array('goods_id'=>$goods_id))->select();
+            if(!empty($picsinfo)){
+                $this->assign('picsinfo',$picsinfo);
+            }
+
+            $this->assign('info', $info);
+
+            $this->display();
+        }
+    }
+    //删除单个相册图片
+    function delPics(){
+        $pics_id = I('get.pics_id');
+        //1查询图片并删除[物理删除]
+        $info = D('GoodsPics')->find($pics_id);
+        unlink($info['pics_big']);
+        unlink($info['pics_small']);
+
+        //2删除数据记录信息
+        $z = D('GoodsPics')->delete($pics_id);
+        if($z){
+            echo "删除成功";
+        }
     }
 
 }
