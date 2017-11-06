@@ -25,7 +25,7 @@
     <script type="text/javascript" charset="utf-8" src="/Plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
 
     <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
-
+    <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/uploadPreview.js"></script>
 </head>
 
 <body>
@@ -98,7 +98,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/11" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/12" method="post" enctype="multipart/form-data">
         <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
@@ -112,13 +112,19 @@
 
             <tr>
                 <td>商品logo图片</td>
-                <td><input type="file" name="goods_logo_upd" />
+                <td><input type="file" name="goods_logo_upd" id="goods_logo" />
+                    <div id="goods_logo_dv"><img src="" alt="" id="goods_logo_im" width="160" height="160"/></div>
                     <?php if(!empty($info["goods_big_logo"])): ?><img src='<?php echo (C("SITE_URL")); echo ($info["goods_big_logo"]); ?>' width='200' height='200' alt=''/>
                         <span>如果选择上传新的logo图片，则会自动覆盖旧图片</span><?php endif; ?>
                 </td>
 
             </tr>
         </table>
+        <script type="text/javascript">
+            $(function(){
+                new uploadPreview({UpBtn:"goods_logo",DivShow:"goods_logo_dv",ImgShow:"goods_logo_im"});
+            });
+        </script>
         <table style="display: none;" border="1" width="100%" class="table_a" id="detail-tab-tb" >
 
             <tr>
@@ -144,10 +150,16 @@
             </tr>
         </table>
         <script type="text/javascript">
+            var p_num = 1;//相册计数器
+
             //增加相册项目
             function add_item(){
-                var s ="<tr><td><span style='cursor: pointer;' onclick='$(this).parent().parent().remove()'>[-]</span>商品相册</td><td><input type='file' name='goods_pics_upd[]' /></td></tr>";
+                var s ="<tr><td><span style='cursor: pointer;' onclick='$(this).parent().parent().remove()'>[-]</span>商品相册</td><td><input type='file' name='goods_pics_upd[]' id='goods_pics_"+p_num+"' /><div id='goods_pics_dv_"+p_num+"'><img src='' alt='' width='160' height='160' id='goods_pics_im_"+p_num+"' /></div></td></tr>";
                 $('#gallery-tab-tb').append(s);
+                //设置立即显示上传好的图片效果
+                new uploadPreview({UpBtn:"goods_pics_"+p_num,DivShow:"goods_pics_dv_"+p_num,ImgShow:"goods_pics_im_"+p_num});
+                p_num++;//每增加一个相册，计数器的值都要累加
+
             }
 
         </script>
@@ -183,10 +195,17 @@
                 </tr><?php endif; ?>
             <tr>
                 <td><span style='cursor: pointer;' onclick="add_item()">[+]</span>商品相册</td>
-                <td><input type="file" name="goods_pics_upd[]" /></td>
+                <td><input id="goods_prics_0" type="file" name="goods_pics_upd[]" />
+                    <div id="goods_prics_dv_0"><img src="" alt="" width="160" height="160" id="goods_prics_im_0"/></div>
+                </td>
             </tr>
 
         </table>
+        <script type="text/javascript">
+            $(function(){
+                new uploadPreview({UpBtn:"goods_prics_0",DivShow:"goods_prics_dv_0",ImgShow:"goods_prics_im_0"});
+            });
+        </script>
         <table  width="100%">
             <tr>
                 <td colspan="2" align="center">
