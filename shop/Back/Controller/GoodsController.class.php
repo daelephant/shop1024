@@ -86,7 +86,7 @@ class GoodsController extends Controller{
     //删除商品（逻辑方式删除商品就是修改标志位）
     function delGoods(){
         $goods_id = I('get.goods_id');//get方式获得商品的id信息
-        $goods = D('Goods');
+        $goods = D('Goods');//调用的是父类，不会找到子类的瞻前顾后方法。不用考虑瞻前顾后，若new \Model\GoodsModel()就要涉及瞻前顾后
         $z = $goods->setField(array('goods_id'=>$goods_id,'is_del'=>'删除'));
         //setField()内部有调用save()方法
         if($z){
