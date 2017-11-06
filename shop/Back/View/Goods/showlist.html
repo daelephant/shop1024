@@ -6,6 +6,7 @@
         <title>会员列表</title>
 
         <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="{$Think.config.COMMON_URL}js/jquery-1.11.3.min.js"></script>
     </head>
     <body>
         <style>
@@ -46,9 +47,9 @@
                     </tr>
 
                 <foreach name="info" item="v">
-                    <tr id="product4">
+                    <tr id="product_{$v.goods_id}"><!--给每个商品都设置唯一标识，以方便获得、删除-->
                         <td>{$v.goods_id}</td>
-                        <td><a href="#">{$v.goods_name}</a></td>
+                        <td><a href="__CONTROLLER__/upd/goods_id/{$v['goods_id']}">{$v.goods_name}</a></td>
                         <td>{$v.goods_price}</td>
                         <td>{$v.goods_weight}</td>
                         <td><img src="{$Think.config.SITE_URL}{$v.goods_big_logo|substr=###,2}" alt="暂无图片" width="100" height="100"  ></td>
@@ -57,9 +58,27 @@
                         <td>{$v.add_time|date="Y-m-d H:i:s",###}</td>
                         <!--<td><a href="{:U('upd',array('goods_id'=>$v['goods_id']))}" >修改</a></td>-->
                         <td><a href="__CONTROLLER__/upd/goods_id/{$v['goods_id']}" >修改</a></td>
-                        <td><a href="#" >删除</a></td>
+                        <script type="text/javascript">
+                            function del_goods(goods_id){
+                                //利用ajax去服务器删除数据库记录信息
+                                $.ajax({
+                                    url:"{:U('delGoods')}",
+                                    data:{'goods_id':goods_id},
+                                    dataType:'json',
+                                    type:'get',
+                                    success:function(msg){
+                                        if(msg.status==1){
+                                            $('#product_'+goods_id).remove();
+
+                                        }
+                                    }
+                                });
+                            }
+                        </script>
+                        <td><a href="javascript:;" onclick="if(confirm('确定要删除id='+{$v.goods_id}+'的商品信息么？')){del_goods({$v.goods_id})}" >删除</a></td>
                     </tr>
                 </foreach>
+
                      <tr>
                         <td colspan="20" style="text-align: center;">
                             {$pagelist}

@@ -7,6 +7,8 @@
  */
 namespace Back\Controller;
 use Think\Controller;
+use Think\Model;
+
 class GoodsController extends Controller{
 //    列表展示
     public function showlist(){
@@ -80,5 +82,19 @@ class GoodsController extends Controller{
             echo "删除成功";
         }
     }
+
+    //删除商品（逻辑方式删除商品就是修改标志位）
+    function delGoods(){
+        $goods_id = I('get.goods_id');//get方式获得商品的id信息
+        $goods = D('Goods');
+        $z = $goods->setField(array('goods_id'=>$goods_id,'is_del'=>'删除'));
+        //setField()内部有调用save()方法
+        if($z){
+            echo json_encode(array('status'=>1));//ok
+        }else{
+            echo json_encode(array('status'=>2));//fail
+        }
+    }
+
 
 }

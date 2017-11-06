@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
     <title>添加商品</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" charset="utf-8" src="{$Think.config.PLUGIN_URL}ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="{$Think.config.PLUGIN_URL}ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>ueditor/ueditor.all.min.js"> </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript">
@@ -21,11 +21,11 @@
             'inserttable', 'deletetable', 'insertparagraphbeforetable' ,'|']];
     </script>
 
-    <script type="text/javascript" charset="utf-8" src="{$Think.config.PLUGIN_URL}ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>ueditor/ueditor.all.min.js"> </script>
     <script type="text/javascript" charset="utf-8" src="/Plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
 
-    <script type="text/javascript" src="{$Think.config.COMMON_URL}js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="{$Think.config.COMMON_URL}js/uploadPreview.js"></script>
+    <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/uploadPreview.js"></script>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <span>
                 <span style="float:left">当前位置是：商品管理-》添加商品信息</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="__CONTROLLER__/showlist">【返回】</a>
+                    <a style="text-decoration: none" href="/index.php/Back/Goods/showlist">【返回】</a>
                 </span>
             </span>
 </div>
@@ -98,26 +98,24 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="__SELF__" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="goods_id" value="{$info.goods_id}"/>
+    <form action="/index.php/Back/Goods/upd/goods_id/13" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
                 <td>商品名称</td>
-                <td><input type="text" name="goods_name" value="{$info.goods_name}" /></td>
+                <td><input type="text" name="goods_name" value="<?php echo ($info["goods_name"]); ?>" /></td>
             </tr>
             <tr>
                 <td>商品价格</td>
-                <td><input type="text" name="goods_price" value="{$info.goods_price}" /></td>
+                <td><input type="text" name="goods_price" value="<?php echo ($info["goods_price"]); ?>" /></td>
             </tr>
 
             <tr>
                 <td>商品logo图片</td>
                 <td><input type="file" name="goods_logo_upd" id="goods_logo" />
                     <div id="goods_logo_dv"><img src="" alt="" id="goods_logo_im" width="160" height="160"/></div>
-                    <notempty name='info["goods_big_logo"]'>
-                        <img src='{$Think.config.SITE_URL}{$info.goods_big_logo}' width='200' height='200' alt=''/>
-                        <span>如果选择上传新的logo图片，则会自动覆盖旧图片</span>
-                    </notempty>
+                    <?php if(!empty($info["goods_big_logo"])): ?><img src='<?php echo (C("SITE_URL")); echo ($info["goods_big_logo"]); ?>' width='200' height='200' alt=''/>
+                        <span>如果选择上传新的logo图片，则会自动覆盖旧图片</span><?php endif; ?>
                 </td>
 
             </tr>
@@ -132,7 +130,7 @@
             <tr>
                 <td>商品详细描述</td>
                 <td>
-                    <textarea style="width: 730px;height: 320px;" name="goods_introduce" id="goods_introduce">{$info.goods_introduce}</textarea>
+                    <textarea style="width: 730px;height: 320px;" name="goods_introduce" id="goods_introduce"><?php echo ($info["goods_introduce"]); ?></textarea>
                 </td>
             </tr>
             <script type="text/javascript">
@@ -166,14 +164,13 @@
 
         </script>
         <table style="display: none;" border="1" width="100%" class="table_a" id="gallery-tab-tb" >
-            <notempty name='picsinfo'>
-                <style type='text/css'>li{float:left;}li{list-style:none;}</style>
+            <?php if(!empty($picsinfo)): ?><style type='text/css'>li{float:left;}li{list-style:none;}</style>
 
                 <script type="text/javascript">
                     function del_pics(pics_id){
                         //通过ajax进行下一步操作，触发服务器端unlink删除物理图片
                         $.ajax({
-                            url:"{:U('delPics')}",
+                            url:"<?php echo U('delPics');?>",
                             data:{"pics_id":pics_id},//向Url传递数据按照对象方式传递
                             //dataType:,//返回数据格式默认字符串
                             //type:,请求格式默认get
@@ -189,16 +186,13 @@
                 <tr>
                     <td colspan="100">
                         <ul>
-                            <foreach name='picsinfo' item='v'>
-                                <li id="pics_{$v.id}">
-                                    <img src="{$Think.config.SITE_URL}{$v.pics_big}" alt="" height="100" width="100"/>
-                                    <span style='cursor:pointer;' onclick='if(confirm("确定删除么？")){del_pics({$v.id})}'>[-]</span>
-                                </li>
-                            </foreach>
+                            <?php if(is_array($picsinfo)): foreach($picsinfo as $key=>$v): ?><li id="pics_<?php echo ($v["id"]); ?>">
+                                    <img src="<?php echo (C("SITE_URL")); echo ($v["pics_big"]); ?>" alt="" height="100" width="100"/>
+                                    <span style='cursor:pointer;' onclick='if(confirm("确定删除么？")){del_pics(<?php echo ($v["id"]); ?>)}'>[-]</span>
+                                </li><?php endforeach; endif; ?>
                         </ul>
                     </td>
-                </tr>
-            </notempty>
+                </tr><?php endif; ?>
             <tr>
                 <td><span style='cursor: pointer;' onclick="add_item()">[+]</span>商品相册</td>
                 <td><input id="goods_prics_0" type="file" name="goods_pics_upd[]" />
