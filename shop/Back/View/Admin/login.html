@@ -7,6 +7,8 @@
         <title>用户登录</title>
 
         <link href="/Back/Public/css/User_Login.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="{$Think.config.COMMON_URL}js/jquery-1.11.3.min.js"></script>
+
     </head><body id="userlogin_body">
         <div></div>
         <div id="user_login">
@@ -34,9 +36,36 @@
                                     </ul>
                                     <ul>
                                         <li class="user_main_text">验证码： </li>
+                                        <script type="text/javascript">
+                                            function check_code(){
+                                                //获得输入的验证码并用ajax去校验
+                                                var code = $('#captcha').val();
+                                                if(code.length == 2){
+                                                    //触发ajax
+                                                    $.ajax({
+                                                        url:"{:U('checkCode')}",
+                                                        data:{'code':code},
+                                                        dataType:'json',
+                                                        typ:'get',
+                                                        success:function(msg){
+                                                            if(msg.status ==1){
+                                                                $('#code_check_result').html('<span style="color: green">验证码正确</span>');
+                                                            }else {
+                                                                $('#code_check_result').html('<span style="color: red">验证码错误</span>');
+
+                                                            }
+                                                        }
+                                                    });
+                                                };
+                                            }
+                                        </script>
                                         <li class="user_main_input">
-                                            <input class="TxtValidateCodeCssClass" id="captcha" name="captcha" type="text">
+                                            <input class="TxtValidateCodeCssClass" id="captcha" name="captcha" type="text" maxlength="2" onkeyup="check_code()">
                                             <img src="{:U('verifyImg')}"  alt="验证码" onclick="this.src='__CONTROLLER__/verifyImg/'+Math.random()"/>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="user_main_input" id="code_check_result">
                                         </li>
                                     </ul>
                                 </div>

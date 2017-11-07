@@ -26,4 +26,16 @@ class AdminController extends Controller{
         $very = new \Think\Verify($cfg);
         $very->entry();
     }
+
+    //ajax过来校验验证码
+    function checkCode(){
+        $code = I('get.code');//获得用户输入的验证码
+        $vry = new \Think\Verify();
+        if($vry->check($code)){
+            echo json_encode(array('status'=>1));
+        }else{
+            echo json_encode(array('status'=>2));
+        }
+    }
+
 }
