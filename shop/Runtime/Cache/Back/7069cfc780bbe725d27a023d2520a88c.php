@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -7,7 +7,7 @@
         <title>用户登录</title>
 
         <link href="/Back/Public/css/User_Login.css" type="text/css" rel="stylesheet" />
-        <script type="text/javascript" src="{$Think.config.COMMON_URL}js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
 
     </head><body id="userlogin_body">
         <div></div>
@@ -19,7 +19,7 @@
                         <li class="user_top_c"></li>
                         <li class="user_top_r"></li></ul>
                 </dd><dd id="user_main">
-                    <form action="__SELF__" method="post">
+                    <form action="/index.php/Back/Admin/login.html" method="post">
                         <ul>
                             <li class="user_main_l"></li>
                             <li class="user_main_c">
@@ -44,7 +44,7 @@
                                                 if(code.length == 2){
                                                     //触发ajax
                                                     $.ajax({
-                                                        url:"{:U('checkCode')}",
+                                                        url:"<?php echo U('checkCode');?>",
                                                         data:{'code':code},
                                                         dataType:'json',
                                                         typ:'get',
@@ -64,7 +64,7 @@
                                         </script>
                                         <li class="user_main_input">
                                             <input class="TxtValidateCodeCssClass" id="captcha" name="captcha" type="text" maxlength="2" onkeyup="check_code()">
-                                            <img src="{:U('verifyImg')}"  alt="验证码" onclick="this.src='__CONTROLLER__/verifyImg/'+Math.random()"/>
+                                            <img src="<?php echo U('verifyImg');?>"  alt="验证码" onclick="this.src='/index.php/Back/Admin/verifyImg/'+Math.random()"/>
                                         </li>
                                     </ul>
                                     <ul>
@@ -75,7 +75,7 @@
                             </li>
                             <li class="user_main_r">
 
-                                <input style="border: medium none; background: url('{$Think.config.Back_IMG_URL}user_botton.gif') repeat-x scroll left top transparent; height: 122px; width: 111px; display: block; cursor: pointer;" value="" type="submit">
+                                <input style="border: medium none; background: url('<?php echo (C("Back_IMG_URL")); ?>user_botton.gif') repeat-x scroll left top transparent; height: 122px; width: 111px; display: block; cursor: pointer;" value="" type="submit">
                             </li>
                         </ul>
                     </form>

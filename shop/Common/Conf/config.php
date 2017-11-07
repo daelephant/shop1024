@@ -19,6 +19,9 @@ return array(
 
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
 
+    //打开页面的跟踪信息
+    'SHOW_PAGE_TRACE' => true,
+
     /* 数据库设置 来源：ThinkPHP/Conf/convention.php */
     'DB_TYPE'               =>  'mysql',     // 数据库类型
     'DB_HOST'               =>  'localhost', // 服务器地址

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
         <meta http-equiv=content-type content="text/html; charset=utf-8" />
@@ -11,11 +11,11 @@
                 <td width=260><img height=56 src="/Back/Public/img/header_left.jpg" 
                                    width=260></td>
                 <td style="font-weight: bold; color: #fff; padding-top: 20px" 
-                    align=middle>当前用户：{$Think.session.admin_name} &nbsp;&nbsp; <a style="color: #fff"
+                    align=middle>当前用户：<?php echo (session('admin_name')); ?> &nbsp;&nbsp; <a style="color: #fff"
                                                         href="" 
                                                         target=main>修改口令</a> &nbsp;&nbsp; <a style="color: #fff" 
                                                         onclick="if (confirm('确定要退出吗？')) return true; else return false;" 
-                                                        href="{:U('Admin/logout')}" target="_top">退出系统</a>
+                                                        href="<?php echo U('Admin/logout');?>" target="_top">退出系统</a>
                 </td>
                 <td align=right width=268><img height=56 
                                                src="/Back/Public/img/header_right.jpg" width=268></td></tr></table>

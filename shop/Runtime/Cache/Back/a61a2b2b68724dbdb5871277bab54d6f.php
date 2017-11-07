@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
         <meta http-equiv=content-type content="text/html; charset=utf-8" />
@@ -29,29 +29,23 @@
 
                         <tr>
                             <td height=10></td></tr></table>
-                <foreach name="auth_infoA" item="v">
-                    <table cellspacing=0 cellpadding=0 width=150 border=0>
+                <?php if(is_array($auth_infoA)): foreach($auth_infoA as $key=>$v): ?><table cellspacing=0 cellpadding=0 width=150 border=0>
 
                         <tr height=22>
                             <td style="padding-left: 30px" background=/Back/Public/img/menu_bt.jpg><a 
-                                    class=menuparent onclick=expand({$v.auth_id})
-                                    href="javascript:void(0);">{$v.auth_name}</a></td></tr>
+                                    class=menuparent onclick=expand(<?php echo ($v["auth_id"]); ?>)
+                                    href="javascript:void(0);"><?php echo ($v["auth_name"]); ?></a></td></tr>
                         <tr height=4>
                             <td></td></tr></table>
-                    <table id=child{$v.auth_id} style="display: none" cellspacing=0 cellpadding=0
+                    <table id=child<?php echo ($v["auth_id"]); ?> style="display: none" cellspacing=0 cellpadding=0
                            width=150 border=0>
-                    <foreach name="auth_infoB" item="vv">
-                        <if condition="$vv['auth_pid'] eq $v['auth_id']">
-                        <tr height=20>
+                    <?php if(is_array($auth_infoB)): foreach($auth_infoB as $key=>$vv): if($vv['auth_pid'] == $v['auth_id']): ?><tr height=20>
                             <td align=middle width=30><img height=9 
                              src="/Back/Public/img/menu_icon.gif" width=9></td>
                             <td><a class=menuchild 
                                    href="#" 
-                                   target=main>{$vv.auth_name}</a></td></tr>
-                        </if>
-                    </foreach>
-                    </table>
-                </foreach>
+                                   target=main><?php echo ($vv["auth_name"]); ?></a></td></tr><?php endif; endforeach; endif; ?>
+                    </table><?php endforeach; endif; ?>
                     <table cellspacing=0 cellpadding=0 width=150 border=0>
 
                         <tr height=22>

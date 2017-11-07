@@ -9,7 +9,33 @@ namespace Back\Controller;
 use Think\Controller;
 class AdminController extends Controller{
     public function login(){
-        $this->display();
+        if(IS_POST){
+            //dump($_POST);
+            $name = $_POST['admin_user'];
+            $pwd = $_POST['admin_psd'];
+            //用户名和密码的校验
+            $manager = D('Manager');
+            $info = $manager->where(array('mg_name'=>$name,'mg_pwd'=>$pwd))->find();
+            //dump($info);
+            if($info != null){
+                //session持久化操作(id/name)
+                session('admin_id',$info['mg_id']);
+                session('admin_name',$info['mg_name']);
+                //页面跳转
+                $this->redirect('Index/index');
+            }else{
+                $this->error('用户名或者密码错误',U('login'),2);
+            }
+        }else {
+            $this->display();
+        }
+    }
+
+    //管理员退出系统
+    public function logout(){
+        session(null);
+        //$this->redirect('分组/控制器/操作方法');
+        $this->redirect('login');
     }
 
     public function verifyImg(){
