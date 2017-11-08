@@ -19,3 +19,167 @@ ERR: 无法加载控制器:Manager
 [ 2017-11-08T07:20:23+08:00 ] 127.0.0.1 /index.php/Back/Role/tianjia.html
 ERR: 非法操作:tianjia
 
+[ 2017-11-08T10:37:29+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:37:48+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:41:26+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:41:27+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:42:28+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:42:47+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:44:01+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:44:04+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:44:57+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:45:43+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:45:44+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:46:40+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:46:56+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=7u
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:18+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qB
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:18+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qB
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:20+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qb
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:25+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qb
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:30+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=dp
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:33+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=dq
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:47:40+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-08T10:47:42+08:00 ] 127.0.0.1 /index.php/Back/Order/look
+ERR: 无法加载控制器:Order
+
+[ 2017-11-08T10:47:44+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-08T10:48:50+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=q4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:48:53+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qa
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T10:49:13+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-08T10:52:09+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=fw
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-08T11:15:04+08:00 ] 127.0.0.1 /index.php/Back/Role/tianjia.html
+ERR: 非法操作:tianjia
+
+[ 2017-11-08T11:15:11+08:00 ] 127.0.0.1 /index.php/Back/Role/tianjia.html
+ERR: 非法操作:tianjia
+
+[ 2017-11-08T15:13:36+08:00 ] 127.0.0.1 /index.php/Back/Role/distribute/role_id/50.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `role_id` = 50' at line 1
+
+[ 2017-11-08T15:14:15+08:00 ] 127.0.0.1 /index.php/Back/Role/distribute/role_id/51.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `role_id` = 51' at line 1
+
+[ 2017-11-08T15:23:05+08:00 ] 127.0.0.1 /index.php/Back/Role/distribute/role_id/51.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `role_id` = 51' at line 1
+
+[ 2017-11-08T15:52:05+08:00 ] 127.0.0.1 /index.php/Back/Role/upd/goods_id/
+ERR: 非法操作:upd
+
+[ 2017-11-08T16:04:11+08:00 ] 127.0.0.1 /index.php/Back/Role/upd/goods_id/
+ERR: 非法操作:upd
+
+[ 2017-11-08T16:04:35+08:00 ] 127.0.0.1 /index.php/Back/Role/tianjia.html
+ERR: 非法操作:tianjia
+
+[ 2017-11-08T16:05:09+08:00 ] 127.0.0.1 /index.php/Back/Auth/showlist
+ERR: 无法加载控制器:Auth
+
+[ 2017-11-08T16:05:20+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-08T16:05:21+08:00 ] 127.0.0.1 /index.php/Back/Order/look
+ERR: 无法加载控制器:Order
+
+[ 2017-11-08T16:05:47+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+

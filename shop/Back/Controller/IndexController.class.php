@@ -21,6 +21,7 @@ class IndexController extends Controller{
         //通过管理员获得对应的角色，通过角色获得对应的权限并显示
         $admin_id = session('admin_id');
         $admin_name = session('admin_name');
+        //dump($admin_name);exit();
         if($admin_name != 'admin'){//普通用户获取权限
             $auth_ids = D('Manager')->alias('m')->join('__ROLE__ r on m.mg_role_id=r.role_id')->field('r.role_auth_ids')
             ->where(array('m.mg_id'=>$admin_id))->find();

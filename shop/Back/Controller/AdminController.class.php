@@ -8,6 +8,11 @@
 namespace Back\Controller;
 use Think\Controller;
 class AdminController extends Controller{
+    function __construct()
+    {
+        parent::__construct();//先执行父类的构造方法，没有这一步代表重新
+        layout(false);//临时关闭当前模板布局，写在构造函数里，对整个类文件起作用
+    }
     public function login(){
         if(IS_POST){
             //dump($_POST);

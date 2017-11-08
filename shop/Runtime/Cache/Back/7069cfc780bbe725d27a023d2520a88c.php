@@ -19,7 +19,7 @@
                         <li class="user_top_c"></li>
                         <li class="user_top_r"></li></ul>
                 </dd><dd id="user_main">
-                    <form action="/index.php/Back/Admin/login.html" method="post">
+                    <form action="/index.php/Back/Admin/login" method="post">
                         <ul>
                             <li class="user_main_l"></li>
                             <li class="user_main_c">

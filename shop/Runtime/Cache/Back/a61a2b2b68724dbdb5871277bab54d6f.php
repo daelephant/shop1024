@@ -43,8 +43,8 @@
                             <td align=middle width=30><img height=9 
                              src="/Back/Public/img/menu_icon.gif" width=9></td>
                             <td><a class=menuchild 
-                                   href="#" 
-                                   target=main><?php echo ($vv["auth_name"]); ?></a></td></tr><?php endif; endforeach; endif; ?>
+                                   href="/index.php/Back/<?php echo ($vv["auth_c"]); ?>/<?php echo ($vv["auth_a"]); ?>"
+                                   target="right"><?php echo ($vv["auth_name"]); ?></a></td></tr><?php endif; endforeach; endif; ?>
                     </table><?php endforeach; endif; ?>
                     <table cellspacing=0 cellpadding=0 width=150 border=0>
 

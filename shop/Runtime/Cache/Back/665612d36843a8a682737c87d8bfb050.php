@@ -1,9 +1,26 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-    <head>
-        <title>添加商品</title>
-        <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <title>会员列表</title>
+
+    <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<style>
+    .tr_color{background-color: #9F88FF}
+</style>
+<div class="div_head">
+            <span>
+                <span style="float: left;">当前位置是：<?php echo ($bread["first"]); ?>-》<?php echo ($bread["second"]); ?></span>
+                <span style="float: right; margin-right: 8px; font-weight: bold;">
+                    <a style="text-decoration: none;" href="<?php echo ($bread["linkTo"]["1"]); ?>"><?php echo ($bread["linkTo"]["0"]); ?></a>
+                </span>
+            </span>
+</div>
+<div></div>
         <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>ueditor/ueditor.config.js"></script>
         <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>ueditor/ueditor.all.min.js"> </script>
         <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
@@ -24,22 +41,9 @@
         <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>ueditor/ueditor.all.min.js"> </script>
         <script type="text/javascript" charset="utf-8" src="/Plugin/ueditor/lang/zh-cn/zh-cn.js"></script>
 
-        <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/uploadPreview.js"></script>
 
-    </head>
 
-    <body>
-
-        <div class="div_head">
-            <span>
-                <span style="float:left">当前位置是：商品管理-》添加商品信息</span>
-                <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="/index.php/Back/Goods/showlist">【返回】</a>
-                </span>
-            </span>
-        </div>
-        <div></div>
         <script type="text/javascript">
             //加载事件里面定义click事件，点击标签实现切换对应内容的jquery实现逻辑。
             $(function(){
@@ -183,5 +187,6 @@
                 </table>
             </form>
         </div>
-    </body>
+
+</body>
 </html>
