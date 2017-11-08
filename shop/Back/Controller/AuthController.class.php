@@ -30,5 +30,23 @@ class AuthController extends Controller{
         $this->display();
     }
 
+    //添加权限
+    function tianjia(){
+        //获取可供选择的上级权限（level=0/1）
+        $pinfo = D('Auth')->where(array('auth_level'=>array('in','0,1')))->order('auth_path')->select();
+        //SELECT * FROM `php_auth` WHERE `auth_level` IN ('0','1') ORDER BY auth_path [ RunTime:0.0010s ]
+        $this->assign('pinfo',$pinfo);
 
+        //设置面包屑导航
+        $bread = array(
+            'first' => '权限管理',
+            'second' => '权限添加',
+            'linkTo' => array(
+                '【返回】',U('Auth/showlist')
+            ),
+        );
+
+        $this->assign('bread',$bread);
+        $this->display();
+    }
 }
