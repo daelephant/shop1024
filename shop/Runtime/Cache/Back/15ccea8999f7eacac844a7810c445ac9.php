@@ -7,6 +7,8 @@
         <title>用户登录</title>
 
         <link href="/Back/Public/css/User_Login.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
     </head><body id="userlogin_body">
         <div></div>
         <div id="user_login">
@@ -17,7 +19,7 @@
                         <li class="user_top_c"></li>
                         <li class="user_top_r"></li></ul>
                 </dd><dd id="user_main">
-                    <form action="#" method="post">
+                    <form action="/index.php/Back/Admin/login" method="post">
                         <ul>
                             <li class="user_main_l"></li>
                             <li class="user_main_c">
@@ -34,9 +36,39 @@
                                     </ul>
                                     <ul>
                                         <li class="user_main_text">验证码： </li>
+                                        <script type="text/javascript">
+                                            var code_flag = false;//验证码是否通过验证
+                                            function check_code(){
+                                                //获得输入的验证码并用ajax去校验
+                                                var code = $('#captcha').val();
+                                                if(code.length == 2){
+                                                    //触发ajax
+                                                    $.ajax({
+                                                        url:"<?php echo U('checkCode');?>",
+                                                        data:{'code':code},
+                                                        dataType:'json',
+                                                        typ:'get',
+                                                        success:function(msg){
+                                                            if(msg.status ==1){
+                                                                $('#code_check_result').html('<span style="color: green">验证码正确</span>');
+                                                                code_flag = true;
+                                                            }else {
+                                                                $('#code_check_result').html('<span style="color: red">验证码错误</span>');
+                                                                code_flag = false;
+
+                                                            }
+                                                        }
+                                                    });
+                                                };
+                                            }
+                                        </script>
                                         <li class="user_main_input">
-                                            <input class="TxtValidateCodeCssClass" id="captcha" name="captcha" type="text">
+                                            <input class="TxtValidateCodeCssClass" id="captcha" name="captcha" type="text" maxlength="2" onkeyup="check_code()">
                                             <img src="<?php echo U('verifyImg');?>"  alt="验证码" onclick="this.src='/index.php/Back/Admin/verifyImg/'+Math.random()"/>
+                                        </li>
+                                    </ul>
+                                    <ul>
+                                        <li class="user_main_input" id="code_check_result">
                                         </li>
                                     </ul>
                                 </div>
@@ -47,6 +79,18 @@
                             </li>
                         </ul>
                     </form>
+                    <script type="text/javascript">
+                        //给form表单设置提交事件
+                        $('form').submit(
+                                //evt:必需。规定阻止哪个事件的默认动作。这个 evt（event） 参数来自事件绑定函数。
+                                function(evt){
+                                    //判断验证码是否正确，再进行提交，否则阻止form表单提交
+                                    if(code_flag===false){
+                                        evt.preventDefault();//阻止form表单提交
+                                    }
+                                }
+                        );
+                    </script>
                 </dd><dd id="user_bottom">
                     <ul>
                         <li class="user_bottom_l"></li>

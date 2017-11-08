@@ -1,0 +1,21 @@
+[ 2017-11-08T06:24:52+08:00 ] 127.0.0.1 /index.php/Back/mine.css
+ERR: 无法加载控制器:Mine.css
+
+[ 2017-11-08T06:24:54+08:00 ] 127.0.0.1 /index.php/Back/mine.css
+ERR: 无法加载控制器:Mine.css
+
+[ 2017-11-08T06:24:56+08:00 ] 127.0.0.1 /index.php/Back/mine.css
+ERR: 无法加载控制器:Mine.css
+
+[ 2017-11-08T06:39:52+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-08T06:50:31+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-08T07:17:52+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-08T07:20:23+08:00 ] 127.0.0.1 /index.php/Back/Role/tianjia.html
+ERR: 非法操作:tianjia
+

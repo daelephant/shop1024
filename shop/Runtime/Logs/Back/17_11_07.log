@@ -3668,3 +3668,23 @@ ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error i
 [ 2017-11-07T17:28:20+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
 ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
 
+[ 2017-11-07T22:28:22+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=nj
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-07T22:28:34+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-07T22:28:38+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-07T22:28:41+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-07T22:51:10+08:00 ] 127.0.0.1 /index.php/Back/Role/showlist
+ERR: 无法加载控制器:Role
+

@@ -17,6 +17,16 @@ class GoodsController extends Controller{
         $info = $nowinfo['pageinfo'];//当前页数据信息
         $pagelist = $nowinfo['pagelist'];//页码列表信息
 
+        //设置面包屑导航
+        $bread = array(
+            'first' => '商品管理',
+            'second' => '商品列表',
+            'linkTo' => array(
+              '【添加商品】',U('Goods/tianjia')
+            ),
+        );
+
+        $this->assign('bread',$bread);
 
         $this->assign('info',$info);
         $this->assign('pagelist',$pagelist);
@@ -38,6 +48,16 @@ class GoodsController extends Controller{
                 $this->error('添加商品失败',U('tianjia'),2);//页面跳转
             }
         }else{//展示表单
+            //设置面包屑导航
+            $bread = array(
+                'first' => '商品管理',
+                'second' => '商品添加',
+                'linkTo' => array(
+                    '【返回】',U('Goods/showlist')
+                ),
+            );
+
+            $this->assign('bread',$bread);
             $this->display();
         }
 
@@ -63,6 +83,16 @@ class GoodsController extends Controller{
                 $this->assign('picsinfo',$picsinfo);
             }
 
+            //设置面包屑导航
+            $bread = array(
+                'first' => '商品管理',
+                'second' => '商品修改',
+                'linkTo' => array(
+                    '【返回】',U('Goods/showlist')
+                ),
+            );
+
+            $this->assign('bread',$bread);
             $this->assign('info', $info);
 
             $this->display();
