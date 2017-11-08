@@ -183,3 +183,18 @@ ERR: 无法加载控制器:Order
 [ 2017-11-08T16:05:47+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
 ERR: 无法加载控制器:Manager
 
+[ 2017-11-08T17:44:52+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-08T17:44:56+08:00 ] 127.0.0.1 /index.php/Back/Auth/showlist
+ERR: 无法加载控制器:Auth
+
+[ 2017-11-08T17:45:17+08:00 ] 127.0.0.1 /index.php/Back/Auth/showlist
+ERR: 无法加载控制器:Auth
+
+[ 2017-11-08T17:45:30+08:00 ] 127.0.0.1 /index.php/Back/Auth/showlist
+ERR: 无法加载控制器:Auth
+
+[ 2017-11-08T17:46:24+08:00 ] 127.0.0.1 /index.php/Back/Auth/showlist.html
+ERR: 无法加载控制器:Auth
+
