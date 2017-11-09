@@ -6,14 +6,15 @@
  * Time: 14:15
  */
 namespace Back\Controller;
-use Think\Controller;
-class AdminController extends Controller{
+use Common\Tools\BackController;
+class AdminController extends BackController{
     function __construct()
     {
         parent::__construct();//先执行父类的构造方法，没有这一步代表重新
-        layout(false);//临时关闭当前模板布局，写在构造函数里，对整个类文件起作用
+        //layout(false);//临时关闭当前模板布局，写在构造函数里，对整个类文件起作用
     }
     public function login(){
+        layout(false);//临时关闭当前模板布局，写在构造函数里，对整个类文件起作用
         if(IS_POST){
             //dump($_POST);
             $name = $_POST['admin_user'];
@@ -38,6 +39,7 @@ class AdminController extends Controller{
 
     //管理员退出系统
     public function logout(){
+        layout(false);//临时关闭当前模板布局，写在构造函数里，对整个类文件起作用
         session(null);
         //$this->redirect('分组/控制器/操作方法');
         $this->redirect('login');
@@ -67,6 +69,26 @@ class AdminController extends Controller{
         }else{
             echo json_encode(array('status'=>2));
         }
+    }
+
+    //管理员列表展示
+    function showlist(){
+        //设置面包屑导航
+        $bread = array(
+            'first' => '管理员管理',
+            'second' => '管理员列表',
+            'linkTo' => array(
+                '【添加管理员】',U('tianjia')
+            ),
+        );
+
+        $this->assign('bread',$bread);
+
+        $info = D('Manager')->alias('m')->join('LEFT JOIN __ROLE__ r on m.mg_role_id=r.role_id')->field('m.*,r.role_name')->select();
+        //SELECT m.*,r.role_name FROM php_manager m LEFT JOIN php_role r on m.mg_role_id=r.role_id [ RunTime:0.0000s ]
+        //dump($info);
+        $this->assign('info',$info);
+        $this->display();
     }
 
 }

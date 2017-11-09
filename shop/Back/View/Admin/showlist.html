@@ -1,0 +1,53 @@
+
+
+        <div style="font-size: 13px; margin: 10px 5px;">
+            <table class="table_a" border="1" width="100%">
+                <tbody><tr style="font-weight: bold;">
+                        <td>序号</td>
+                        <td>名称</td>
+                        <td>登记时间</td>
+                        <td>角色</td>
+                        <td colspan="3" align="center">操作</td>
+                       </tr>
+
+                <foreach name="info" item="v">
+                    <tr id="product_{$v.goods_id}"><!--给每个商品都设置唯一标识，以方便获得、删除-->
+                        <td>{$v.mg_id}</td>
+                        <td>{$v.mg_name}</td>
+                        <td>{$v.mg_time|date="Y-m-d H:i:s",###}</td>
+                        <td>
+                            <if condition="$v['mg_name'] eq admin">超级管理员
+                            <else /> {$v.role_name}
+                            </if>
+                        </td>
+                        <!--在权限名称的前面设置 缩进符号 使得信息可读性好 -->
+                        <td><a href="__CONTROLLER__/upd/auth_id/{$v['auth_id']}" >修改</a></td>
+                        <script type="text/javascript">
+                            function del_goods(goods_id){
+                                //利用ajax去服务器删除数据库记录信息
+                                $.ajax({
+                                    url:"{:U('delGoods')}",
+                                    data:{'goods_id':goods_id},
+                                    dataType:'json',
+                                    type:'get',
+                                    success:function(msg){
+                                        if(msg.status==1){
+                                            $('#product_'+goods_id).remove();
+
+                                        }
+                                    }
+                                });
+                            }
+                        </script>
+                        <td><a href="javascript:;" onclick="if(confirm('确定要删除id='+{$v.goods_id}+'的商品信息么？')){del_goods({$v.goods_id})}" >删除</a></td>
+                    </tr>
+                </foreach>
+
+                     <tr>
+                        <td colspan="20" style="text-align: center;">
+                            {$pagelist}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

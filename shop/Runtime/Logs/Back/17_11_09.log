@@ -1,0 +1,195 @@
+[ 2017-11-09T10:17:11+08:00 ] 127.0.0.1 /index.php/Back/Index/left.html
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') and auth_level=0 )' at line 1
+
+[ 2017-11-09T10:17:45+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=xt
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T10:17:55+08:00 ] 127.0.0.1 /index.php/Back/Auth/tianjia.html
+ERR: 非法操作:tianjia
+
+[ 2017-11-09T10:23:18+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=cj
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T14:10:59+08:00 ] 127.0.0.1 /index.php/Back/Auth/upd/auth_id/101
+ERR: 非法操作:upd
+
+[ 2017-11-09T14:13:04+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-09T14:17:56+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-09T14:39:09+08:00 ] 127.0.0.1 /index.php/Back/Manager/showlist
+ERR: 无法加载控制器:Manager
+
+[ 2017-11-09T14:51:54+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=5i
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T14:57:35+08:00 ] 127.0.0.1 /index.php/Back/Admin/showlist
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop1024.php_rolr' doesn't exist
+
+[ 2017-11-09T14:57:37+08:00 ] 127.0.0.1 /index.php/Back/Admin/showlist
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop1024.php_rolr' doesn't exist
+
+[ 2017-11-09T16:44:15+08:00 ] 127.0.0.1 /index.php/Back/Admin/tianjia.html
+ERR: 非法操作:tianjia
+
+[ 2017-11-09T17:20:29+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=6e
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = null LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-09T17:20:34+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=tm
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = null LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-09T17:20:35+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=tm
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = null LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-09T17:20:43+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=2h
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = null LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T17:20:48+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:20:50+08:00 ] 127.0.0.1 /index.php/Back/Order/look
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:20:52+08:00 ] 127.0.0.1 /index.php/Back/Order/dayin
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:21:44+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=4y
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = null LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-09T17:22:01+08:00 ] 127.0.0.1 /index.php/Back/Index/aa.html
+ERR: 非法操作:aa
+
+[ 2017-11-09T17:22:10+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:42:37+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=k4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T17:43:19+08:00 ] 127.0.0.1 /index.php/Back/Admin/tianjia.html
+ERR: 非法操作:tianjia
+
+[ 2017-11-09T17:43:23+08:00 ] 127.0.0.1 /index.php/Back/Order/showlist
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:43:24+08:00 ] 127.0.0.1 /index.php/Back/Order/look
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:43:25+08:00 ] 127.0.0.1 /index.php/Back/Order/dayin
+ERR: 无法加载控制器:Order
+
+[ 2017-11-09T17:43:29+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-09T17:43:31+08:00 ] 127.0.0.1 /index.php/Back/Brand/showlist
+ERR: 无法加载控制器:Brand
+
+[ 2017-11-09T17:48:21+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=wv
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T17:48:27+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=4q
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T17:52:44+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=kn
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-09T17:52:58+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=3a
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-09T17:59:37+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=wk
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-09T18:00:29+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=nt
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '1' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-09T18:00:53+08:00 ] 127.0.0.1 /index.php/Back/Index/showlist
+ERR: 非法操作:showlist
+

@@ -6,10 +6,10 @@
  * Time: 15:17
  */
 namespace Back\Controller;
-use Think\Controller;
+use Common\Tools\BackController;
 use Think\Model;
 
-class RoleController extends Controller{
+class RoleController extends BackController{
 //    列表展示
     public function showlist(){
         $info = D('Role')->select();

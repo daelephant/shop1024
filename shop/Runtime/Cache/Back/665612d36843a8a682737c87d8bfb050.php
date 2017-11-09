@@ -103,7 +103,7 @@
             </p>
         </div>
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="/index.php/Back/Goods/tianjia" method="post" enctype="multipart/form-data">
+            <form action="/index.php/Back/Goods/tianjia.html" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a" id="general-tab-tb">
                 <tr>
                     <td>商品名称</td>

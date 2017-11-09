@@ -6,8 +6,8 @@
  * Time: 14:30
  */
 namespace Back\Controller;
-use Think\Controller;
-class IndexController extends Controller{
+use Common\Tools\BackController;
+class IndexController extends BackController{
     function __construct()
     {
         parent::__construct();//先执行父类的构造方法，没有这一步代表重新
