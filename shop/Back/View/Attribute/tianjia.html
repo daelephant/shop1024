@@ -7,19 +7,29 @@
             </tr>
             <tr>
                 <td>所属类型</td>
-                <td><select></select></td>
+                <td>
+                    <select name="type_id">
+                        <option value="0">-请选择-</option>
+                        <foreach name="typeinfo" item="v">
+                            <option value="{$v['type_id']}">{$v['type_name']}</option>
+
+                        </foreach>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>是否可选</td>
-                <td><input type="text" name="attr_name" /></td>
+                <td><input type="radio" name="attr_is_sel" value="0" />单选
+                <input type="radio" name="attr_is_sel" value="1" />多选</td>
             </tr>
             <tr>
                 <td>录入方式</td>
-                <td><input type="text" name="attr_name" /></td>
+                <td><input type="radio" name="attr_write_mod" value="0" />手工
+                <input type="radio" name="attr_write_mod" value="1" />以下信息选取</td>
             </tr>
             <tr>
                 <td>可选信息值</td>
-                <td><input type="text" name="attr_name" /></td>
+                <td><textarea name="attr_sel_opt"></textarea>多个值属性使用,来分隔</td>
             </tr>
 
             <tr><td colspan='100'><input type='submit' value="添加"></td></tr>

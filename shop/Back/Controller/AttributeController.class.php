@@ -42,6 +42,10 @@ class AttributeController extends BackController{
                 $this->error('添加属性失败',U('tianjia'),2);
             }
         }else{
+           /* 可供选择的类型，给下拉框补充值*/
+            $typeinfo = D('Type')->select();
+            $this->assign('typeinfo',$typeinfo);
+           /* 可供选择的类型，给下拉框补充值*/
 
             //设置面包屑导航
             $bread = array(
