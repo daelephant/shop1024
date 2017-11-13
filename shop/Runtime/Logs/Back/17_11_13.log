@@ -1,0 +1,23 @@
+[ 2017-11-13T22:00:05+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qa
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-13T22:01:14+08:00 ] 127.0.0.1 /index.php/Back/Type/showlist
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'shop1024.php_type' doesn't exist
+
+[ 2017-11-13T22:23:56+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-13T23:20:57+08:00 ] 127.0.0.1 /index.php/Back/Atrribute/showlist/type_id/1.html
+ERR: 无法加载控制器:Atrribute
+
+[ 2017-11-13T23:22:05+08:00 ] 127.0.0.1 /index.php/Back/Atrribute/showlist/type_id/2.html
+ERR: 无法加载控制器:Atrribute
+
+[ 2017-11-13T23:22:32+08:00 ] 127.0.0.1 /index.php/Back/Atrribute/showlist/type_id/4.html
+ERR: 无法加载控制器:Atrribute
+

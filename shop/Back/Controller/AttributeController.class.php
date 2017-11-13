@@ -9,16 +9,18 @@ namespace Back\Controller;
 use Common\Tools\BackController;
 use Think\Model;
 
-class TypeController extends BackController{
+class AttributeController extends BackController{
 //    列表展示
     public function showlist(){
-        $info = D('Type')->select();
+        //获得属性列表信息
+        $type_id = I('get.type_id');//类型id
+        $info = D('Attribute')->where(array('type_id'=>$type_id))->find();
         //设置面包屑导航
         $bread = array(
-            'first' => '类型管理',
-            'second' => '类型列表',
+            'first' => '属性管理',
+            'second' => '属性列表',
             'linkTo' => array(
-                '【添加类型】',U('tianjia')
+                '【添加属性】',U('tianjia')
             ),
         );
 
@@ -26,27 +28,27 @@ class TypeController extends BackController{
         $this->assign('info',$info);
         $this->display();
     }
-    //添加类型
+    //添加属性
     function tianjia(){
         //展示、收集两个逻辑
         if(IS_POST){
             //var_dump($_POST);exit(); ok
-            $auth = new \Model\TypeModel();
+            $auth = new \Model\AttributeModel();
             $data = $auth->create();
             //通过_after_insert()方法实现path和level两个字段的维护
             if($auth->add($data)){
-                $this->success('添加类型成功',U('showlist'),2);
+                $this->success('添加属性成功',U('showlist'),2);
             }else{
-                $this->error('添加类型失败',U('tianjia'),2);
+                $this->error('添加属性失败',U('tianjia'),2);
             }
         }else{
 
             //设置面包屑导航
             $bread = array(
-                'first' => '类型管理',
-                'second' => '类型添加',
+                'first' => '属性管理',
+                'second' => '属性添加',
                 'linkTo' => array(
-                    '【返回】',U('showlist')
+                    '【类型列表】',U('Type/showlist')
                 ),
             );
 

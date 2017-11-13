@@ -5,15 +5,22 @@
                 <tbody><tr style="font-weight: bold;">
                         <td>序号</td>
                         <td>名称</td>
+                        <td>类型</td>
+                        <td>选取方式</td>
+                        <td>录入方式</td>
+                        <td>供选取的值</td>
                         <td colspan="3" align="center">操作</td>
                        </tr>
 
                 <foreach name="info" item="v">
                     <tr id="product_{$v.goods_id}"><!--给每个商品都设置唯一标识，以方便获得、删除-->
+                        <td>{$v.attr_id}</td>
+                        <td>{$v.attr_name}</td>
                         <td>{$v.type_id}</td>
-                        <td>{$v.type_name}</td>
+                        <td>{$v.attr_is_sel}</td>
+                        <td>{$v.attr_write_mod}</td>
+                        <td>{$v.attr_sel_opt}</td>
                         <!--在权限名称的前面设置 缩进符号 使得信息可读性好 -->
-                        <td><a href="{:U('Attribute/showlist',array('type_id'=>$v[type_id]))}" >属性列表</a></td>
                         <td><a href="__CONTROLLER__/upd/auth_id/{$v['type_id']}" >修改</a></td>
                         <script type="text/javascript">
                             function del_goods(goods_id){
