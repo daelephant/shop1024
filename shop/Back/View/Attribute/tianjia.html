@@ -14,17 +14,17 @@
                             <option value="{$v['type_id']}">{$v['type_name']}</option>
 
                         </foreach>
-                    </select>
+                    </select><span style="color: red;">*</span>
                 </td>
             </tr>
             <tr>
                 <td>是否可选</td>
-                <td><input type="radio" name="attr_is_sel" value="0" />单选
+                <td><input type="radio" name="attr_is_sel" value="0" checked="checked" />单选
                 <input type="radio" name="attr_is_sel" value="1" />多选</td>
             </tr>
             <tr>
                 <td>录入方式</td>
-                <td><input type="radio" name="attr_write_mod" value="0" />手工
+                <td><input type="radio" name="attr_write_mod" value="0" checked="checked" />手工
                 <input type="radio" name="attr_write_mod" value="1" />以下信息选取</td>
             </tr>
             <tr>

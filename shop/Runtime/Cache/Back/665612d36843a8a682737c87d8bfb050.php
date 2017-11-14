@@ -103,7 +103,7 @@
             </p>
         </div>
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="/index.php/Back/Goods/tianjia.html" method="post" enctype="multipart/form-data">
+            <form action="/index.php/Back/Goods/tianjia" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a" id="general-tab-tb">
                 <tr>
                     <td>商品名称</td>
@@ -146,10 +146,54 @@
             </table>
             <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >
                 <tr>
-                    <td>商品相关属性</td>
-                    <td></td>
+                    <td style="text-align: right" width="25%">商品类型:</td>
+                    <td>
+                        <select name="type_id" onchange="show_attribute()">
+                            <option value="0">-请选择-</option>
+                            <?php if(is_array($typeinfo)): foreach($typeinfo as $key=>$v): ?><option value="<?php echo ($v["type_id"]); ?>"><?php echo ($v["type_name"]); ?></option><?php endforeach; endif; ?>
+                        </select>
+                    </td>
                 </tr>
             </table>
+            <script type="text/javascript">
+                function show_attribute() {
+                    var type_id = $('select[name=type_id] option:selected').val();//select框并且name属性值是type_id的并被选中的
+                    $.ajax({
+                        url:"<?php echo U(getAttributeByType);?>",
+                        data:{'type_id':type_id},
+                        dataType:'json',
+                        type:'get',
+                        success:function (msg) {
+                            // alert(msg);
+                            //遍历msg,显示
+                            var s = "";
+                            $.each(msg,function (k,v) {
+                                s+="<tr>";
+                                s+="<td>"+v.attr_name+"</td>";
+                                s+="<td>";
+                                //输入框、下拉列表
+                                if(v.attr_is_sel==1){
+                                    //下拉列表
+                                    var opt_val = v.attr_sel_opt.split(',');//字符串变为数组
+                                    s += "<select name='attr_info'>";
+                                    s += "<option value='0' >-请选择-</option>";
+                                    $.each(opt_val,function (kk,vv) {
+                                        s+= "<option value='"+vv+"'>"+vv+"</option>";
+                                    });
+                                    s += "</select>";
+                                }else {
+                                    //输入框
+                                    s+="<input text='text' name='attr_info' />";
+                                }
+                                s+="</td>";
+                                s+="</tr>";
+                            });
+                            $('#properties-tab-tb tr:not(:first)').remove();//删除久的tr属性
+                            $('#properties-tab-tb').append(s);//追加内容
+                        }
+                    });
+                }
+            </script>
                 <script type="text/javascript">
                     var p_num = 1;//相册计数器
 

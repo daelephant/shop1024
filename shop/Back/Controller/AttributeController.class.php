@@ -14,7 +14,11 @@ class AttributeController extends BackController{
     public function showlist(){
         //获得属性列表信息
         $type_id = I('get.type_id');//类型id
-        $info = D('Attribute')->where(array('type_id'=>$type_id))->find();
+        $info = D('Attribute')->where(array('type_id'=>$type_id))->select();
+        /* 可供选择的类型，给下拉框补充值*/
+        $typeinfo = D('Type')->select();
+        $this->assign('typeinfo',$typeinfo);
+        /* 可供选择的类型，给下拉框补充值*/
         //设置面包屑导航
         $bread = array(
             'first' => '属性管理',
@@ -35,11 +39,16 @@ class AttributeController extends BackController{
             //var_dump($_POST);exit(); ok
             $auth = new \Model\AttributeModel();
             $data = $auth->create();
-            //通过_after_insert()方法实现path和level两个字段的维护
-            if($auth->add($data)){
-                $this->success('添加属性成功',U('showlist'),2);
+            if($data){
+                if($auth->add($data)){
+                    $this->success('添加属性成功',U('Type/showlist'),2);
+                }else{
+                    $this->error('添加属性失败',U('tianjia'),2);
+                }
             }else{
-                $this->error('添加属性失败',U('tianjia'),2);
+                //验证失败$data = false
+                $errorinfo = $auth->getError();//获得验证错误信息
+                $this->error($errorinfo,U('tianjia'),1);
             }
         }else{
            /* 可供选择的类型，给下拉框补充值*/
@@ -105,4 +114,11 @@ class AttributeController extends BackController{
         }
     }
 
+    function getInfoByType(){
+        $type_id = I('get.type_id');
+        $info = D('Attribute')->where(array('type_id'=>$type_id))->select();
+        echo json_encode($info);
+        //file_put_contents('./log.php',var_export($info,true),FILE_APPEND);//追加
+        file_put_contents('./log.php',var_export($info,true));//默认不追加写入
+    }
 }

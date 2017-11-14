@@ -48,6 +48,10 @@ class GoodsController extends BackController{
                 $this->error('添加商品失败',U('tianjia'),2);//页面跳转
             }
         }else{//展示表单
+            /********获得商品展示信息*/
+            $typeinfo = D('Type')->select();
+            $this->assign('typeinfo',$typeinfo);
+            /********获得商品展示信息*/
             //设置面包屑导航
             $bread = array(
                 'first' => '商品管理',
@@ -126,5 +130,10 @@ class GoodsController extends BackController{
         }
     }
 
+    function getAttributeByType(){
+        $type_id = I('get.type_id');
+        $attrinfo = D('Attribute')->where(array('type_id'=>$type_id))->select();
+        echo json_encode($attrinfo);
+    }
 
 }
