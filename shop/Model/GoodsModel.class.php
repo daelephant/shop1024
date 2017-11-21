@@ -49,6 +49,23 @@ class GoodsModel extends Model{
     }
     // 插入成功后的回调方法
     protected function _after_insert($data,$options) {
+        //收集属性并存储
+        if(!empty($_POST['attr_info'])){
+            //变量每个属性信息
+            foreach($_POST['attr_info'] as $k=>$v){
+                //$k代表attr_id
+                foreach($v as $kk => $vv){
+                    //$vv代表每个属性的值
+                    $arr = array(
+                        'goods_id' => $data['goods_id'],
+                        'attr_id'  => $k,
+                        'attr_value' =>$vv
+                    );
+                    D('GoodsAttr')->add($arr);
+                }
+            }
+        }
+
         //上传相册图片判断（只要有一个相册图片上传，就要往下进行）
         $flag = false;
         foreach($_FILES['goods_pics']['error'] as $a=>$b){
