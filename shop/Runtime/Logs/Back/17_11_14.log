@@ -1,0 +1,109 @@
+[ 2017-11-14T22:16:37+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-14T22:16:50+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=y7
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-14T22:17:11+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-14T22:18:57+08:00 ] 127.0.0.1 /index.php/Back/Goods/category
+ERR: 非法操作:category
+
+[ 2017-11-14T22:20:34+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=35
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-14T22:20:49+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByType.html?type_id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 1  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-14T22:20:51+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByType.html?type_id=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 2  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-14T22:20:53+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByType.html?type_id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 1  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-14T22:21:01+08:00 ] 127.0.0.1 /index.php/Back/Attribute/getInfoByType.html?type_id=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 2  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-14T22:21:03+08:00 ] 127.0.0.1 /index.php/Back/Attribute/getInfoByType.html?type_id=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 4  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-14T22:21:05+08:00 ] 127.0.0.1 /index.php/Back/Attribute/getInfoByType.html?type_id=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 5  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-14T22:21:07+08:00 ] 127.0.0.1 /index.php/Back/Attribute/getInfoByType.html?type_id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 1  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

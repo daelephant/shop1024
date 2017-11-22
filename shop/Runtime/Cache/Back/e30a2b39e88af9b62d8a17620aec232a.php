@@ -168,30 +168,43 @@
                             //遍历msg,显示
                             var s = "";
                             $.each(msg,function (k,v) {
-                                s+="<tr>";
-                                s+="<td>"+v.attr_name+"</td>";
-                                s+="<td>";
-                                //输入框、下拉列表
                                 if(v.attr_is_sel==1){
+                                    //输入框、下拉列表
+                                    s+="<tr>";
+                                    s+="<td style='text-align: right'><em><span onclick='add_item_tr($(this).parent().parent().parent())'>[+]&nbsp;</span></em>"+v.attr_name+":</td>";
+                                    s+="<td>";
                                     //下拉列表
                                     var opt_val = v.attr_sel_opt.split(',');//字符串变为数组
-                                    s += "<select name='attr_info'>";
+                                    s += "<select name='attr_info["+v.attr_id+"][]'>";
                                     s += "<option value='0' >-请选择-</option>";
                                     $.each(opt_val,function (kk,vv) {
                                         s+= "<option value='"+vv+"'>"+vv+"</option>";
                                     });
                                     s += "</select>";
+                                    s += "</td>";
+                                    s += "</tr>";
                                 }else {
+                                    s+="<tr>";
+                                    s+="<td style='text-align: right'>"+v.attr_name+":</td>";
+                                    s+="<td>";
                                     //输入框
-                                    s+="<input text='text' name='attr_info' />";
+                                    s+="<input text='text' name='attr_info["+v.attr_id+"][]' />";
+                                    s+="</td>";
+                                    s+="</tr>";
                                 }
-                                s+="</td>";
-                                s+="</tr>";
+
                             });
                             $('#properties-tab-tb tr:not(:first)').remove();//删除久的tr属性
                             $('#properties-tab-tb').append(s);//追加内容
                         }
                     });
+                }
+                function add_item_tr(obj) {
+                    var fu_obj = obj.clone();//复制tr
+                    fu_obj.find('span').remove();//删除复制品tr内部的“span”
+                    fu_obj.find('em').append("<span onclick='$(this).parent().parent().parent().remove()'>[-]&nbsp;</span>");
+                    //上一行给复制品tr内部的em增加一个<span>[-]</span>
+                    obj.after(fu_obj);//把复制品tr追加到页面
                 }
             </script>
                 <script type="text/javascript">
