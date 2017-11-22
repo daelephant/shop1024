@@ -86,7 +86,10 @@ class GoodsController extends BackController{
             if(!empty($picsinfo)){
                 $this->assign('picsinfo',$picsinfo);
             }
-
+            /********获得商品展示信息*/
+            $typeinfo = D('Type')->select();
+            $this->assign('typeinfo',$typeinfo);
+            /********获得商品展示信息*/
             //设置面包屑导航
             $bread = array(
                 'first' => '商品管理',
@@ -130,10 +133,87 @@ class GoodsController extends BackController{
         }
     }
 
+    //根据type_id获得对应的属性信息
     function getAttributeByType(){
         $type_id = I('get.type_id');
         $attrinfo = D('Attribute')->where(array('type_id'=>$type_id))->select();
         echo json_encode($attrinfo);
     }
 
+    //修改商品，根据“type_id/goods_id”获得类型对应的属性信息
+    //function getAttributeByTypeUpd(){
+    //    $type_id = I('get.type_id');
+    //    $goods_id = I('get.goods_id');
+    //
+    //    //数据表：goods_attr attribute
+    //    $attrinfo = D('GoodsAttr')
+    //        ->alias('g')
+    //        ->join('__ATTRIBUTE__ a on g.attr_id=a.attr_id')
+    //        ->where(array('goods_id'=>$goods_id))
+    //        ->field('g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt')
+    //        ->select();
+    //    //var_dump($attrinfo);//普通的二维数组信息
+    //
+    //    $tmp = array();
+    //    foreach ($attrinfo as $k=>$v){
+    //        if(!empty($tmp[$v['attr_id']]) || $v['attr_is_sel'] ==1){
+    //            //多选属性整合
+    //            $tmp[$v['attr_id']]['attr_id'] = $v['attr_id'];
+    //            $tmp[$v['attr_id']]['attr_name'] = $v['attr_name'];
+    //            $tmp[$v['attr_id']]['attr_is_sel'] = $v['attr_is_sel'];
+    //            $tmp[$v['attr_id']]['attr_sel_opt'] = $v['attr_sel_opt'];
+    //            $tmp[$v['attr_id']]['attr_value'][] = $v['attr_value'];
+    //        }else{
+    //            //单选属性整合
+    //            $tmp[$v['attr_id']] = $v;
+    //        }
+    //    }
+    //    //var_dump($tmp);//整合后的三维数组信息
+    //    echo json_encode($tmp);
+    //
+    //}
+    //修改商品，根据"type_id/goods_id"获得类型对应的属性信息
+    function getAttributeByTypeUpd(){
+        $type_id = I('get.type_id');
+        $goods_id = I('get.goods_id');
+        //判断当前选取的type_id和本身商品的是否一致
+        $goodsinfo = D('Goods')->find($goods_id);
+        if($type_id!== $goodsinfo['type_id']){
+
+            $attrinfo = D('Attribute')->where(array('type_id'=>$type_id))->select();
+            $info['mark'] = 1; ////其他类型对应的属性信息
+            $info[1] = $attrinfo;
+            //$info是三维数组
+            echo json_encode($info);
+        }else{
+            //数据表：goods_attr  attribute
+            $attrinfo = D('GoodsAttr')
+                ->alias('g')
+                ->join('__ATTRIBUTE__ a on g.attr_id=a.attr_id')
+                ->where(array('goods_id'=>$goods_id))
+                ->field('g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt')
+                ->select();
+            //dump($attrinfo);//普通的二维数组信息
+
+            $tmp = array();
+            foreach($attrinfo as $k => $v){
+                if(!empty($tmp[$v['attr_id']]) || $v['attr_is_sel']==1){
+                    //多选属性整合
+                    $tmp[$v['attr_id']]['attr_id'] = $v['attr_id'];
+                    $tmp[$v['attr_id']]['attr_name'] = $v['attr_name'];
+                    $tmp[$v['attr_id']]['attr_is_sel'] = $v['attr_is_sel'];
+                    $tmp[$v['attr_id']]['attr_sel_opt'] = $v['attr_sel_opt'];
+                    $tmp[$v['attr_id']]['attr_value'][] = $v['attr_value'];
+                }else{
+                    //单选属性整合
+                    $tmp[$v['attr_id']] = $v;
+                }
+            }
+            //dump($tmp);//整合后的三维数组信息
+            $info['mark'] = 2; //商品本身拥有的的属性信息
+            $info[1] = $tmp;
+            //$info变为一个四维数组
+            echo json_encode($info);
+        }
+    }
 }
