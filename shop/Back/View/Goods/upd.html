@@ -181,7 +181,7 @@
                                         s+= "<em><span onclick='$(this).parent().parent().parent().remove()'>&nbsp; [-]</span></em>";
                                     }
                                     s+=v.attr_name+":</td>";
-                                    s+="<td><select>";
+                                    s+="<td><select name='attr_info["+v.attr_id+"][]'>";
                                     s+="<option value='0'>-请选择-</option>";
                                     var opt = v.attr_sel_opt.split(',');//把多选项目变为数组
                                     $.each(opt,function (kk,vv) {

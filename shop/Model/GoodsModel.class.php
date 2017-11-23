@@ -201,6 +201,29 @@ class GoodsModel extends Model{
         }
     }
     // 更新成功后的回调方法
-    protected function _after_update($data,$options) {}
+    protected function _after_update($data,$options) {
+        //商品【类型】、属性的更新和操作
+        //战略:delete删除旧的全部属性，insert写入新的属性
+        //1、删除旧的属性
+        D('GoodsAttr')->where(array('goods_id'=>$data['goods_id']))->delete();
+        //2、写入新的属性
+        //收集属性并存储同after_insert
+        //收集属性并存储
+        if(!empty($_POST['attr_info'])){
+            //变量每个属性信息
+            foreach($_POST['attr_info'] as $k=>$v){
+                //$k代表attr_id
+                foreach($v as $kk => $vv){
+                    //$vv代表每个属性的值
+                    $arr = array(
+                        'goods_id' => $data['goods_id'],
+                        'attr_id'  => $k,
+                        'attr_value' =>$vv
+                    );
+                    D('GoodsAttr')->add($arr);
+                }
+            }
+        }
+    }
 
 }
