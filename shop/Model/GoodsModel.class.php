@@ -66,6 +66,18 @@ class GoodsModel extends Model{
             }
         }
 
+        //收集扩展分类信息并存储
+        if(!empty($_POST['cat_ext_info'])){
+            foreach($_POST['cat_ext_info'] as $k=>$v){
+                $arr=array(
+                    'goods_id'=>$data['goods_id'],
+                    'cat_id' =>$v
+                );
+                D('GoodsCat')->add($arr);
+            }
+        }
+
+
         //上传相册图片判断（只要有一个相册图片上传，就要往下进行）
         $flag = false;
         foreach($_FILES['goods_pics']['error'] as $a=>$b){
@@ -224,6 +236,25 @@ class GoodsModel extends Model{
                 }
             }
         }
+        /***********以上的是属性处理*/
+
+        /*******扩展分类处理****/
+        //删除旧的分类、添加新的分类
+        //1、删除旧的分类
+        D('GoodsCat')->where(array('goods_id'=>$data['goods_id']))->delete();
+        //2、写入新的属性
+        //收集扩展分类信息并存储
+        if(!empty($_POST['cat_ext_info'])){
+            foreach($_POST['cat_ext_info'] as $k=>$v){
+                $arr=array(
+                    'goods_id'=>$data['goods_id'],
+                    'cat_id' =>$v
+                );
+                D('GoodsCat')->add($arr);
+            }
+        }
+
+        /*******扩展分类处理****/
     }
 
 }

@@ -91,6 +91,54 @@
                 <td>商品价格</td>
                 <td><input type="text" name="goods_price" value="{$info.goods_price}" /></td>
             </tr>
+            <tr>
+                <td>商品分类</td>
+                <td>
+                    <select name="cat_id" id="cat_id_0">
+                        <option value="0">-请选择-</option>
+                        <foreach name="catinfo" item="v">
+                            <equal name="info['cat_id']" value="$v['cat_id']">
+                            <option value="{$v.cat_id}" selected="selected">{:str_repeat('***/',$v['cat_level'])}{$v.cat_name}</option>
+                                <else/>
+                                <option value="{$v.cat_id}">{:str_repeat('***/',$v['cat_level'])}{$v.cat_name}</option>
+
+                            </equal>
+
+                        </foreach>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>扩展分类</td>
+                <td>
+                    <input type="button" value="添加" onclick="add_sel(this)"/>
+                   <foreach name="catextinfo" key="k" item="v">
+                       <select name="cat_ext_info[]" id="cat_id_{$k+1}">
+                           <option value="0">-请选择-</option>
+                           <foreach name="catinfo" item="vv">
+                               <equal name="v['cat_id']" value="$vv['cat_id']">
+                                   <option value="{$vv.cat_id}" selected="selected">{:str_repeat('***/',$vv['cat_level'])}{$vv.cat_name}</option>
+                                   <else/>
+                                   <option value="{$vv.cat_id}">{:str_repeat('***/',$vv['cat_level'])}{$vv.cat_name}</option>
+
+                               </equal>
+
+                           </foreach>
+                       </select>
+                   </foreach>
+                </td>
+            </tr>
+            <script type="text/javascript">
+                var select_num = 1;//计数器，给创建出来的多个下拉列表进行id计数
+                function add_sel(obj){
+                    var fu_sel = $('#cat_id_0').clone();//克隆下拉列表
+                    fu_sel.attr('id','cat_id_'+select_num);//设置其cat_id值，区别不同的id属性值
+                    fu_sel.attr('name','cat_ext_info[]');//修改name属性值
+                    $(obj).after(fu_sel);//追加
+                    select_num++;//计数器累加
+
+                }
+            </script>
 
             <tr>
                 <td>商品logo图片</td>

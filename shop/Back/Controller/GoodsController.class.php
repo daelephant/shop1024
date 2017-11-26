@@ -39,6 +39,7 @@ class GoodsController extends BackController{
         $goods = new \Model\GoodsModel();//实例化GoodsModel对象
         //两个逻辑：展示，收集
         if(IS_POST){//收集表单
+//            dump($_POST);exit;
             $data = $goods->create();
             //htmlpurifier过滤
             $data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);
@@ -52,6 +53,12 @@ class GoodsController extends BackController{
             $typeinfo = D('Type')->select();
             $this->assign('typeinfo',$typeinfo);
             /********获得商品展示信息*/
+
+            /********获得分类并传递显示*/
+            $catinfo = D('Category')->order('cat_path')->select();
+            $this->assign('catinfo',$catinfo);
+            /********获得分类并传递显示*/
+
             //设置面包屑导航
             $bread = array(
                 'first' => '商品管理',
@@ -90,6 +97,16 @@ class GoodsController extends BackController{
             $typeinfo = D('Type')->select();
             $this->assign('typeinfo',$typeinfo);
             /********获得商品展示信息*/
+
+            /********获得主分类并传递显示*/
+            $catinfo = D('Category')->order('cat_path')->select();
+            $this->assign('catinfo',$catinfo);
+            /********获得主分类并传递显示*/
+
+            /********获得商品的扩展分类并传递显示php_goods_cat*/
+            $catextinfo = D('GoodsCat')->where(array('goods_id'=>$goods_id))->select();
+            $this->assign('catextinfo',$catextinfo);
+            /********获得商品的扩展分类信息(php41_goods_cat)********/
             //设置面包屑导航
             $bread = array(
                 'first' => '商品管理',

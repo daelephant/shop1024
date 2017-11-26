@@ -103,7 +103,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/14" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/17" method="post" enctype="multipart/form-data">
         <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
@@ -114,6 +114,40 @@
                 <td>商品价格</td>
                 <td><input type="text" name="goods_price" value="<?php echo ($info["goods_price"]); ?>" /></td>
             </tr>
+            <tr>
+                <td>商品分类</td>
+                <td>
+                    <select name="cat_id" id="cat_id_0">
+                        <option value="0">-请选择-</option>
+                        <?php if(is_array($catinfo)): foreach($catinfo as $key=>$v): if(($info['cat_id']) == $v['cat_id']): ?><option value="<?php echo ($v["cat_id"]); ?>" selected="selected"><?php echo str_repeat('***/',$v['cat_level']); echo ($v["cat_name"]); ?></option>
+                                <?php else: ?>
+                                <option value="<?php echo ($v["cat_id"]); ?>"><?php echo str_repeat('***/',$v['cat_level']); echo ($v["cat_name"]); ?></option><?php endif; endforeach; endif; ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>扩展分类</td>
+                <td>
+                    <input type="button" value="添加" onclick="add_sel(this)"/>
+                   <?php if(is_array($catextinfo)): foreach($catextinfo as $k=>$v): ?><select name="cat_ext_info[]" id="cat_id_<?php echo ($k+1); ?>">
+                           <option value="0">-请选择-</option>
+                           <?php if(is_array($catinfo)): foreach($catinfo as $key=>$vv): if(($v['cat_id']) == $vv['cat_id']): ?><option value="<?php echo ($vv["cat_id"]); ?>" selected="selected"><?php echo str_repeat('***/',$vv['cat_level']); echo ($vv["cat_name"]); ?></option>
+                                   <?php else: ?>
+                                   <option value="<?php echo ($vv["cat_id"]); ?>"><?php echo str_repeat('***/',$vv['cat_level']); echo ($vv["cat_name"]); ?></option><?php endif; endforeach; endif; ?>
+                       </select><?php endforeach; endif; ?>
+                </td>
+            </tr>
+            <script type="text/javascript">
+                var select_num = 1;//计数器，给创建出来的多个下拉列表进行id计数
+                function add_sel(obj){
+                    var fu_sel = $('#cat_id_0').clone();//克隆下拉列表
+                    fu_sel.attr('id','cat_id_'+select_num);//设置其cat_id值，区别不同的id属性值
+                    fu_sel.attr('name','cat_ext_info[]');//修改name属性值
+                    $(obj).after(fu_sel);//追加
+                    select_num++;//计数器累加
+
+                }
+            </script>
 
             <tr>
                 <td>商品logo图片</td>
@@ -149,7 +183,7 @@
             </tr>
         </table>
         <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >
-            <tr>
+            <tr style="background-color: lightgreen;">
                 <td style="text-align: right" width="25%">商品类型:</td>
                 <td>
                     <select name="type_id" onchange="show_attribute_upd()">
@@ -178,6 +212,8 @@
                     if(msg.mark==2){
                         //1) 显示本身拥有的类型对应的属性信息
                         $.each(msg[1],function(k,v){
+                            //1、显示本身拥有的类型和属性
+
                             if(v.attr_is_sel == 0){
                                 //单选
                                 s += "<tr><td style='text-align:right'>"+v.attr_name+"：</td>";
@@ -186,30 +222,32 @@
                             }else{
                                 //多选
                                 //多选的值的个数一共有多少，根据值的个数显示对应的tr个数
+                                // alert("进入");
                                 var value_num = v.attr_value.length;
-
-                                for(var w=0; w<value_num; w++){
-                                    s += "<tr><td style='text-align:right'>";
-                                    if(w==0)
-                                        s += "<em><span onclick='add_item_tr_upd($(this).parent().parent().parent())'>[+]</span></em>";
-                                    else
-                                        s += "<em><span onclick='$(this).parent().parent().parent().remove()'>[-]</span></em>";
-                                    s +=  v.attr_name+"：</td>";
-                                    s += "<td><select name='attr_info["+v.attr_id+"][]'>";
-                                    s += "<option value='0'>-请选择-</option>";
+                                for(var w=0;w<value_num;w++){
+                                    s+="<tr><td style='text-align: right'>";
+                                    if (w==0){
+                                        s += "<em><span onclick='add_item_tr_upd($(this).parent().parent().parent())'>&nbsp; [+]</span></em>";
+                                    }else {
+                                        s+= "<em><span onclick='$(this).parent().parent().parent().remove()'>&nbsp; [-]</span></em>";
+                                    }
+                                    s+=v.attr_name+":</td>";
+                                    s+="<td><select name='attr_info["+v.attr_id+"][]'>";
+                                    s+="<option value='0'>-请选择-</option>";
                                     var opt = v.attr_sel_opt.split(',');//把多选项目变为数组
-                                    $.each(opt,function(kk,vv){
-                                        if(v.attr_value[w] == vv)
-                                            s += "<option value='"+vv+"' selected='selected'>"+vv+"</option>";
-                                        else
-                                            s += "<option value='"+vv+"'>"+vv+"</option>";
+                                    $.each(opt,function (kk,vv) {
+                                        if(v.attr_value[w] == vv){
+                                            s+="<option value='"+vv+"' selected='selected'>"+vv+"</option>";
+                                        }else {
+                                            s+="<option value='"+vv+"'>"+vv+"</option>";
+                                        }
                                     });
-                                    s += "</select></td>";
-                                    s += "</tr>";
+                                    s+="</select></td>"
+                                    s+= "</tr>";
                                 }
                             }
                         });
-                    }else{
+                    }else {
                         //2) 显示选取的其他的类型的属性信息
                         $.each(msg[1],function(k,v){
                             //输入框/下拉列表
@@ -238,14 +276,21 @@
                             }
                         });
                     }
-
                     $('#properties-tab-tb tr:not(:first)').remove();//删除旧的tr信息
                     $('#properties-tab-tb tr:first').after(s);
                 }
             });
         }
         show_attribute_upd();
-        /*修改商品，根据当前选中的类型，获得该商品对应的全部属性并显示 */   
+        function add_item_tr_upd(obj) {
+            var fu_obj = obj.clone();//复制tr
+            fu_obj.find('span').remove();//删除复制品tr内部的“span”
+            fu_obj.find('em').append("<span onclick='$(this).parent().parent().parent().remove()'>[-]&nbsp;</span>");
+            //上一行给复制品tr内部的em增加一个<span>[-]</span>
+            obj.after(fu_obj);//把复制品tr追加到页面
+        }
+        /*修改商品，根据当前选中的类型，获得该商品对应的全部属性并显示 */
+
 
 
             var p_num = 1;//相册计数器
