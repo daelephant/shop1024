@@ -139,18 +139,17 @@
             </div>
 
             <div class="cat_bd">
+
                 <?php if(is_array($cat_infoA)): foreach($cat_infoA as $key=>$v): ?><div class="cat item1">
                         <h3><a href=""><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
-
-                        <?php if(is_array($cat_infoB)): foreach($cat_infoB as $key=>$vv): if($vv['cat_pid'] == $v['cat_id']): ?><div class="cat_detail">
-                                <dl class="dl_1st">
-                                    <dt><a href=""><?php echo ($vv["cat_name"]); ?></a></dt>
-                                    <dd>
-                                        <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href=""><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
-                                    </dd>
-                                </dl>
-                            </div><?php endif; endforeach; endif; ?>
-
+                        <div class="cat_detail">
+                            <?php if(is_array($cat_infoB)): foreach($cat_infoB as $key=>$vv): if($vv['cat_pid'] == $v['cat_id']): ?><dl class="dl_1st">
+                                        <dt><a href=""><?php echo ($vv["cat_name"]); ?></a></dt>
+                                        <dd>
+                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href=""><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
+                                        </dd>
+                                    </dl><?php endif; endforeach; endif; ?>
+                        </div>
                     </div><?php endforeach; endif; ?>
             </div>
 

@@ -139,27 +139,28 @@
             </div>
 
             <div class="cat_bd">
+
                 <foreach name="cat_infoA" item="v">
                     <div class="cat item1">
                         <h3><a href="">{$v.cat_name}</a> <b></b></h3>
+                        <div class="cat_detail">
+                            <foreach name="cat_infoB" item="vv">
+                                <if condition="$vv['cat_pid'] eq $v['cat_id']">
 
-                        <foreach name="cat_infoB" item="vv">
-                            <if condition="$vv['cat_pid'] eq $v['cat_id']">
-                            <div class="cat_detail">
-                                <dl class="dl_1st">
-                                    <dt><a href="">{$vv.cat_name}</a></dt>
-                                    <dd>
-                                        <foreach name="cat_infoC" item="vvv">
-                                            <equal name="vvv['cat_pid']" value="$vv['cat_id']">
-                                                <a href="">{$vvv.cat_name}</a>
-                                            </equal>
-                                        </foreach>
-                                    </dd>
-                                </dl>
-                            </div>
-                            </if>
-                        </foreach>
+                                    <dl class="dl_1st">
+                                        <dt><a href="">{$vv.cat_name}</a></dt>
+                                        <dd>
+                                            <foreach name="cat_infoC" item="vvv">
+                                                <equal name="vvv['cat_pid']" value="$vv['cat_id']">
+                                                    <a href="">{$vvv.cat_name}</a>
+                                                </equal>
+                                            </foreach>
+                                        </dd>
+                                    </dl>
 
+                                </if>
+                            </foreach>
+                        </div>
                     </div>
                 </foreach>
             </div>
