@@ -2,49 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>京西商城</title>
-    <!--第一种引入方式echo-->
-    <link rel="stylesheet" href="<?php echo CSS_URL;?>base.css" type="text/css">
-    <!--第二种引入方式TP框架自定义配置变量-->
-    <link rel="stylesheet" href="{$Think.config.CSS_URL}global.css" type="text/css">
-    <!--第三种引入方式绝对路径，不受框架束缚 -->
+    <title>登录商城</title>
+    <link rel="stylesheet" href="/Home/public/style/base.css" type="text/css">
+    <link rel="stylesheet" href="/Home/public/style/global.css" type="text/css">
     <link rel="stylesheet" href="/Home/public/style/header.css" type="text/css">
-    <link rel="stylesheet" href="/Home/public/style/index.css" type="text/css">
-    <link rel="stylesheet" href="/Home/public/style/bottomnav.css" type="text/css">
+    <link rel="stylesheet" href="/Home/public/style/login.css" type="text/css">
     <link rel="stylesheet" href="/Home/public/style/footer.css" type="text/css">
-
-    <script type="text/javascript" src="/Home/public/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="/Home/public/js/header.js"></script>
-    <script type="text/javascript" src="/Home/public/js/index.js"></script>
 </head>
 <body>
 <!-- 顶部导航 start -->
-<div class="topnav">
-    <div class="topnav_bd w1210 bc">
-        <div class="topnav_left">
-
-        </div>
-        <div class="topnav_right fr">
-            <ul>
-                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="register.html">免费注册</a>] </li>
-                <li class="line">|</li>
-                <li>我的订单</li>
-                <li class="line">|</li>
-                <li>客户服务</li>
-
-            </ul>
-        </div>
-    </div>
-</div>
+<!--公共文件引入-->
+<include file="Pub/navigator"/>
 <!-- 顶部导航 end -->
-
 
 <div style="clear:both;"></div>
 
 <!-- 页面头部 start -->
 <div class="header w990 bc mt15">
     <div class="logo w990">
-        <h2 class="fl"><a href="index.html"><img src="{$Think.config.IMG_URL}logo.png" alt="京西商城"></a></h2>
+        <h2 class="fl"><a href="index.html"><img src="/Home/public/images/logo.png" alt="京西商城"></a></h2>
     </div>
 </div>
 <!-- 页面头部 end -->
