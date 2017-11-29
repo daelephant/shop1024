@@ -18,6 +18,7 @@
     <script type="text/javascript" src="/Home/public/js/index.js"></script>
 </head>
 <body>
+<!--公共文件引入-->
 <!-- 顶部导航 start -->
 <div class="topnav">
     <div class="topnav_bd w1210 bc">
@@ -26,7 +27,7 @@
         </div>
         <div class="topnav_right fr">
             <ul>
-                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="register.html">免费注册</a>] </li>
+                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
                 <li class="line">|</li>
                 <li>我的订单</li>
                 <li class="line">|</li>
@@ -36,6 +37,28 @@
         </div>
     </div>
 </div>
+<!-- 顶部导航 end -->
+<!--引入公共的jquery-->
+<script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
+<!-- 顶部导航 start -->
+<!--<div class="topnav">-->
+    <!--<div class="topnav_bd w1210 bc">-->
+        <!--<div class="topnav_left">-->
+
+        <!--</div>-->
+        <!--<div class="topnav_right fr">-->
+            <!--<ul>-->
+                <!--<li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="register.html">免费注册</a>] </li>-->
+                <!--<li class="line">|</li>-->
+                <!--<li>我的订单</li>-->
+                <!--<li class="line">|</li>-->
+                <!--<li>客户服务</li>-->
+
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!-- 顶部导航 end -->
 
 <div style="clear:both;"></div>
