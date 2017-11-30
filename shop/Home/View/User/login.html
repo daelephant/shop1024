@@ -8,24 +8,24 @@
 		</div>
 		<div class="login_bd">
 			<div class="login_form fl">
-				<form action="" method="post">
+				<form action="__SELF__" method="post">
 					<ul>
 						<li>
 							<label for="">用户名：</label>
-							<input type="text" class="txt" name="username" />
+							<input type="text" class="txt" name="user_name" />
 						</li>
 						<li>
 							<label for="">密码：</label>
-							<input type="password" class="txt" name="password" />
+							<input type="password" class="txt" name="user_pwd" />
 							<a href="">忘记密码?</a>
 						</li>
-						<li class="checkcode">
-							<label for="">验证码：</label>
-							<input type="text"  name="checkcode" />
-							<img src="{:U('verifyImg')}"  alt="验证码" onclick="this.src='__CONTROLLER__/verifyImg/'+Math.random()"/>
+						<!--<li class="checkcode">-->
+							<!--<label for="">验证码：</label>-->
+							<!--<input type="text"  name="checkcode" />-->
+							<!--<img src="{:U('verifyImg')}"  alt="验证码" onclick="this.src='__CONTROLLER__/verifyImg/'+Math.random()"/>-->
 
-							<span>看不清？<a href="">换一张</a></span>
-						</li>
+							<!--<span>看不清？<a href="">换一张</a></span>-->
+						<!--</li>-->
 						<li>
 							<label for="">&nbsp;</label>
 							<input type="checkbox" class="chb"  /> 保存登录信息

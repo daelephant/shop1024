@@ -55,7 +55,7 @@
 		</div>
 		<div class="login_bd">
 			<div class="login_form fl">
-				<form action="/index.php/Home/User/regist" method="post">
+				<form action="/index.php/Home/User/regist.html" method="post">
 					<ul>
 						<li>
 							<label for="">用户名：</label>
