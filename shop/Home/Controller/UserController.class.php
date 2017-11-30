@@ -6,10 +6,28 @@ class UserController extends Controller {
         //两个逻辑：展示，收集
         if(IS_POST){
             //用户名、密码校验，session持久化信息、页面跳转
+            $user = D('User');
+            $name = $_POST['user_name'];
+            $pwd = $_POST['user_pwd'];
+            $info = $user -> where(array('user_name'=>$name,'user_pwd'=>md5($pwd)))->find();
+            if($info){
+                //持久化用户信息
+                session('user_id',$info['user_id']);
+                session('user_name',$name);
+                //页面跳转
+                /*$this->redirect($url,$params=array(),$delay='间隔时间',$msg='');*/
+                $this->redirect('Index/index');
+            }else{
+                $this->error('用户名或密码不存在',U('login'),1);
+            }
         }else{
 
             $this->display();
         }
+    }
+    function logout(){
+        session(null);
+        $this->redirect('Index/index');
     }
     public function regist(){
         //两个逻辑：展示、收集

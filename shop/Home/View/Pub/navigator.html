@@ -5,14 +5,25 @@
 
         </div>
         <div class="topnav_right fr">
-            <ul>
-                <li>您好，欢迎来到京西！[<a href="{:U('User/login')}">登录</a>] [<a href="{:U('User/regist')}">免费注册</a>] </li>
-                <li class="line">|</li>
-                <li>我的订单</li>
-                <li class="line">|</li>
-                <li>客户服务</li>
+            <notempty name="Think.session.user_name">
+                <ul>
+                    <li>您好，【{$Think.session.user_name}】欢迎来到京西！[<a href="{:U('User/logout')}">退出系统</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
 
-            </ul>
+                </ul>
+            <else />
+                <ul>
+                    <li>您好，欢迎来到京西！[<a href="{:U('User/login')}">登录</a>] [<a href="{:U('User/regist')}">免费注册</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
+
+                </ul>
+            </notempty>
         </div>
     </div>
 </div>

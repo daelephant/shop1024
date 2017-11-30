@@ -19,14 +19,23 @@
 
         </div>
         <div class="topnav_right fr">
-            <ul>
-                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
-                <li class="line">|</li>
-                <li>我的订单</li>
-                <li class="line">|</li>
-                <li>客户服务</li>
+            <?php if(!empty($_SESSION['user_name'])): ?><ul>
+                    <li>您好，【<?php echo (session('user_name')); ?>】欢迎来到京西！[<a href="<?php echo U('User/logout');?>">退出系统</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
 
-            </ul>
+                </ul>
+            <?php else: ?>
+                <ul>
+                    <li>您好，欢迎来到京西！[<a href="<?php echo U('User/login');?>">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
+
+                </ul><?php endif; ?>
         </div>
     </div>
 </div>
@@ -57,24 +66,24 @@
 		</div>
 		<div class="login_bd">
 			<div class="login_form fl">
-				<form action="" method="post">
+				<form action="/index.php/Home/User/login.html" method="post">
 					<ul>
 						<li>
 							<label for="">用户名：</label>
-							<input type="text" class="txt" name="username" />
+							<input type="text" class="txt" name="user_name" />
 						</li>
 						<li>
 							<label for="">密码：</label>
-							<input type="password" class="txt" name="password" />
+							<input type="password" class="txt" name="user_pwd" />
 							<a href="">忘记密码?</a>
 						</li>
-						<li class="checkcode">
-							<label for="">验证码：</label>
-							<input type="text"  name="checkcode" />
-							<img src="<?php echo U('verifyImg');?>"  alt="验证码" onclick="this.src='/index.php/Home/User/verifyImg/'+Math.random()"/>
+						<!--<li class="checkcode">-->
+							<!--<label for="">验证码：</label>-->
+							<!--<input type="text"  name="checkcode" />-->
+							<!--<img src="<?php echo U('verifyImg');?>"  alt="验证码" onclick="this.src='/index.php/Home/User/verifyImg/'+Math.random()"/>-->
 
-							<span>看不清？<a href="">换一张</a></span>
-						</li>
+							<!--<span>看不清？<a href="">换一张</a></span>-->
+						<!--</li>-->
 						<li>
 							<label for="">&nbsp;</label>
 							<input type="checkbox" class="chb"  /> 保存登录信息
