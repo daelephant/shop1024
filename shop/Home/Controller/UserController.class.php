@@ -1,7 +1,8 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
-class UserController extends Controller {
+//use Think\Controller;
+use Common\Tools\HomeController;
+class UserController extends HomeController {
     public function login(){
         //两个逻辑：展示，收集
         if(IS_POST){
@@ -11,12 +12,17 @@ class UserController extends Controller {
             $pwd = $_POST['user_pwd'];
             $info = $user -> where(array('user_name'=>$name,'user_pwd'=>md5($pwd)))->find();
             if($info){
-                //持久化用户信息
-                session('user_id',$info['user_id']);
-                session('user_name',$name);
-                //页面跳转
-                /*$this->redirect($url,$params=array(),$delay='间隔时间',$msg='');*/
-                $this->redirect('Index/index');
+                if($info['user_check'] === "1") {
+                    //已经通过邮件激活账号
+                    //持久化用户信息
+                    session('user_id', $info['user_id']);
+                    session('user_name', $name);
+                    //页面跳转
+                    /*$this->redirect($url,$params=array(),$delay='间隔时间',$msg='');*/
+                    $this->redirect('Index/index');
+                }else{
+                    $this->error('请先通过邮件激活您的账号',U('showRegister'),1);exit;
+                }
             }else{
                 $this->error('用户名或密码不存在',U('login'),1);
             }
@@ -81,9 +87,16 @@ class UserController extends Controller {
         $user = D('User');
         $userinfo = $user -> where(array('user_check'=>0))->find($user_id);
         if($userinfo['user_check_code'] === $checkcode) {
-            $z = $user->setField(array('user_id' => $user_id, 'user_check' => 1, 'user_check_code' => ''));
-            if ($z) {
-                $this->success('会员激活成功', U('login'), 1);
+            //两天之内需要激活账号，否则删除此账号,两天3600*24*2
+            if(time()-$userinfo['add_time']<3600*24*2){
+                //验证码比较成功后再激活
+                $z = $user->setField(array('user_id' => $user_id, 'user_check' => 1, 'user_check_code' => ''));
+                if ($z) {
+                    $this->success('会员激活成功', U('login'), 1);
+                }
+            }else{
+                //超过两天没有激活的账号就删除
+                $user->delete($user_id);
             }
         }else{
             $this->error('操作错误或账号已经激活',U('login'),1);

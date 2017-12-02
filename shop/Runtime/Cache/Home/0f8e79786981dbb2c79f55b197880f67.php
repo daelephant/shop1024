@@ -20,7 +20,7 @@
         </div>
         <div class="topnav_right fr">
             <?php if(!empty($_SESSION['user_name'])): ?><ul>
-                    <li>您好，【<?php echo (session('user_name')); ?>】欢迎来到京西！[<a href="<?php echo U('User/logout');?>">退出系统</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
+                    <li>您好，【<?php echo (session('user_name')); ?>】欢迎来到京西！[<a href="<?php echo U('User/logout');?>">退出系统</a>] </li>
                     <li class="line">|</li>
                     <li>我的订单</li>
                     <li class="line">|</li>
