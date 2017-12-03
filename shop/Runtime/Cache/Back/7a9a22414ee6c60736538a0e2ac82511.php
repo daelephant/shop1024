@@ -103,7 +103,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/5" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/14" method="post" enctype="multipart/form-data">
         <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
