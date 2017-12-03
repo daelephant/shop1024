@@ -1,0 +1,358 @@
+[ 2017-12-03T17:30:23+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=qn
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:30:34+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=mk
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-12-03T17:31:27+08:00 ] 127.0.0.1 /index.php/Back/Admin/checkCode.html?code=iu
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:31:55+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=17
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 17 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '17'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:39:37+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=17
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0240s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 17 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '17'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:40:25+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=8
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 8 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '8'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:41:36+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=7
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '7'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:43:03+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0070s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 4 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0080s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '4'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:49:15+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=16
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 16 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '16'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T17:54:04+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=13
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 13 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0080s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '13'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-12-03T17:54:46+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=13
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 13 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '13'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T20:44:26+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByType.html?type_id=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_attribute` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `php_attribute` WHERE `type_id` = 1  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:15:07+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=1&goods_id=18
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 18 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '18'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:16:32+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=1&goods_id=18
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 18 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '18'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:17:05+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=1&goods_id=18
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 18 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '18'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:19:06+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=1&goods_id=18
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 18 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '18'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-12-03T21:19:57+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=17
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 17 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '17'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-12-03T21:20:14+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=17
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 17 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '17'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:28:55+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=16
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 16 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '16'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:29:06+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=15
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 15 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '15'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:29:18+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=1&goods_id=14
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 14 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '14'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-12-03T21:29:42+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=13
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0060s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 13 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '13'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:30:28+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=11
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 11 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '11'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:32:48+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=8
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 8 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '8'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-12-03T21:33:04+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=7
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0040s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0060s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '7'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:33:35+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=6
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0050s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 6 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0050s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '6'  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-03T21:34:10+08:00 ] 127.0.0.1 /index.php/Back/Goods/getAttributeByTypeUpd.html?type_id=0&goods_id=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `php_manager` [ RunTime:0.0130s ]
+SQL: SELECT r.role_auth_ac FROM php_manager m INNER JOIN php_role r on m.mg_role_id=r.role_id  WHERE `mg_id` = '3' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `php_goods` WHERE `goods_id` = 5 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `php_goods_attr` [ RunTime:0.0080s ]
+SQL: SELECT g.attr_id,g.attr_value,a.attr_name,a.attr_is_sel,a.attr_sel_opt FROM php_goods_attr g INNER JOIN php_attribute a on g.attr_id=a.attr_id  WHERE `goods_id` = '5'  [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+

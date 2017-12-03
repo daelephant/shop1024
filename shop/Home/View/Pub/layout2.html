@@ -152,17 +152,17 @@
 
                 <foreach name="cat_infoA" item="v">
                     <div class="cat item1">
-                        <h3><a href="">{$v.cat_name}</a> <b></b></h3>
+                        <h3><a href="{:U('Goods/showlist',array('cat_id'=>$v['cat_id']))}">{$v.cat_name}</a> <b></b></h3>
                         <div class="cat_detail">
                             <foreach name="cat_infoB" item="vv">
                                 <if condition="$vv['cat_pid'] eq $v['cat_id']">
 
                                     <dl class="dl_1st">
-                                        <dt><a href="">{$vv.cat_name}</a></dt>
+                                        <dt><a href="{:U('Goods/showlist',array('cat_id'=>$vv['cat_id']))}">{$vv.cat_name}</a></dt>
                                         <dd>
                                             <foreach name="cat_infoC" item="vvv">
                                                 <equal name="vvv['cat_pid']" value="$vv['cat_id']">
-                                                    <a href="">{$vvv.cat_name}</a>
+                                                    <a href="{:U('Goods/showlist',array('cat_id'=>$vvv['cat_id']))}">{$vvv.cat_name}</a>
                                                 </equal>
                                             </foreach>
                                         </dd>
@@ -180,7 +180,7 @@
 
         <div class="navitems fl">
             <ul class="fl">
-                <li class="current"><a href="">首页</a></li>
+                <li class="current"><a href="{:U('Index/index')}">首页</a></li>
                 <li><a href="">电脑频道</a></li>
                 <li><a href="">家用电器</a></li>
                 <li><a href="">品牌大全</a></li>

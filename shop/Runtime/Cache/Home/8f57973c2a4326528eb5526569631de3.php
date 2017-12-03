@@ -179,12 +179,12 @@
                 <div class="cat_bd none"><?php endif; ?>
 
                 <?php if(is_array($cat_infoA)): foreach($cat_infoA as $key=>$v): ?><div class="cat item1">
-                        <h3><a href=""><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
+                        <h3><a href="<?php echo U('Goods/showlist',array('cat_id'=>$v['cat_id']));?>"><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
                         <div class="cat_detail">
                             <?php if(is_array($cat_infoB)): foreach($cat_infoB as $key=>$vv): if($vv['cat_pid'] == $v['cat_id']): ?><dl class="dl_1st">
-                                        <dt><a href=""><?php echo ($vv["cat_name"]); ?></a></dt>
+                                        <dt><a href="<?php echo U('Goods/showlist',array('cat_id'=>$vv['cat_id']));?>"><?php echo ($vv["cat_name"]); ?></a></dt>
                                         <dd>
-                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href=""><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
+                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href="<?php echo U('Goods/showlist',array('cat_id'=>$vvv['cat_id']));?>"><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
                                         </dd>
                                     </dl><?php endif; endforeach; endif; ?>
                         </div>
@@ -196,7 +196,7 @@
 
         <div class="navitems fl">
             <ul class="fl">
-                <li class="current"><a href="">首页</a></li>
+                <li class="current"><a href="<?php echo U('Index/index');?>">首页</a></li>
                 <li><a href="">电脑频道</a></li>
                 <li><a href="">家用电器</a></li>
                 <li><a href="">品牌大全</a></li>

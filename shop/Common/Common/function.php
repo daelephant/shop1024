@@ -51,3 +51,13 @@ function sendMail($to, $title, $content){
     $mail->Body=$content;
     return($mail->Send());
 }
+
+//根据一个二维数组，返回指定字段的逗号分隔的字符串信息
+function arrayToString($arr,$field){
+    $s = "";
+    foreach($arr as $k=>$v){
+        $s .= $v["$field"].",";
+    }
+    $s = rtrim($s,',');
+    return $s;
+}
