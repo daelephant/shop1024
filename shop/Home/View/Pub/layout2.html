@@ -133,28 +133,36 @@
 
     <!-- 导航条部分 start -->
     <div class="nav w1210 bc mt10">
+        <if condition="$Think.const.CONTROLLER_NAME eq 'Index' and $Think.const.Action_name eq 'index'">
         <!--  商品分类部分 start-->
-        <div class="category fl"> <!-- 非首页，需要添加cat1类 -->
-            <div class="cat_hd">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
+        <div class="category fl "> <!-- 非首页，需要添加cat1类 -->
+            <div class="cat_hd ">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
                 <h2>全部商品分类</h2>
                 <em></em>
             </div>
-
-            <div class="cat_bd">
+        <div class="cat_bd ">
+            <else />
+            <div class="category fl cat1"> <!-- 非首页，需要添加cat1类 -->
+                <div class="cat_hd off">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
+                    <h2>全部商品分类</h2>
+                    <em></em>
+                </div>
+                <div class="cat_bd none">
+        </if>
 
                 <foreach name="cat_infoA" item="v">
                     <div class="cat item1">
-                        <h3><a href="">{$v.cat_name}</a> <b></b></h3>
+                        <h3><a href="{:U('Goods/showlist',array('cat_id'=>$v['cat_id']))}">{$v.cat_name}</a> <b></b></h3>
                         <div class="cat_detail">
                             <foreach name="cat_infoB" item="vv">
                                 <if condition="$vv['cat_pid'] eq $v['cat_id']">
 
                                     <dl class="dl_1st">
-                                        <dt><a href="">{$vv.cat_name}</a></dt>
+                                        <dt><a href="{:U('Goods/showlist',array('cat_id'=>$vv['cat_id']))}">{$vv.cat_name}</a></dt>
                                         <dd>
                                             <foreach name="cat_infoC" item="vvv">
                                                 <equal name="vvv['cat_pid']" value="$vv['cat_id']">
-                                                    <a href="">{$vvv.cat_name}</a>
+                                                    <a href="{:U('Goods/showlist',array('cat_id'=>$vvv['cat_id']))}">{$vvv.cat_name}</a>
                                                 </equal>
                                             </foreach>
                                         </dd>
@@ -172,7 +180,7 @@
 
         <div class="navitems fl">
             <ul class="fl">
-                <li class="current"><a href="">首页</a></li>
+                <li class="current"><a href="{:U('Index/index')}">首页</a></li>
                 <li><a href="">电脑频道</a></li>
                 <li><a href="">家用电器</a></li>
                 <li><a href="">品牌大全</a></li>

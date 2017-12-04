@@ -121,7 +121,7 @@ class GoodsModel extends Model{
     function fetchData(){
         //1获取商品总条数
         $total = $this->count();
-        $per = 5;//每页5条数据
+        $per = 10;//每页5条数据
         //2实例化分页类Page对象
         $page = new \Common\Tools\Page($total,$per);
         //3获取分页信息

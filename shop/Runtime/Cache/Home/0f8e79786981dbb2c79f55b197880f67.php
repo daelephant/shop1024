@@ -19,14 +19,23 @@
 
         </div>
         <div class="topnav_right fr">
-            <ul>
-                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
-                <li class="line">|</li>
-                <li>我的订单</li>
-                <li class="line">|</li>
-                <li>客户服务</li>
+            <?php if(!empty($_SESSION['user_name'])): ?><ul>
+                    <li>您好，【<?php echo (session('user_name')); ?>】欢迎来到京西！[<a href="<?php echo U('User/logout');?>">退出系统</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
 
-            </ul>
+                </ul>
+            <?php else: ?>
+                <ul>
+                    <li>您好，欢迎来到京西！[<a href="<?php echo U('User/login');?>">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
+
+                </ul><?php endif; ?>
         </div>
     </div>
 </div>
@@ -55,7 +64,7 @@
 		</div>
 		<div class="login_bd">
 			<div class="login_form fl">
-				<form action="/index.php/Home/User/regist" method="post">
+				<form action="/index.php/Home/User/regist.html" method="post">
 					<ul>
 						<li>
 							<label for="">用户名：</label>
@@ -119,6 +128,7 @@
 							<input type="submit" value="" class="login_btn" />
 						</li>
 					</ul>
+					<input type="hidden" name="act" value="regist"/>
 				</form>
 				<script type="text/javascript">
 					//给form表单设置提交事件

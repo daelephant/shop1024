@@ -103,7 +103,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/17" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/14" method="post" enctype="multipart/form-data">
         <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
@@ -179,7 +179,25 @@
         <table style="display: none;" border="1" width="100%" class="table_a" id="mix-tab-tb" >
             <tr>
                 <td>商品重量</td>
-                <td><input type="text" name="goods_weight" /></td>
+                <td><input type="text" name="goods_weight" value="<?php echo ($info['goods_weight']); ?>" /></td>
+            </tr>
+            <tr>
+                <td>加入推荐</td>
+                <td>
+                    <input type="checkbox" name="is_qiang" value="抢"
+                           <?php if(($info['is_qiang']) == "抢"): ?>checked='checked'<?php endif; ?>
+                    />抢购
+                    <input type="checkbox" name="is_hot" value="热销"
+                         <?php if(($info['is_hot']) == "热销"): ?>checked='checked'<?php endif; ?>
+                    />热销
+                    <input type="checkbox" name="is_rec" value="推荐"
+                        <?php if(($info['is_rec']) == "推荐"): ?>checked='checked'<?php endif; ?>
+                    />推荐
+                    <input type="checkbox" name="is_new" value="新品"
+                        <?php if(($info['is_new']) == "新品"): ?>checked='checked'<?php endif; ?>
+
+                    />新品
+                </td>
             </tr>
         </table>
         <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >

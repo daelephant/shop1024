@@ -1,9 +1,39 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
-class UserController extends Controller {
+//use Think\Controller;
+use Common\Tools\HomeController;
+class UserController extends HomeController {
     public function login(){
-        $this->display();
+        //两个逻辑：展示，收集
+        if(IS_POST){
+            //用户名、密码校验，session持久化信息、页面跳转
+            $user = D('User');
+            $name = $_POST['user_name'];
+            $pwd = $_POST['user_pwd'];
+            $info = $user -> where(array('user_name'=>$name,'user_pwd'=>md5($pwd)))->find();
+            if($info){
+                if($info['user_check'] === "1") {
+                    //已经通过邮件激活账号
+                    //持久化用户信息
+                    session('user_id', $info['user_id']);
+                    session('user_name', $name);
+                    //页面跳转
+                    /*$this->redirect($url,$params=array(),$delay='间隔时间',$msg='');*/
+                    $this->redirect('Index/index');
+                }else{
+                    $this->error('请先通过邮件激活您的账号',U('showRegister'),1);exit;
+                }
+            }else{
+                $this->error('用户名或密码不存在',U('login'),1);
+            }
+        }else{
+
+            $this->display();
+        }
+    }
+    function logout(){
+        session(null);
+        $this->redirect('Index/index');
     }
     public function regist(){
         //两个逻辑：展示、收集
@@ -11,13 +41,16 @@ class UserController extends Controller {
         if(IS_POST){
             $data = $user -> create();//过滤非法字段
             if($user->add($data)){
-                $this->success('注册成功',U('Index/index'),1);
+                $this->success('注册成功',U('showRegister'),1);
             }else{
                 $this->error('注册失败',U('regist'),1);
             }
         }else {
             $this->display();
         }
+    }
+    function showRegister(){
+        $this->display();
     }
     public function verifyImg(){
         //显示验证码
@@ -44,5 +77,30 @@ class UserController extends Controller {
             echo json_encode(array('status'=>2));
         }
     }
+    //会员邮箱激活
+    function jihuo(){
+        $user_id = I('get.user_id');
+        $checkcode = I('get.checkcode');
 
+        //更改user_check=1,user_check_code=null
+        //需要先验证，再激活
+        $user = D('User');
+        $userinfo = $user -> where(array('user_check'=>0))->find($user_id);
+        if($userinfo['user_check_code'] === $checkcode) {
+            //两天之内需要激活账号，否则删除此账号,两天3600*24*2
+            if(time()-$userinfo['add_time']<3600*24*2){
+                //验证码比较成功后再激活
+                $z = $user->setField(array('user_id' => $user_id, 'user_check' => 1, 'user_check_code' => ''));
+                if ($z) {
+                    $this->success('会员激活成功', U('login'), 1);
+                }
+            }else{
+                //超过两天没有激活的账号就删除
+                $user->delete($user_id);
+            }
+        }else{
+            $this->error('操作错误或账号已经激活',U('login'),1);
+        }
+
+    }
 }

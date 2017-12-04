@@ -103,7 +103,7 @@
             </p>
         </div>
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="/index.php/Back/Goods/tianjia.html" method="post" enctype="multipart/form-data">
+            <form action="/index.php/Back/Goods/tianjia" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a" id="general-tab-tb">
                 <tr>
                     <td>商品名称</td>
@@ -165,6 +165,15 @@
                 <tr>
                     <td>商品重量</td>
                     <td><input type="text" name="goods_weight" /></td>
+                </tr>
+                <tr>
+                    <td>加入推荐</td>
+                    <td>
+                        <input type="checkbox" name="is_qiang" value="抢"/>抢购
+                        <input type="checkbox" name="is_hot" value="热销"/>热销
+                        <input type="checkbox" name="is_rec" value="推荐"/>推荐
+                        <input type="checkbox" name="is_new" value="新品"/>新品
+                    </td>
                 </tr>
             </table>
             <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >

@@ -26,14 +26,23 @@
 
         </div>
         <div class="topnav_right fr">
-            <ul>
-                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
-                <li class="line">|</li>
-                <li>我的订单</li>
-                <li class="line">|</li>
-                <li>客户服务</li>
+            <?php if(!empty($_SESSION['user_name'])): ?><ul>
+                    <li>您好，【<?php echo (session('user_name')); ?>】欢迎来到京西！[<a href="<?php echo U('User/logout');?>">退出系统</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
 
-            </ul>
+                </ul>
+            <?php else: ?>
+                <ul>
+                    <li>您好，欢迎来到京西！[<a href="<?php echo U('User/login');?>">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
+
+                </ul><?php endif; ?>
         </div>
     </div>
 </div>
@@ -154,22 +163,28 @@
 
     <!-- 导航条部分 start -->
     <div class="nav w1210 bc mt10">
-        <!--  商品分类部分 start-->
-        <div class="category fl"> <!-- 非首页，需要添加cat1类 -->
-            <div class="cat_hd">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
+        <?php if(CONTROLLER_NAME== 'Index' and ACTION_NAME== 'index'): ?><!--  商品分类部分 start-->
+        <div class="category fl "> <!-- 非首页，需要添加cat1类 -->
+            <div class="cat_hd ">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
                 <h2>全部商品分类</h2>
                 <em></em>
             </div>
-
-            <div class="cat_bd">
+        <div class="cat_bd ">
+            <?php else: ?>
+            <div class="category fl cat1"> <!-- 非首页，需要添加cat1类 -->
+                <div class="cat_hd off">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
+                    <h2>全部商品分类</h2>
+                    <em></em>
+                </div>
+                <div class="cat_bd none"><?php endif; ?>
 
                 <?php if(is_array($cat_infoA)): foreach($cat_infoA as $key=>$v): ?><div class="cat item1">
-                        <h3><a href=""><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
+                        <h3><a href="<?php echo U('Goods/showlist',array('cat_id'=>$v['cat_id']));?>"><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
                         <div class="cat_detail">
                             <?php if(is_array($cat_infoB)): foreach($cat_infoB as $key=>$vv): if($vv['cat_pid'] == $v['cat_id']): ?><dl class="dl_1st">
-                                        <dt><a href=""><?php echo ($vv["cat_name"]); ?></a></dt>
+                                        <dt><a href="<?php echo U('Goods/showlist',array('cat_id'=>$vv['cat_id']));?>"><?php echo ($vv["cat_name"]); ?></a></dt>
                                         <dd>
-                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href=""><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
+                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href="<?php echo U('Goods/showlist',array('cat_id'=>$vvv['cat_id']));?>"><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
                                         </dd>
                                     </dl><?php endif; endforeach; endif; ?>
                         </div>
@@ -181,7 +196,7 @@
 
         <div class="navitems fl">
             <ul class="fl">
-                <li class="current"><a href="">首页</a></li>
+                <li class="current"><a href="<?php echo U('Index/index');?>">首页</a></li>
                 <li><a href="">电脑频道</a></li>
                 <li><a href="">家用电器</a></li>
                 <li><a href="">品牌大全</a></li>
@@ -339,48 +354,20 @@
 				<span>热卖商品</span>
 				<span>推荐商品</span>
 				<span>新品上架</span>
-				<span class="last">猜您喜欢</span>
+				<!--<span class="last">猜您喜欢</span>-->
 			</h2>
 			
 			<div class="guide_wrap">
 				<!-- 疯狂抢购 start-->
 				<div class="crazy">
 					<ul>
-						<li>
+						<?php if(is_array($info_qiang)): foreach($info_qiang as $key=>$v): ?><li>
 							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy1.jpg" alt="" /></a></dt>
-								<dd><a href="">惠普G4-1332TX 14英寸</a></dd>
-								<dd><span>售价：</span><strong> ￥2999.00</strong></dd>
+								<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+								<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+								<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
 							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy2.jpg" alt="" /></a></dt>
-								<dd><a href="">直降100元！TCL118升冰箱</a></dd>
-								<dd><span>售价：</span><strong> ￥800.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy3.jpg" alt="" /></a></dt>
-								<dd><a href="">康佳液晶37寸电视机</a></dd>
-								<dd><span>售价：</span><strong> ￥2799.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy4.jpg" alt="" /></a></dt>
-								<dd><a href="">梨子平板电脑7.9寸</a></dd>
-								<dd><span>售价：</span><strong> ￥1999.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy5.jpg" alt="" /></a></dt>
-								<dd><a href="">好声音耳机</a></dd>
-								<dd><span>售价：</span><strong> ￥199.00</strong></dd>
-							</dl>
-						</li>
+						</li><?php endforeach; endif; ?>
 					</ul>	
 				</div>
 				<!-- 疯狂抢购 end-->
@@ -388,27 +375,13 @@
 				<!-- 热卖商品 start -->
 				<div class="hot none">
 					<ul>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/hot1.jpg" alt="" /></a></dt>
-								<dd><a href="">索尼双核五英寸四核手机！</a></dd>
-								<dd><span>售价：</span><strong> ￥1386.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/hot2.jpg" alt="" /></a></dt>
-								<dd><a href="">华为通话平板仅需969元！</a></dd>
-								<dd><span>售价：</span><strong> ￥969.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/hot3.jpg" alt="" /></a></dt>
-								<dd><a href="">卡姿兰明星单品7件彩妆套装</a></dd>
-								<dd><span>售价：</span><strong> ￥169.00</strong></dd>
-							</dl>
-						</li>
+						<?php if(is_array($info_hot)): foreach($info_hot as $key=>$v): ?><li>
+								<dl>
+									<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+									<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+									<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
+								</dl>
+							</li><?php endforeach; endif; ?>
 					</ul>
 				</div>
 				<!-- 热卖商品 end -->
@@ -416,27 +389,14 @@
 				<!-- 推荐商品 atart -->
 				<div class="recommend none">
 					<ul>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/recommend1.jpg" alt="" /></a></dt>
-								<dd><a href="">黄飞红麻辣花生整箱特惠装</a></dd>
-								<dd><span>售价：</span><strong> ￥139.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/recommend2.jpg" alt="" /></a></dt>
-								<dd><a href="">戴尔IN1940MW 19英寸LE</a></dd>
-								<dd><span>售价：</span><strong> ￥679.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/recommend3.jpg" alt="" /></a></dt>
-								<dd><a href="">罗辑思维音频车载CD</a></dd>
-								<dd><span>售价：</span><strong> ￥24.80</strong></dd>
-							</dl>
-						</li>
+						<?php if(is_array($info_rec)): foreach($info_rec as $key=>$v): ?><li>
+								<dl>
+									<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+									<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+									<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
+								</dl>
+							</li><?php endforeach; endif; ?>
+
 					</ul>
 				</div>
 				<!-- 推荐商品 end -->
@@ -444,27 +404,13 @@
 				<!-- 新品上架 start-->
 				<div class="new none">
 					<ul>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/new1.jpg" alt="" /></a></dt>
-								<dd><a href="">E路航T70超薄GPS 7寸大屏！</a></dd>
-								<dd><span>售价：</span><strong> ￥369.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/new2.jpg" alt="" /></a></dt>
-								<dd><a href="">乐和居 爆品 特价疯狂抢</a></dd>
-								<dd><span>售价：</span><strong> ￥2799.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/new3.jpg" alt="" /></a></dt>
-								<dd><a href="">北欧 套装 抄底再续最后几小时</a></dd>
-								<dd><span>售价：</span><strong> ￥999.00</strong></dd>
-							</dl>
-						</li>
+						<?php if(is_array($info_new)): foreach($info_new as $key=>$v): ?><li>
+								<dl>
+									<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+									<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+									<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
+								</dl>
+							</li><?php endforeach; endif; ?>
 					</ul>
 				</div>
 				<!-- 新品上架 end-->

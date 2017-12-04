@@ -39,7 +39,7 @@ class GoodsController extends BackController{
         $goods = new \Model\GoodsModel();//实例化GoodsModel对象
         //两个逻辑：展示，收集
         if(IS_POST){//收集表单
-//            dump($_POST);exit;
+           //dump($_POST);exit;
             $data = $goods->create();
             //htmlpurifier过滤
             $data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);

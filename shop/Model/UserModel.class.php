@@ -24,6 +24,27 @@ class UserModel extends Model{
         //1:代表添加时，用time函数function
     );
 
+    //瞻前顾后机制（顾后）
+    protected function _after_insert($data, $options)
+    {
+        //判断当前动作为注册并发送邮件
+        if($_POST['act'] == 'regist'){
+
+            //生成校验码
+            //php生成唯一的数组码用  uniqid()函数
+            $code = md5(uniqid());//生成一个唯一的校验码信息
+            $this -> setField(array('user_id'=>$data['user_id'],'user_check_code'=>$code));//更新校验码到会员记录
+
+
+            //具体邮件发送
+            //sendMail(注册邮箱，title，content)；
+            //$link = "http://www.shop1024.com/index.php/Home/User/jihuo/user_id/".$data['user_id']."/checkcode/".$code;
+            $link = rtrim(C('SITE_URL'),'/').U('User/jihuo',array('user_id'=>$data['user_id'],'checkcode'=>$code));
+            sendMail($data['user_email'],'会员注册激活',"请点击一下超链接，激活您的账号：<a href='".$link."' target='_blank'>".$link."</a>");
+
+        }
+    }
+
     // 更新数据前的回调方法
     protected function _before_update(&$data,$options) {}
     // 更新成功后的回调方法
