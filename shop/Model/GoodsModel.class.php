@@ -116,6 +116,11 @@ class GoodsModel extends Model{
 
             }
         }
+        /*******每次添加都去清除memcache数据****/
+        S(array('type'=>'memcache','host'=>'localhost','port'=>11211));
+        $tuijian_key = md5("qiang_rec_hot_new");
+        S($tuijian_key,null);
+        /*******每次添加都去清除memcache数据****/
     }
     //给后台获取商品列表信息，有分页要求
     function fetchData(){
@@ -255,6 +260,11 @@ class GoodsModel extends Model{
         }
 
         /*******扩展分类处理****/
+        /*******每次更新都去清除memcache数据****/
+        S(array('type'=>'memcache','host'=>'localhost','port'=>11211));
+        $tuijian_key = md5("qiang_rec_hot_new");
+        S($tuijian_key,null);
+        /*******每次更新都去清除memcache数据****/
     }
 
 }

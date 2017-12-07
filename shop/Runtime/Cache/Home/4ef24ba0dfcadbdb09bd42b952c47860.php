@@ -8,16 +8,17 @@
     <!--第二种引入方式TP框架自定义配置变量-->
     <link rel="stylesheet" href="<?php echo (C("CSS_URL")); ?>global.css" type="text/css">
     <!--第三种引入方式绝对路径，不受框架束缚 -->
-    <link rel="stylesheet" href="/Home/public/style/header.css" type="text/css">
-    <link rel="stylesheet" href="/Home/public/style/index.css" type="text/css">
-    <link rel="stylesheet" href="/Home/public/style/bottomnav.css" type="text/css">
-    <link rel="stylesheet" href="/Home/public/style/footer.css" type="text/css">
+    <link rel="stylesheet" href="/Home/Public/style/header.css" type="text/css">
+    <link rel="stylesheet" href="/Home/Public/style/index.css" type="text/css">
+    <link rel="stylesheet" href="/Home/Public/style/bottomnav.css" type="text/css">
+    <link rel="stylesheet" href="/Home/Public/style/footer.css" type="text/css">
 
-    <script type="text/javascript" src="/Home/public/js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="/Home/public/js/header.js"></script>
-    <script type="text/javascript" src="/Home/public/js/index.js"></script>
+    <script type="text/javascript" src="/Home/Public/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/Home/Public/js/header.js"></script>
+    <script type="text/javascript" src="/Home/Public/js/index.js"></script>
 </head>
 <body>
+<!--公共文件引入-->
 <!-- 顶部导航 start -->
 <div class="topnav">
     <div class="topnav_bd w1210 bc">
@@ -25,17 +26,48 @@
 
         </div>
         <div class="topnav_right fr">
-            <ul>
-                <li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="register.html">免费注册</a>] </li>
-                <li class="line">|</li>
-                <li>我的订单</li>
-                <li class="line">|</li>
-                <li>客户服务</li>
+            <?php if(!empty($_SESSION['user_name'])): ?><ul>
+                    <li>您好，【<?php echo (session('user_name')); ?>】欢迎来到京西！[<a href="<?php echo U('User/logout');?>">退出系统</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
 
-            </ul>
+                </ul>
+            <?php else: ?>
+                <ul>
+                    <li>您好，欢迎来到京西！[<a href="<?php echo U('User/login');?>">登录</a>] [<a href="<?php echo U('User/regist');?>">免费注册</a>] </li>
+                    <li class="line">|</li>
+                    <li>我的订单</li>
+                    <li class="line">|</li>
+                    <li>客户服务</li>
+
+                </ul><?php endif; ?>
         </div>
     </div>
 </div>
+<!-- 顶部导航 end -->
+<!--引入公共的jquery-->
+<script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
+<!-- 顶部导航 start -->
+<!--<div class="topnav">-->
+    <!--<div class="topnav_bd w1210 bc">-->
+        <!--<div class="topnav_left">-->
+
+        <!--</div>-->
+        <!--<div class="topnav_right fr">-->
+            <!--<ul>-->
+                <!--<li>您好，欢迎来到京西！[<a href="login.html">登录</a>] [<a href="register.html">免费注册</a>] </li>-->
+                <!--<li class="line">|</li>-->
+                <!--<li>我的订单</li>-->
+                <!--<li class="line">|</li>-->
+                <!--<li>客户服务</li>-->
+
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!-- 顶部导航 end -->
 
 <div style="clear:both;"></div>
@@ -44,7 +76,7 @@
 <div class="header w1210 bc mt15">
     <!-- 头部上半部分 start 包括 logo、搜索、用户中心和购物车结算 -->
     <div class="logo w1210">
-        <h1 class="fl"><a href="index.html"><img src="/Home/public/images/logo.png" alt="京西商城"></a></h1>
+        <h1 class="fl"><a href="index.html"><img src="/Home/Public/images/logo.png" alt="京西商城"></a></h1>
         <!-- 头部搜索 start -->
         <div class="search fl">
             <div class="search_form">
@@ -99,9 +131,9 @@
                     <div class="viewlist mt10">
                         <h3>最近浏览的商品：</h3>
                         <ul>
-                            <li><a href=""><img src="/Home/public/images/view_list1.jpg" alt="" /></a></li>
-                            <li><a href=""><img src="/Home/public/images/view_list2.jpg" alt="" /></a></li>
-                            <li><a href=""><img src="/Home/public/images/view_list3.jpg" alt="" /></a></li>
+                            <li><a href=""><img src="/Home/Public/images/view_list1.jpg" alt="" /></a></li>
+                            <li><a href=""><img src="/Home/Public/images/view_list2.jpg" alt="" /></a></li>
+                            <li><a href=""><img src="/Home/Public/images/view_list3.jpg" alt="" /></a></li>
                         </ul>
                     </div>
                 </dd>
@@ -131,22 +163,28 @@
 
     <!-- 导航条部分 start -->
     <div class="nav w1210 bc mt10">
-        <!--  商品分类部分 start-->
-        <div class="category fl"> <!-- 非首页，需要添加cat1类 -->
-            <div class="cat_hd">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
+        <?php if(CONTROLLER_NAME== 'Index' and ACTION_NAME== 'index'): ?><!--  商品分类部分 start-->
+        <div class="category fl "> <!-- 非首页，需要添加cat1类 -->
+            <div class="cat_hd ">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
                 <h2>全部商品分类</h2>
                 <em></em>
             </div>
-
-            <div class="cat_bd">
+        <div class="cat_bd ">
+            <?php else: ?>
+            <div class="category fl cat1"> <!-- 非首页，需要添加cat1类 -->
+                <div class="cat_hd off">  <!-- 注意，首页在此div上只需要添加cat_hd类，非首页，默认收缩分类时添加上off类，鼠标滑过时展开菜单则将off类换成on类 -->
+                    <h2>全部商品分类</h2>
+                    <em></em>
+                </div>
+                <div class="cat_bd none"><?php endif; ?>
 
                 <?php if(is_array($cat_infoA)): foreach($cat_infoA as $key=>$v): ?><div class="cat item1">
-                        <h3><a href=""><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
+                        <h3><a href="<?php echo U('Goods/showlist',array('cat_id'=>$v['cat_id']));?>"><?php echo ($v["cat_name"]); ?></a> <b></b></h3>
                         <div class="cat_detail">
                             <?php if(is_array($cat_infoB)): foreach($cat_infoB as $key=>$vv): if($vv['cat_pid'] == $v['cat_id']): ?><dl class="dl_1st">
-                                        <dt><a href=""><?php echo ($vv["cat_name"]); ?></a></dt>
+                                        <dt><a href="<?php echo U('Goods/showlist',array('cat_id'=>$vv['cat_id']));?>"><?php echo ($vv["cat_name"]); ?></a></dt>
                                         <dd>
-                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href=""><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
+                                            <?php if(is_array($cat_infoC)): foreach($cat_infoC as $key=>$vvv): if(($vvv['cat_pid']) == $vv['cat_id']): ?><a href="<?php echo U('Goods/showlist',array('cat_id'=>$vvv['cat_id']));?>"><?php echo ($vvv["cat_name"]); ?></a><?php endif; endforeach; endif; ?>
                                         </dd>
                                     </dl><?php endif; endforeach; endif; ?>
                         </div>
@@ -158,7 +196,7 @@
 
         <div class="navitems fl">
             <ul class="fl">
-                <li class="current"><a href="">首页</a></li>
+                <li class="current"><a href="<?php echo U('Index/index');?>">首页</a></li>
                 <li><a href="">电脑频道</a></li>
                 <li><a href="">家用电器</a></li>
                 <li><a href="">品牌大全</a></li>
@@ -185,12 +223,12 @@
 			<div class="area">
 				<div class="slide_items">
 					<ul>
-						<li><a href=""><img src="/Home/public/images/index_slide1.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/index_slide2.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/index_slide3.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/index_slide4.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/index_slide5.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/index_slide6.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/index_slide1.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/index_slide2.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/index_slide3.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/index_slide4.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/index_slide5.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/index_slide6.jpg" alt="" /></a></li>
 					</ul>
 				</div>
 				<div class="slide_controls">
@@ -209,7 +247,7 @@
 	
 		<!-- 快报区域 start-->
 		<div class="coll_right fl ml10">
-			<div class="ad"><a href=""><img src="/Home/public/images/ad.jpg" alt="" /></a></div>
+			<div class="ad"><a href=""><img src="/Home/Public/images/ad.jpg" alt="" /></a></div>
 			
 			<div class="news mt10">
 				<h2><a href="">更多快报&nbsp;></a><strong>网站快报</strong></h2>
@@ -271,11 +309,11 @@
 					<div class="travel none">
 						<ul>
 							<li>
-								<a href=""><img src="/Home/public/images/holiday.jpg" alt="" /></a>
+								<a href=""><img src="/Home/Public/images/holiday.jpg" alt="" /></a>
 								<a href="" class="button">度假查询</a>
 							</li>
 							<li>
-								<a href=""><img src="/Home/public/images/scenic.jpg" alt="" /></a>
+								<a href=""><img src="/Home/Public/images/scenic.jpg" alt="" /></a>
 								<a href="" class="button">景点查询</a>
 							</li>
 						</ul>
@@ -284,16 +322,16 @@
 						
 					<!-- 彩票 start -->
 					<div class="lottery none">
-						<p><img src="/Home/public/images/lottery.jpg" alt="" /></p>
+						<p><img src="/Home/Public/images/lottery.jpg" alt="" /></p>
 					</div>
 					<!-- 彩票 end -->
 
 					<!-- 游戏 start -->
 					<div class="game none">
 						<ul>
-							<li><a href=""><img src="/Home/public/images/sanguo.jpg" alt="" /></a></li>
-							<li><a href=""><img src="/Home/public/images/taohua.jpg" alt="" /></a></li>
-							<li><a href=""><img src="/Home/public/images/wulin.jpg" alt="" /></a></li>
+							<li><a href=""><img src="/Home/Public/images/sanguo.jpg" alt="" /></a></li>
+							<li><a href=""><img src="/Home/Public/images/taohua.jpg" alt="" /></a></li>
+							<li><a href=""><img src="/Home/Public/images/wulin.jpg" alt="" /></a></li>
 						</ul>
 					</div>
 					<!-- 游戏 end -->
@@ -316,48 +354,20 @@
 				<span>热卖商品</span>
 				<span>推荐商品</span>
 				<span>新品上架</span>
-				<span class="last">猜您喜欢</span>
+				<!--<span class="last">猜您喜欢</span>-->
 			</h2>
 			
 			<div class="guide_wrap">
 				<!-- 疯狂抢购 start-->
 				<div class="crazy">
 					<ul>
-						<li>
+						<?php if(is_array($info_qiang)): foreach($info_qiang as $key=>$v): ?><li>
 							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy1.jpg" alt="" /></a></dt>
-								<dd><a href="">惠普G4-1332TX 14英寸</a></dd>
-								<dd><span>售价：</span><strong> ￥2999.00</strong></dd>
+								<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+								<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+								<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
 							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy2.jpg" alt="" /></a></dt>
-								<dd><a href="">直降100元！TCL118升冰箱</a></dd>
-								<dd><span>售价：</span><strong> ￥800.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy3.jpg" alt="" /></a></dt>
-								<dd><a href="">康佳液晶37寸电视机</a></dd>
-								<dd><span>售价：</span><strong> ￥2799.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy4.jpg" alt="" /></a></dt>
-								<dd><a href="">梨子平板电脑7.9寸</a></dd>
-								<dd><span>售价：</span><strong> ￥1999.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/crazy5.jpg" alt="" /></a></dt>
-								<dd><a href="">好声音耳机</a></dd>
-								<dd><span>售价：</span><strong> ￥199.00</strong></dd>
-							</dl>
-						</li>
+						</li><?php endforeach; endif; ?>
 					</ul>	
 				</div>
 				<!-- 疯狂抢购 end-->
@@ -365,27 +375,13 @@
 				<!-- 热卖商品 start -->
 				<div class="hot none">
 					<ul>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/hot1.jpg" alt="" /></a></dt>
-								<dd><a href="">索尼双核五英寸四核手机！</a></dd>
-								<dd><span>售价：</span><strong> ￥1386.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/hot2.jpg" alt="" /></a></dt>
-								<dd><a href="">华为通话平板仅需969元！</a></dd>
-								<dd><span>售价：</span><strong> ￥969.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/hot3.jpg" alt="" /></a></dt>
-								<dd><a href="">卡姿兰明星单品7件彩妆套装</a></dd>
-								<dd><span>售价：</span><strong> ￥169.00</strong></dd>
-							</dl>
-						</li>
+						<?php if(is_array($info_hot)): foreach($info_hot as $key=>$v): ?><li>
+								<dl>
+									<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+									<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+									<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
+								</dl>
+							</li><?php endforeach; endif; ?>
 					</ul>
 				</div>
 				<!-- 热卖商品 end -->
@@ -393,27 +389,14 @@
 				<!-- 推荐商品 atart -->
 				<div class="recommend none">
 					<ul>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/recommend1.jpg" alt="" /></a></dt>
-								<dd><a href="">黄飞红麻辣花生整箱特惠装</a></dd>
-								<dd><span>售价：</span><strong> ￥139.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/recommend2.jpg" alt="" /></a></dt>
-								<dd><a href="">戴尔IN1940MW 19英寸LE</a></dd>
-								<dd><span>售价：</span><strong> ￥679.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/recommend3.jpg" alt="" /></a></dt>
-								<dd><a href="">罗辑思维音频车载CD</a></dd>
-								<dd><span>售价：</span><strong> ￥24.80</strong></dd>
-							</dl>
-						</li>
+						<?php if(is_array($info_rec)): foreach($info_rec as $key=>$v): ?><li>
+								<dl>
+									<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+									<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+									<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
+								</dl>
+							</li><?php endforeach; endif; ?>
+
 					</ul>
 				</div>
 				<!-- 推荐商品 end -->
@@ -421,27 +404,13 @@
 				<!-- 新品上架 start-->
 				<div class="new none">
 					<ul>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/new1.jpg" alt="" /></a></dt>
-								<dd><a href="">E路航T70超薄GPS 7寸大屏！</a></dd>
-								<dd><span>售价：</span><strong> ￥369.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/new2.jpg" alt="" /></a></dt>
-								<dd><a href="">乐和居 爆品 特价疯狂抢</a></dd>
-								<dd><span>售价：</span><strong> ￥2799.00</strong></dd>
-							</dl>
-						</li>
-						<li>
-							<dl>
-								<dt><a href=""><img src="/Home/public/images/new3.jpg" alt="" /></a></dt>
-								<dd><a href="">北欧 套装 抄底再续最后几小时</a></dd>
-								<dd><span>售价：</span><strong> ￥999.00</strong></dd>
-							</dl>
-						</li>
+						<?php if(is_array($info_new)): foreach($info_new as $key=>$v): ?><li>
+								<dl>
+									<dt><a href=""><img src="<?php echo (C("SITE_URL")); echo ($v["goods_big_logo"]); ?>" alt="" /></a></dt>
+									<dd><a href=""><?php echo ($v["goods_name"]); ?></a></dd>
+									<dd><span>售价：</span><strong> ￥<?php echo ($v["goods_price"]); ?></strong></dd>
+								</dl>
+							</li><?php endforeach; endif; ?>
 					</ul>
 				</div>
 				<!-- 新品上架 end-->
@@ -451,21 +420,21 @@
 					<ul>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/Home/public/images/guess1.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Home/Public/images/guess1.jpg" alt="" /></a></dt>
 								<dd><a href="">Thinkpad USB光电鼠标</a></dd>
 								<dd><span>售价：</span><strong> ￥39.00</strong></dd>
 							</dl>
 						</li>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/Home/public/images/guess2.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Home/Public/images/guess2.jpg" alt="" /></a></dt>
 								<dd><a href="">宜客莱（ECOLA）电脑散热器</a></dd>
 								<dd><span>售价：</span><strong> ￥89.00</strong></dd>
 							</dl>
 						</li>
 						<li>
 							<dl>
-								<dt><a href=""><img src="/Home/public/images/guess3.jpg" alt="" /></a></dt>
+								<dt><a href=""><img src="/Home/Public/images/guess3.jpg" alt="" /></a></dt>
 								<dd><a href="">巴黎欧莱雅男士洁面膏 100ml</a></dd>
 								<dd><span>售价：</span><strong> ￥30.00</strong></dd>
 							</dl>
@@ -484,13 +453,13 @@
 			<h2><strong>网站首发</strong></h2>
 			<div class="sidebar_wrap">
 				<dl class="first">
-					<dt class="fl"><a href=""><img src="/Home/public/images/viewsonic.jpg" alt="" /></a></dt>
+					<dt class="fl"><a href=""><img src="/Home/Public/images/viewsonic.jpg" alt="" /></a></dt>
 					<dd><strong><a href="">ViewSonic优派N710 </a></strong> <em>首发</em></dd>
 					<dd>苹果iphone 5免费送！攀高作为全球智能语音血压计领导品牌，新推出的黑金刚高端智能电子血压计，改变传统测量方式让血压测量迈入一体化时代。</dd>
 				</dl>
 
 				<dl>
-					<dt class="fr"><a href=""><img src="/Home/public/images/samsung.jpg" alt="" /></a></dt>
+					<dt class="fr"><a href=""><img src="/Home/Public/images/samsung.jpg" alt="" /></a></dt>
 					<dd><strong><a href="">Samsung三星Galaxy</a></strong> <em>首发</em></dd>
 					<dd>电视百科全书，360°无死角操控，感受智能新体验！双核CPU+双核GPU+MEMC运动防抖，58寸大屏打造全新视听盛宴！</dd>
 				</dl>
@@ -528,7 +497,7 @@
 						<li><a href=""><b>.</b>网卡</a></li>
 						<li><a href=""><b>.</b>交换机</a></li>
 					</ul>
-					<p><a href=""><img src="/Home/public/images/notebook.jpg" alt="" /></a></p>
+					<p><a href=""><img src="/Home/Public/images/notebook.jpg" alt="" /></a></p>
 				</div>
 				
 
@@ -549,7 +518,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/hpG4.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/hpG4.jpg" alt="" /></a></dt>
 									<dd><a href="">惠普G4-1332TX 14英寸笔</a></dd>
 									<dd><span>售价：</span> <strong>￥2999.00</strong></dd>
 								</dl>
@@ -557,7 +526,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/thinkpad e420.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/thinkpad e420.jpg" alt="" /></a></dt>
 									<dd><a href="">ThinkPad E42014英寸笔..</a></dd>
 									<dd><span>售价：</span> <strong>￥4199.00</strong></dd>
 								</dl>
@@ -565,7 +534,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/acer4739.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/acer4739.jpg" alt="" /></a></dt>
 									<dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
 									<dd><span>售价：</span> <strong>￥2799.00</strong></dd>
 								</dl>
@@ -573,7 +542,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/samsung6800.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/samsung6800.jpg" alt="" /></a></dt>
 									<dd><a href="">三星Galaxy Tab P6800.</a></dd>
 									<dd><span>售价：</span> <strong>￥4699.00</strong></dd>
 								</dl>
@@ -581,7 +550,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/lh531.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/lh531.jpg" alt="" /></a></dt>
 									<dd><a href="">富士通LH531 14.1英寸笔记</a></dd>
 									<dd><span>售价：</span> <strong>￥2189.00</strong></dd>
 								</dl>
@@ -589,7 +558,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/qinghuax2.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/qinghuax2.jpg" alt="" /></a></dt>
 									<dd><a href="">清华同方精锐X2笔记本 </a></dd>
 									<dd><span>售价：</span> <strong>￥2499.00</strong></dd>
 								</dl>
@@ -601,7 +570,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/hpG4.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/hpG4.jpg" alt="" /></a></dt>
 									<dd><a href="">惠普G4-1332TX 14英寸笔</a></dd>
 									<dd><span>售价：</span> <strong>￥2999.00</strong></dd>
 								</dl>
@@ -609,7 +578,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/qinghuax2.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/qinghuax2.jpg" alt="" /></a></dt>
 									<dd><a href="">清华同方精锐X2笔记本 </a></dd>
 									<dd><span>售价：</span> <strong>￥2499.00</strong></dd>
 								</dl>
@@ -622,7 +591,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/thinkpad e420.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/thinkpad e420.jpg" alt="" /></a></dt>
 									<dd><a href="">ThinkPad E42014英寸笔..</a></dd>
 									<dd><span>售价：</span> <strong>￥4199.00</strong></dd>
 								</dl>
@@ -630,7 +599,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/acer4739.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/acer4739.jpg" alt="" /></a></dt>
 									<dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
 									<dd><span>售价：</span> <strong>￥2799.00</strong></dd>
 								</dl>
@@ -642,7 +611,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/acer4739.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/acer4739.jpg" alt="" /></a></dt>
 									<dd><a href="">宏碁AS4739-382G32Mnk</a></dd>
 									<dd><span>售价：</span> <strong>￥2799.00</strong></dd>
 								</dl>
@@ -650,7 +619,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/samsung6800.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/samsung6800.jpg" alt="" /></a></dt>
 									<dd><a href="">三星Galaxy Tab P6800.</a></dd>
 									<dd><span>售价：</span> <strong>￥4699.00</strong></dd>
 								</dl>
@@ -662,7 +631,7 @@
 						<ul>
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/samsung6800.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/samsung6800.jpg" alt="" /></a></dt>
 									<dd><a href="">三星Galaxy Tab P6800.</a></dd>
 									<dd><span>售价：</span> <strong>￥4699.00</strong></dd>
 								</dl>
@@ -670,7 +639,7 @@
 
 							<li>
 								<dl>
-									<dt><a href=""><img src="/Home/public/images/lh531.jpg" alt="" /></a></dt>
+									<dt><a href=""><img src="/Home/Public/images/lh531.jpg" alt="" /></a></dt>
 									<dd><a href="">富士通LH531 14.1英寸笔记</a></dd>
 									<dd><span>售价：</span> <strong>￥2189.00</strong></dd>
 								</dl>
@@ -691,15 +660,15 @@
 				<h2><a href="">更多品牌&nbsp;></a><strong>品牌旗舰店</strong></h2>
 				<div class="sidebar_wrap">
 					<ul>
-						<li><a href=""><img src="/Home/public/images/dell.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/acer.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/fujitsu.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/hp.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/lenove.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/samsung.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/dlink.gif" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/seagate.jpg" alt="" /></a></li>
-						<li><a href=""><img src="/Home/public/images/intel.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/dell.gif" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/acer.gif" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/fujitsu.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/hp.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/lenove.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/samsung.gif" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/dlink.gif" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/seagate.jpg" alt="" /></a></li>
+						<li><a href=""><img src="/Home/Public/images/intel.jpg" alt="" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -722,7 +691,7 @@
 			
 			<!-- 广告 start -->
 			<div class="ads mt10">
-				<a href=""><img src="/Home/public/images/canon.jpg" alt="" /></a>
+				<a href=""><img src="/Home/Public/images/canon.jpg" alt="" /></a>
 			</div>
 			<!-- 广告 end -->
 		</div>
@@ -818,10 +787,10 @@
         © 2005-2013 京东网上商城 版权所有，并保留所有权利。  ICP备案证书号:京ICP证070359号
     </p>
     <p class="auth">
-        <a href=""><img src="/Home/public/images/xin.png" alt="" /></a>
-        <a href=""><img src="/Home/public/images/kexin.jpg" alt="" /></a>
-        <a href=""><img src="/Home/public/images/police.jpg" alt="" /></a>
-        <a href=""><img src="/Home/public/images/beian.gif" alt="" /></a>
+        <a href=""><img src="/Home/Public/images/xin.png" alt="" /></a>
+        <a href=""><img src="/Home/Public/images/kexin.jpg" alt="" /></a>
+        <a href=""><img src="/Home/Public/images/police.jpg" alt="" /></a>
+        <a href=""><img src="/Home/Public/images/beian.gif" alt="" /></a>
     </p>
 </div>
 <!-- 底部版权 end -->

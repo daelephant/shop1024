@@ -38,10 +38,12 @@ class UserModel extends Model{
 
             //具体邮件发送
             //sendMail(注册邮箱，title，content)；
+            //$is_test=sendMail('elephant1024@qq.com','test','content');
+
             //$link = "http://www.shop1024.com/index.php/Home/User/jihuo/user_id/".$data['user_id']."/checkcode/".$code;
             $link = rtrim(C('SITE_URL'),'/').U('User/jihuo',array('user_id'=>$data['user_id'],'checkcode'=>$code));
-            sendMail($data['user_email'],'会员注册激活',"请点击一下超链接，激活您的账号：<a href='".$link."' target='_blank'>".$link."</a>");
-
+            $is_send=sendMail($data['user_email'],'会员注册激活',"请点击一下超链接，激活您的账号：<a href='".$link."' target='_blank'>".$link."</a>");
+            //var_dump($is_send,$is_test);
         }
     }
 

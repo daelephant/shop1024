@@ -3,7 +3,7 @@ namespace Home\Controller;
 //use Think\Controller;
 use Common\Tools\HomeController;
 class UserController extends HomeController {
-    public function login(){
+    Public function login(){
         //两个逻辑：展示，收集
         if(IS_POST){
             //用户名、密码校验，session持久化信息、页面跳转
@@ -35,7 +35,7 @@ class UserController extends HomeController {
         session(null);
         $this->redirect('Index/index');
     }
-    public function regist(){
+    Public function regist(){
         //两个逻辑：展示、收集
         $user = new \Model\UserModel();//usermodel写映射机制
         if(IS_POST){
@@ -52,7 +52,7 @@ class UserController extends HomeController {
     function showRegister(){
         $this->display();
     }
-    public function verifyImg(){
+    Public function verifyImg(){
         //显示验证码
         $cfg = array(
             'fontSize'  =>  20,              // 验证码字体大小(px)

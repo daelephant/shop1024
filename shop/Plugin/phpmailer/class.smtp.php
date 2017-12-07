@@ -125,8 +125,8 @@ class SMTP {
     }
 
     // connect to the smtp server
-    $this->smtp_conn = @fsockopen($host,    // the host of the server
-                                 $port,    // the port to use
+    $this->smtp_conn = stream_socket_client($host.':'.$port,    // the host of the server
+                                 //$port,    // the port to use
                                  $errno,   // error number if any
                                  $errstr,  // error message if any
                                  $tval);   // give up after ? secs

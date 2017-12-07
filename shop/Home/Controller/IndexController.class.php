@@ -3,7 +3,7 @@ namespace Home\Controller;
 //use Think\Controller;
 use Common\Tools\HomeController;
 class IndexController extends HomeController {
-    public function index(){
+    Public function index(){
         /*使用memcached缓存数据*/
             //给推荐商品设置一个key
         S(array('type'=>'memcache','host'=>'localhost','port'=>11211));
@@ -61,7 +61,7 @@ class IndexController extends HomeController {
 
 
             //为memcache准备数据，把查询好的数据放到memecache中
-            //$info = array();
+            $info = array();
             $info['qiang'] = $info_qiang;
             $info['hot'] = $info_hot;
             $info['rec'] = $info_rec;

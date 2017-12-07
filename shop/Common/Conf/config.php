@@ -3,9 +3,9 @@ return array(
 //'配置项'=>'配置值'
 //    给项目做静态文件访问路由路径的配置
 //  前台
-    'CSS_URL' => '/Home/public/style/',
-    'JS_URL' => '/Home/public/js/',
-    'IMG_URL' => '/Home/public/images/',
+    'CSS_URL' => '/Home/Public/style/',
+    'JS_URL' => '/Home/Public/js/',
+    'IMG_URL' => '/Home/Public/images/',
 //    后台
     'BACK__URL'    => '/Back/Public/css/',
     'BACK_JS_URL'  => '/Back/Public/js/',
@@ -15,7 +15,7 @@ return array(
     'COMMON_URL' => '/Common/',
 
     //定义网站的域名地址（方便图片显示）
-    'SITE_URL' => 'http://www.shop1024.com/',
+    'SITE_URL' => 'http://www.shop1024.com/',//每次换环境需要修改此域名
 
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
 

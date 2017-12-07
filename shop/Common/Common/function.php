@@ -25,7 +25,7 @@ function fanXSS($string) {
     return $obj->purify($string);
 }
 function sendMail($to, $title, $content){
-    require_once('/Plugin/phpmailer/class.phpmailer.php');
+    require_once('./Plugin/phpmailer/class.phpmailer.php');
     $mail = new PHPMailer();
     // 设置为要发邮件
     $mail->IsSMTP();

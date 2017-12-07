@@ -103,7 +103,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/17" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/21" method="post" enctype="multipart/form-data">
         <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
@@ -114,6 +114,40 @@
                 <td>商品价格</td>
                 <td><input type="text" name="goods_price" value="<?php echo ($info["goods_price"]); ?>" /></td>
             </tr>
+            <tr>
+                <td>商品分类</td>
+                <td>
+                    <select name="cat_id" id="cat_id_0">
+                        <option value="0">-请选择-</option>
+                        <?php if(is_array($catinfo)): foreach($catinfo as $key=>$v): if(($info['cat_id']) == $v['cat_id']): ?><option value="<?php echo ($v["cat_id"]); ?>" selected="selected"><?php echo str_repeat('***/',$v['cat_level']); echo ($v["cat_name"]); ?></option>
+                                <?php else: ?>
+                                <option value="<?php echo ($v["cat_id"]); ?>"><?php echo str_repeat('***/',$v['cat_level']); echo ($v["cat_name"]); ?></option><?php endif; endforeach; endif; ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>扩展分类</td>
+                <td>
+                    <input type="button" value="添加" onclick="add_sel(this)"/>
+                   <?php if(is_array($catextinfo)): foreach($catextinfo as $k=>$v): ?><select name="cat_ext_info[]" id="cat_id_<?php echo ($k+1); ?>">
+                           <option value="0">-请选择-</option>
+                           <?php if(is_array($catinfo)): foreach($catinfo as $key=>$vv): if(($v['cat_id']) == $vv['cat_id']): ?><option value="<?php echo ($vv["cat_id"]); ?>" selected="selected"><?php echo str_repeat('***/',$vv['cat_level']); echo ($vv["cat_name"]); ?></option>
+                                   <?php else: ?>
+                                   <option value="<?php echo ($vv["cat_id"]); ?>"><?php echo str_repeat('***/',$vv['cat_level']); echo ($vv["cat_name"]); ?></option><?php endif; endforeach; endif; ?>
+                       </select><?php endforeach; endif; ?>
+                </td>
+            </tr>
+            <script type="text/javascript">
+                var select_num = 1;//计数器，给创建出来的多个下拉列表进行id计数
+                function add_sel(obj){
+                    var fu_sel = $('#cat_id_0').clone();//克隆下拉列表
+                    fu_sel.attr('id','cat_id_'+select_num);//设置其cat_id值，区别不同的id属性值
+                    fu_sel.attr('name','cat_ext_info[]');//修改name属性值
+                    $(obj).after(fu_sel);//追加
+                    select_num++;//计数器累加
+
+                }
+            </script>
 
             <tr>
                 <td>商品logo图片</td>
@@ -145,7 +179,25 @@
         <table style="display: none;" border="1" width="100%" class="table_a" id="mix-tab-tb" >
             <tr>
                 <td>商品重量</td>
-                <td><input type="text" name="goods_weight" /></td>
+                <td><input type="text" name="goods_weight" value="<?php echo ($info['goods_weight']); ?>" /></td>
+            </tr>
+            <tr>
+                <td>加入推荐</td>
+                <td>
+                    <input type="checkbox" name="is_qiang" value="抢"
+                           <?php if(($info['is_qiang']) == "抢"): ?>checked='checked'<?php endif; ?>
+                    />抢购
+                    <input type="checkbox" name="is_hot" value="热销"
+                         <?php if(($info['is_hot']) == "热销"): ?>checked='checked'<?php endif; ?>
+                    />热销
+                    <input type="checkbox" name="is_rec" value="推荐"
+                        <?php if(($info['is_rec']) == "推荐"): ?>checked='checked'<?php endif; ?>
+                    />推荐
+                    <input type="checkbox" name="is_new" value="新品"
+                        <?php if(($info['is_new']) == "新品"): ?>checked='checked'<?php endif; ?>
+
+                    />新品
+                </td>
             </tr>
         </table>
         <table style="display: none;" border="1" width="100%" class="table_a" id="properties-tab-tb" >

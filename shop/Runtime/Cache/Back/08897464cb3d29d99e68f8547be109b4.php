@@ -39,6 +39,10 @@
                         <td>商品名称</td>
                         <td>价格</td>
                         <td>重量</td>
+                        <td>抢购</td>
+                        <td>热销</td>
+                        <td>推荐</td>
+                        <td>新品</td>
                         <td>图片</td>
                         <td>缩略图</td>
                         <td>描述</td>
@@ -51,6 +55,23 @@
                         <td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>"><?php echo ($v["goods_name"]); ?></a></td>
                         <td><?php echo ($v["goods_price"]); ?></td>
                         <td><?php echo ($v["goods_weight"]); ?></td>
+                        <!--<td><?php echo ($v["is_qiang"]); ?></td>-->
+                        <td>
+                            <?php
+ if($v['is_qiang'] == '抢'){ echo "<img src='".C('BACK_IMG_URL')."yes.gif"."' alt='抢'/>"; }else{ echo "<img src='".C('BACK_IMG_URL')."no.gif"."' alt='不抢'/>"; } ?>
+                        </td>
+                        <td>
+                            <?php
+ if($v['is_hot'] == '热销'){ echo "<img src='".C('BACK_IMG_URL')."yes.gif"."' alt='热销'/>"; }else{ echo "<img src='".C('BACK_IMG_URL')."no.gif"."' alt='不热销'/>"; } ?>
+                        </td>
+                        <td>
+                            <?php
+ if($v['is_rec'] == '推荐'){ echo "<img src='".C('BACK_IMG_URL')."yes.gif"."' alt='推荐'/>"; }else{ echo "<img src='".C('BACK_IMG_URL')."no.gif"."' alt='不推荐'/>"; } ?>
+                        </td>
+                        <td>
+                            <?php
+ if($v['is_new'] == '新品'){ echo "<img src='".C('BACK_IMG_URL')."yes.gif"."' alt='新品'/>"; }else{ echo "<img src='".C('BACK_IMG_URL')."no.gif"."' alt='不新品'/>"; } ?>
+                        </td>
                         <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_big_logo"],2)); ?>" alt="暂无图片" width="100" height="100"  ></td>
                         <td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_small_logo"],2)); ?>" alt="暂无图片" width="60" height="60"  ></td>
                         <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
