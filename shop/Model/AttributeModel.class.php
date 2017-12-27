@@ -19,5 +19,8 @@ class AttributeModel extends Model{
     protected $_validate = array(
         //类型验证
         array('type_id','0','类型必须选择',0,'notequal'),
+        //验证是否不等于某个值
+        //array(验证字段1,验证规则,错误提示,[验证条件,附加规则,验证时间]),
+        //第二个零代表存在字段就验证，1：必须验证、2值不为空时验证
     );
 }

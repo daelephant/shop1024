@@ -11,10 +11,22 @@ use Think\Model;
 class GoodsModel extends Model{
     //为数据表字段添加默认值，不能为空
     //自动完成设置add_time/upd_time
+    /*
+     * TP自动完成
+     * array(     array(完成字段1,完成规则,[完成条件,附加规则]),     array(完成字段2,完成规则,[完成条件,附加规则]),     ......);
+     * self::MODEL_INSERT或者1 新增数据的时候处理（默认）
+     * self::MODEL_UPDATE或者2 更新数据的时候处理
+     * self::MODEL_BOTH或者3 所有情况都进行处理
+     * function 使用函数，表示填充的内容是一个函数名
+     * */
     protected $_auto = array(
-        array('add_time','time',1,'function'),
+        array('add_time','time',1,'function'),//// 对update_time字段在更新的时候写入当前时间戳
+        /// array('password','md5',3,'function') , // 对password字段在新增和编辑的时候使md5函数处理
         array('upd_time','time',3,'function')
     );
+
+    //添加时调用create方法允许接受的字段,可以防止用户模拟表单添加大值的id导致无法再插入新id
+    //protected $insertFields = '';
     // 插入数据前的回调方法
     //参数：
     //$data是收集的表单信息$options是设置的各种条件
@@ -27,6 +39,11 @@ class GoodsModel extends Model{
             );
             $up = new \Think\Upload($cfg);
             $z = $up->uploadOne($_FILES['goods_logo']);
+            if (!$z){
+                //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
+                $this->error = $up->getError();
+                return FALSE;
+            }
             //$z会返回成功上传附件的相关信息
             //拼装图片的路径名信息，存储到数据库里面
             $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];

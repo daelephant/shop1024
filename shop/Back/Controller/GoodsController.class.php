@@ -10,7 +10,7 @@ use Common\Tools\BackController;
 use Think\Model;
 
 class GoodsController extends BackController{
-//    列表展示
+    //    列表展示
     public function showlist(){
         $goods = new \Model\GoodsModel();
         $nowinfo = $goods->fetchData();
@@ -32,21 +32,29 @@ class GoodsController extends BackController{
         $this->assign('pagelist',$pagelist);
         $this->display();
     }
-    //    添加商品
+    //    添加商品,显示和处理表单
     public function tianjia(){
-//        $goods = D('Goods');//实例化父类Model对象
+        //$goods = D('Goods');//实例化父类Model对象
         //弄不清楚就打印出来，看看是谁的对象dump($goods);
         $goods = new \Model\GoodsModel();//实例化GoodsModel对象
-        //两个逻辑：展示，收集
+        //两个逻辑：展示，收集、判断用户是否提交了表单
         if(IS_POST){//收集表单
+            //var_dump($_FILES['goods_logo']['error']);exit;
            //dump($_POST);exit;
+            /**  CREATE放法：a：接受数据并保存到模型中 b、根据模型定义的规则验证表单
+             *第一个参数：要接收的数据默认是$_POST
+             * 第二个参数是：表单的类型、当前是添加还是修改的表单。1：添加，2：修改
+             * $_POST:表单中原始的数据，I（'POST.'）
+             */
             $data = $goods->create();
             //htmlpurifier过滤
             $data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);
+
             if($goods->add($data)){
                 $this->success('添加商品成功',U('showlist'),2);//页面跳转
             }else{
-                $this->error('添加商品失败',U('tianjia'),2);//页面跳转
+                $error = $goods->getError();
+                $this->error($error.'添加商品失败',U('tianjia'),2);//页面跳转
             }
         }else{//展示表单
             /********获得商品展示信息*/

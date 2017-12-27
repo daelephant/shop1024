@@ -15,7 +15,7 @@ return array(
     'COMMON_URL' => '/Common/',
 
     //定义网站的域名地址（方便图片显示）
-    'SITE_URL' => 'http://www.shop1024.com/',//每次换环境需要修改此域名
+    'SITE_URL' => 'http://www.shop1222.com/',//每次换环境需要修改此域名
 
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
 
