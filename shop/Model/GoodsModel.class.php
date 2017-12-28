@@ -58,15 +58,18 @@ class GoodsModel extends Model{
                 $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];
                 $data['goods_big_logo'] = $big_path_name;
 
+                //缩略图的名字：“small_原图名字”；
+                $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
+                $msmall_path_name = $up->rootPath.$z['savepath']."msmall_".$z['savename'];
                 //根据原图($big_path_name)制作缩略图
                 $im = new \Think\Image();//实例化对象
                 $im->open($big_path_name);//打开原图
-                $im->thumb(60,60);//制作缩略图
-                //缩略图的名字：“small_原图名字”；
-                $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
-                $im->save($small_path_name);//存储缩略图到服务器
+                $im->thumb(60,60)->save($small_path_name);//制作缩略图
+                $im->thumb(30,30)->save($msmall_path_name);//制作缩略图
+                //$im->save($small_path_name);//存储缩略图到服务器
                 //保存缩略图到数据库：
                 $data['goods_small_logo'] = $small_path_name;
+                $data['goods_msmall_logo'] = $msmall_path_name;
             }
 
             //// 获取当前时间并添加到表单中这样就会插入到数据库中
