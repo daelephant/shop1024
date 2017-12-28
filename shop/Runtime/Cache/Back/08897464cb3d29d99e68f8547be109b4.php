@@ -21,14 +21,39 @@
             </span>
 </div>
 <div></div>
- <div class="div_search">
+ <!--<div class="div_search">-->
+ <div class="">
             <span>
-                <form action="#" method="get">
-                    品牌<select name="s_product_mark" style="width: 100px;">
+                <form action="/index.php/Back/Goods/showlist.html?goods_name=11&goods_fprice=1&goods_tprice=3&ios=%E4%B8%8B%E6%9E%B6&fadd_time=3&aadd_time=212" method="get" name="searchForm">
+                    <p>
+                        商品名称：
+                        <input value="<?php echo I('get.goods_name') ?>" type="text" name="goods_name" size="60" />
+                    </p>
+                     <p>
+                        价　　格：
+                        从<input value="<?php echo I('get.goods_fprice') ?>" type="text" name="goods_fprice" size="8" />
+                        到<input value="<?php echo I('get.goods_tprice') ?>" type="text" name="goods_tprice" size="8" />
+                    </p>
+                     <p>
+                        是否上架：
+                         <?php $ios = I('get.ios'); ?>
+                         <input type="radio" name="ios" value="" <?php if($ios == '') echo 'checked="checked"'; ?> />全部
+                         <input type="radio" name="ios" value="上架" <?php if($ios == '上架') echo 'checked="checked"'; ?> />上架
+                         <input type="radio" name="ios" value="下架" <?php if($ios == '下架') echo 'checked="checked"'; ?> />下架
+                    </p>
+                                         <p>
+                        添加时间：
+                        从<input value="<?php echo I('get.fadd_time') ?>" type="text" name="fadd_time" size="20" />
+                        到<input value="<?php echo I('get.aadd_time') ?>" type="text" name="aadd_time" size="20" />
+                    </p>
+                    <P>
+                        <input type="submit" value="搜索" />
+                    </P>
+ <!--                   品牌<select name="s_product_mark" style="width: 100px;">
                         <option selected="selected" value="0">请选择</option>
                         <option value="1">苹果apple</option>
                     </select>
-                    <input value="查询" type="submit" />
+                    <input value="查询" type="submit" />-->
                 </form>
             </span>
         </div>
@@ -99,7 +124,7 @@
                     </tr><?php endforeach; endif; ?>
 
                      <tr>
-                        <td colspan="20" style="text-align: center;">
+                        <td id="page-table" colspan="20" align="center" >
                             <?php echo ($pagelist); ?>
                         </td>
                     </tr>

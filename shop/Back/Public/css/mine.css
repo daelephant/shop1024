@@ -29,3 +29,6 @@ body{
     background-color: #E8F2FC;
     border-bottom: solid #1c94c4 1px
 }
+#page-table{text-align: center;}
+#page-table a{padding: 3px;border: 1px solid green;margin: 0px;}
+#page-table input{padding: 5px;background: #ff0000;margin: 5px;color: blue;font-weight: bold}

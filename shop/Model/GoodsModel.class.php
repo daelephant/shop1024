@@ -157,6 +157,23 @@ class GoodsModel extends Model{
     }
     //给后台获取商品列表信息，有分页要求
     function fetchData(){
+        /******************搜索*************/
+        $where = array(); //空的where条件
+        //商品名称
+        $goods_name = I('get.goods_name');
+        if($goods_name)
+            $where['goods_name'] = array('like',"%$goods_name%");//WHERE goods_name like '%$goods_name%'
+        //价格
+        $fgoods_price = I('get.fgoods_price');
+        $tgoods_price = I('get.tgoods_price');
+        if($fgoods_price && $tgoods_price)
+            $where['goods_price'] = array('between',array($fgoods_price,$tgoods_price));
+            //WHERE goods_price BETWEEN $fgoods_price AND $tgoods_price
+        elseif ($fgoods_price)
+            $where['goods_price'] = array('egt',$fgoods_price);//WHERE goods_price >= $fgoods_price
+        elseif ($tgoods_price)
+            $where['goods_price'] = array('egt',$tgoods_price);//WHERE goods_price >= $tgoods_price
+
         //1获取商品总条数
         $total = $this->count();
         $per = 10;//每页5条数据
