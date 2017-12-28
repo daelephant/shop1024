@@ -46,16 +46,21 @@ class GoodsController extends BackController{
              * 第二个参数是：表单的类型、当前是添加还是修改的表单。1：添加，2：修改
              * $_POST:表单中原始的数据，I（'POST.'）
              */
-            $data = $goods->create();
-            //htmlpurifier过滤
-            $data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);
+            if($data = $goods->create(I('post.'),1)){
 
-            if($goods->add($data)){
-                $this->success('添加商品成功',U('showlist'),2);//页面跳转
-            }else{
-                $error = $goods->getError();
-                $this->error($error.'添加商品失败',U('tianjia'),2);//页面跳转
+                //htmlpurifier过滤
+                $data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);
+                //插入到数据库中
+                if($goods->add($data)){//在add()里面先调用了_before_insert方法
+                    $this->success('添加商品成功',U('showlist'),1);//页面跳转
+                }else{
+                    $error = $goods->getError();
+                    $this->error($error.'添加商品失败',U('tianjia'),2);//页面跳转
+                }
             }
+            //
+            $error = $goods->getError();
+            $this->error($error);
         }else{//展示表单
             /********获得商品展示信息*/
             $typeinfo = D('Type')->select();

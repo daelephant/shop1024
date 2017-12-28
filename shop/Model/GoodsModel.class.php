@@ -10,6 +10,11 @@ namespace Model;
 use Think\Model;
 class GoodsModel extends Model{
     //为数据表字段添加默认值，不能为空
+    protected $_validate = array(
+        array('goods_name','require','商品名称不能为空！',1),
+        array('goods_price','currency','商品价格必须是货币类型！',1)
+    );
+
     //自动完成设置add_time/upd_time
     /*
      * TP自动完成
@@ -31,35 +36,43 @@ class GoodsModel extends Model{
     //参数：
     //$data是收集的表单信息$options是设置的各种条件
     protected function _before_insert(&$data,$options) {
-        //上传图片处理：
+        //上传图片处理：判断有没有选择图片
         if($_FILES['goods_logo']['error']===0) {
             //通过Think/Upload.class.php实现附件上传  使用$up重写
             $cfg = array(
                 'rootPath' => './Common/Uploads/', //保存根路径
             );
-            $up = new \Think\Upload($cfg);
+            $up = new \Think\Upload($cfg);//实例化上传类
+            $up->maxSize = 1024 * 1024;//1M
+            $up->exts = array('jpg','gif','png','jpeg');//设置文件上传类型
+            //$up -> savePath = 'Goods/';//设置附件上传(子)目录
             $z = $up->uploadOne($_FILES['goods_logo']);
             if (!$z){
                 //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
                 $this->error = $up->getError();
                 return FALSE;
+            }else{
+
+                //$z会返回成功上传附件的相关信息
+                //拼装图片的路径名信息，存储到数据库里面
+                $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];
+                $data['goods_big_logo'] = $big_path_name;
+
+                //根据原图($big_path_name)制作缩略图
+                $im = new \Think\Image();//实例化对象
+                $im->open($big_path_name);//打开原图
+                $im->thumb(60,60);//制作缩略图
+                //缩略图的名字：“small_原图名字”；
+                $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
+                $im->save($small_path_name);//存储缩略图到服务器
+                //保存缩略图到数据库：
+                $data['goods_small_logo'] = $small_path_name;
             }
-            //$z会返回成功上传附件的相关信息
-            //拼装图片的路径名信息，存储到数据库里面
-            $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];
-            $data['goods_big_logo'] = $big_path_name;
 
-            //根据原图($big_path_name)制作缩略图
-            $im = new \Think\Image();//实例化对象
-            $im->open($big_path_name);//打开原图
-            $im->thumb(60,60);//制作缩略图
-            //缩略图的名字：“small_原图名字”；
-            $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
-            $im->save($small_path_name);//存储缩略图到服务器
-            //保存缩略图到数据库：
-            $data['goods_small_logo'] = $small_path_name;
-
-
+            //// 获取当前时间并添加到表单中这样就会插入到数据库中
+            //$data['addtime'] = date('Y-m-d H:i:s', time());
+            //// 我们自己来过滤这个字段
+            //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
         }
 
 
