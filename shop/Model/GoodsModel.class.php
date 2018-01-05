@@ -159,6 +159,7 @@ class GoodsModel extends Model{
     function fetchData(){
         /******************搜索*************/
         $where = array(); //空的where条件
+        $where['is_del'] = array('eq','不删除');//WHERE is_del = '不删除'
         //商品名称
         $goods_name = I('get.goods_name');
         if($goods_name)
@@ -172,15 +173,52 @@ class GoodsModel extends Model{
         elseif ($fgoods_price)
             $where['goods_price'] = array('egt',$fgoods_price);//WHERE goods_price >= $fgoods_price
         elseif ($tgoods_price)
-            $where['goods_price'] = array('egt',$tgoods_price);//WHERE goods_price >= $tgoods_price
-
+            $where['goods_price'] = array('elt',$tgoods_price);//WHERE goods_price <= $tgoods_price
+        //是否上架
+        $ios = I('get.ios');
+        if($ios)
+            $where['is_sale'] = array('eq',$ios);//WHERE is_sale = $ios
+        //添加时间
+        $fadd_time = I('get.fadd_time');
+        $tadd_time = I('get.tadd_time');
+        if($fadd_time && $tadd_time) {
+            $fadd_time = strtotime($fadd_time);
+            $tadd_time = strtotime($tadd_time);
+            $where['add_time'] = array('between', array($fadd_time, $tadd_time));//WHERE add_time between $fadd_time AND $tadd_time
+        }
+        elseif ($fadd_time) {
+            $fadd_time = strtotime($fadd_time);
+            $where['add_time'] = array('egt', $fadd_time);//WHERE add_time >= $fadd_time
+        }
+        elseif ($tadd_time) {
+            $tadd_time = strtotime($tadd_time);
+            $where['add_time'] = array('elt', $tadd_time);//WHERE add_time <= $tadd_time
+        }
+        /******************搜索*************/
+        /**********************排序*************************/
+        $orderby = 'goods_id';//默认的排序字段
+        $orderway = 'desc';//默认的排序方式
+        $odby = I('get.odby');//默认的排序字段
+        if ($odby){
+            if ($odby == 'id_asc')
+                $orderway = 'asc';
+            elseif ($odby == 'price_desc')
+                $orderby = 'goods_price';
+            elseif ($odby =='price_asc')
+            {
+                $orderby = 'goods_price';
+                $orderway = 'asc';
+            }
+        }
+        /**********************排序*************************/
+        /*********************翻页**************/
         //1获取商品总条数
-        $total = $this->count();
+        $total = $this->where($where)->count();
         $per = 10;//每页5条数据
         //2实例化分页类Page对象
         $page = new \Common\Tools\Page($total,$per);
         //3获取分页信息
-        $pageinfo = $this ->where(array('is_del'=>'不删除'))-> order('goods_id desc')->limit($page->offset,$per)->select();
+        $pageinfo = $this ->where($where)-> order("$orderby $orderway")->limit($page->offset,$per)->select();
         //4获取页码列表信息
         $pagelist = $page->fpage(array(3,4,5,6,7,8));//一定要注意传递的是数组
        // dump($pagelist);

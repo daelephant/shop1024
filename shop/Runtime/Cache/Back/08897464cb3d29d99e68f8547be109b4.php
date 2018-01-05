@@ -7,6 +7,15 @@
 
     <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
+    <!--引入时间显示插件-->
+    <link href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/datepicker-zh_cn.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.css" />
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.js"></script>
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+    <!--引入时间显示插件-->
 </head>
 <body>
 <style>
@@ -24,15 +33,15 @@
  <!--<div class="div_search">-->
  <div class="">
             <span>
-                <form action="/index.php/Back/Goods/showlist.html?goods_name=11&goods_fprice=1&goods_tprice=3&ios=%E4%B8%8B%E6%9E%B6&fadd_time=3&aadd_time=212" method="get" name="searchForm">
+                <form action="/index.php/Back/Goods/showlist" method="get" name="searchForm">
                     <p>
                         商品名称：
                         <input value="<?php echo I('get.goods_name') ?>" type="text" name="goods_name" size="60" />
                     </p>
                      <p>
                         价　　格：
-                        从<input value="<?php echo I('get.goods_fprice') ?>" type="text" name="goods_fprice" size="8" />
-                        到<input value="<?php echo I('get.goods_tprice') ?>" type="text" name="goods_tprice" size="8" />
+                        从<input value="<?php echo I('get.fgoods_price') ?>" type="text" name="fgoods_price" size="8" />
+                        到<input value="<?php echo I('get.tgoods_price') ?>" type="text" name="tgoods_price" size="8" />
                     </p>
                      <p>
                         是否上架：
@@ -41,10 +50,19 @@
                          <input type="radio" name="ios" value="上架" <?php if($ios == '上架') echo 'checked="checked"'; ?> />上架
                          <input type="radio" name="ios" value="下架" <?php if($ios == '下架') echo 'checked="checked"'; ?> />下架
                     </p>
-                                         <p>
+                    <p>
+
                         添加时间：
-                        从<input value="<?php echo I('get.fadd_time') ?>" type="text" name="fadd_time" size="20" />
-                        到<input value="<?php echo I('get.aadd_time') ?>" type="text" name="aadd_time" size="20" />
+                        从<input id="fadd_time" value="<?php echo I('get.fadd_time') ?>" type="text" name="fadd_time" size="20" />
+                        到<input id="tadd_time" value="<?php echo I('get.tadd_time') ?>" type="text" name="tadd_time" size="20" />
+                    </p>
+                    <p>
+                        排序方式：
+                        <?php $odby = I('get.odby','id_desc'); ?>
+                        <input onclick="this.parentNode.parentNode.submit();"  type="radio" name="odby" value="id_desc" <?php if($odby == 'id_desc') echo 'checked="checked"'; ?> />以添加时间降序
+                        <input onclick="this.parentNode.parentNode.submit();"  type="radio" name="odby" value="id_asc" <?php if($odby == 'id_asc') echo 'checked="checked"'; ?> />以添加时间升序
+                        <input onclick="this.parentNode.parentNode.submit();"  type="radio" name="odby" value="price_desc" <?php if($odby == 'price_desc') echo 'checked="checked"'; ?> />以价格降序
+                        <input onclick="this.parentNode.parentNode.submit();"  type="radio" name="odby" value="price_asc" <?php if($odby == 'price_asc') echo 'checked="checked"'; ?> />以价格升序
                     </p>
                     <P>
                         <input type="submit" value="搜索" />
@@ -129,6 +147,14 @@
                         </td>
                     </tr>
                 </tbody>
+                <script>
+                    //添加时间插件
+                    $.timepicker.setDefaults($.timepicker.regional['zh-CN']);//设置使用中文
+
+                    $("#fadd_time").datetimepicker();
+                    $("#tadd_time").datetimepicker();
+
+                </script>
             </table>
         </div>
 </body>
