@@ -93,7 +93,7 @@
                         <td align="center" colspan="2">操作</td>
                     </tr>
 
-                <?php if(is_array($info)): foreach($info as $key=>$v): ?><tr id="product_<?php echo ($v["goods_id"]); ?>"><!--给每个商品都设置唯一标识，以方便获得、删除-->
+                <?php if(is_array($info)): foreach($info as $key=>$v): ?><tr class="tron" id="product_<?php echo ($v["goods_id"]); ?>"><!--给每个商品都设置唯一标识，以方便获得、删除-->
                         <td><?php echo ($v["goods_id"]); ?></td>
                         <td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>"><?php echo ($v["goods_name"]); ?></a></td>
                         <td><?php echo ($v["goods_price"]); ?></td>
@@ -155,6 +155,7 @@
                     $("#tadd_time").datetimepicker();
 
                 </script>
+                <script type="text/javascript" src="/Back/Public/js/tron.js"></script>
             </table>
         </div>
 </body>

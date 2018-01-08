@@ -62,7 +62,8 @@
                     </tr>
 
                 <foreach name="info" item="v">
-                    <tr id="product_{$v.goods_id}"><!--给每个商品都设置唯一标识，以方便获得、删除-->
+                    <!--为每一个tr添加一个样式-->
+                    <tr class="tron" id="product_{$v.goods_id}"><!--给每个商品都设置唯一标识，以方便获得、删除-->
                         <td>{$v.goods_id}</td>
                         <td><a href="__CONTROLLER__/upd/goods_id/{$v['goods_id']}">{$v.goods_name}</a></td>
                         <td>{$v.goods_price}</td>
@@ -149,5 +150,7 @@
                     $("#tadd_time").datetimepicker();
 
                 </script>
+                <!--引入行高亮显示-->
+                <script type="text/javascript" src="/Back/Public/js/tron.js"></script>
             </table>
         </div>
