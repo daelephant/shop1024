@@ -93,7 +93,8 @@
                         <td align="center" colspan="2">操作</td>
                     </tr>
 
-                <?php if(is_array($info)): foreach($info as $key=>$v): ?><tr class="tron" id="product_<?php echo ($v["goods_id"]); ?>"><!--给每个商品都设置唯一标识，以方便获得、删除-->
+                <?php if(is_array($info)): foreach($info as $key=>$v): ?><!--为每一个tr添加一个样式-->
+                    <tr class="tron" id="product_<?php echo ($v["goods_id"]); ?>"><!--给每个商品都设置唯一标识，以方便获得、删除-->
                         <td><?php echo ($v["goods_id"]); ?></td>
                         <td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>"><?php echo ($v["goods_name"]); ?></a></td>
                         <td><?php echo ($v["goods_price"]); ?></td>
@@ -120,7 +121,10 @@
                         <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
                         <td><?php echo (date("Y-m-d H:i:s",$v["add_time"])); ?></td>
                         <!--<td><a href="<?php echo U('upd',array('goods_id'=>$v['goods_id']));?>" >修改</a></td>-->
-                        <td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>" >修改</a></td>
+                        <!--一：PHP原生方法-->
+                        <!--<td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>" >修改</a></td>-->
+                        <!--二：TP原生方法-->
+                        <td><a href="<?php echo U('upd?goods_id='.$v['goods_id']); ?>" >修改</a></td>
                         <script type="text/javascript">
                             function del_goods(goods_id){
                                 //利用ajax去服务器删除数据库记录信息
@@ -155,6 +159,7 @@
                     $("#tadd_time").datetimepicker();
 
                 </script>
+                <!--引入行高亮显示-->
                 <script type="text/javascript" src="/Back/Public/js/tron.js"></script>
             </table>
         </div>

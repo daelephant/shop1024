@@ -9,6 +9,11 @@
 namespace Model;
 use Think\Model;
 class GoodsModel extends Model{
+    //添加时调用create方法允许接受的字段
+    //protected $insertFields = 'goods_name,goods_price,is_on_sale';
+    //修改时调用create方法允许接受的字段
+    //protected $updateFields = 'id,goods_name,goods_price,is_on_sale';
+
     //为数据表字段添加默认值，不能为空
     protected $_validate = array(
         array('goods_name','require','商品名称不能为空！',1),

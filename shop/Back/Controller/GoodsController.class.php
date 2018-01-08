@@ -91,12 +91,23 @@ class GoodsController extends BackController{
         //两个逻辑：展示，收集
         $goods = new \Model\GoodsModel();//使用new的好处：本身自己定义的方法可以调用，父类的好的方法也可以调用，D（） M（）只能调用父类方法
         if($_POST){
+            if($goods->create(I('post.'),2)){
+                if(FALSE !== $goods->save()){
+                //    save()的返回值是，如果失败返回false，如果成功返回受影响的条数，【如果修改后和修改前相同返回0】
+                    $this->success('修改成功',U('showlist'));
+                    exit;
+                }
+            }
+            $error = $goods->getError();
+            $this->error($error);
+            /*
             $data = $goods->create();//收集数据
             if($goods->save($data)){
                 $this->success('修改成功',U('showlist'),2);
             }else{
                 $this->error('修改失败',U('upd',array('goods_id'=>$data['goods_id'])),2);
-            }
+            }*/
+
         }else {
             $goods_id = I('get.goods_id');// 相当于 $_GET['goods_id']
             $info = $goods->find($goods_id);//查询被修改的商品信息

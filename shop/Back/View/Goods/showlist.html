@@ -114,7 +114,10 @@
                         <td>{$v.goods_introduce|htmlspecialchars_decode}</td>
                         <td>{$v.add_time|date="Y-m-d H:i:s",###}</td>
                         <!--<td><a href="{:U('upd',array('goods_id'=>$v['goods_id']))}" >修改</a></td>-->
-                        <td><a href="__CONTROLLER__/upd/goods_id/{$v['goods_id']}" >修改</a></td>
+                        <!--一：PHP原生方法-->
+                        <!--<td><a href="__CONTROLLER__/upd/goods_id/{$v['goods_id']}" >修改</a></td>-->
+                        <!--二：TP原生方法-->
+                        <td><a href="<?php echo U('upd?goods_id='.$v['goods_id']); ?>" >修改</a></td>
                         <script type="text/javascript">
                             function del_goods(goods_id){
                                 //利用ajax去服务器删除数据库记录信息

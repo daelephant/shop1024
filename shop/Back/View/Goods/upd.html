@@ -81,11 +81,18 @@
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
     <form action="__SELF__" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="goods_id" value="{$info.goods_id}"/>
+        <!--1:以变量的方式获取id-->
+        <!--<input type="hidden" name="goods_id" value="{$info.goods_id}"/>-->
+        <!--1:以GET方式获取id-->
+        <input type="hidden" name="goods_id" value="<?php echo I('get.goods_id'); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
                 <td>商品名称</td>
-                <td><input type="text" name="goods_name" value="{$info.goods_name}" /></td>
+                <!--1：TP引擎写法-->
+                <!--<td><input type="text" name="goods_name" value="{$info.goods_name}" /></td>-->
+                <!--2：原生写法-->
+                <!--"."是封装后的，而"[]"是原生的，“.”封装的越高的话，越容易出错-->
+                <td><input type="text" name="goods_name" value="<?php echo $info['goods_name']; ?>" /></td>
             </tr>
             <tr>
                 <td>商品价格</td>

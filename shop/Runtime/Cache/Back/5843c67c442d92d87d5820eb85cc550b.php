@@ -7,6 +7,15 @@
 
     <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
+    <!--引入时间显示插件-->
+    <link href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/datepicker-zh_cn.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.css" />
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.js"></script>
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+    <!--引入时间显示插件-->
 </head>
 <body>
 <style>
@@ -103,12 +112,18 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/21" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>
+    <form action="/index.php/Back/Goods/upd/goods_id/29.html" method="post" enctype="multipart/form-data">
+        <!--1:以变量的方式获取id-->
+        <!--<input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>-->
+        <!--1:以GET方式获取id-->
+        <input type="hidden" name="goods_id" value="<?php echo I('get.goods_id'); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
             <tr>
                 <td>商品名称</td>
-                <td><input type="text" name="goods_name" value="<?php echo ($info["goods_name"]); ?>" /></td>
+                <!--1：TP引擎写法-->
+                <!--<td><input type="text" name="goods_name" value="<?php echo ($info["goods_name"]); ?>" /></td>-->
+                <!--2：原生写法-->
+                <td><input type="text" name="goods_name" value="<?php echo $info['goods_name']; ?>" /></td>
             </tr>
             <tr>
                 <td>商品价格</td>
