@@ -40,51 +40,152 @@ class GoodsModel extends Model{
     // 插入数据前的回调方法
     //参数：
     //$data是收集的表单信息$options是设置的各种条件
+    /*******************20180109新版钩子写法，重构图片上传********************************/
     protected function _before_insert(&$data,$options) {
+        /**********处理LOGO*****************/
         //上传图片处理：判断有没有选择图片
-        if($_FILES['goods_logo']['error']===0) {
+        if($_FILES['goods_logo']['error'] == 0) {
             //通过Think/Upload.class.php实现附件上传  使用$up重写
-            $cfg = array(
-                'rootPath' => './Common/Uploads/', //保存根路径
-            );
-            $up = new \Think\Upload($cfg);//实例化上传类
-            $up->maxSize = 1024 * 1024;//1M
+            $up = new \Think\Upload();//实例化上传类
+            $up->maxSize = 1024 * 1024;//以下开始设置：1M
             $up->exts = array('jpg','gif','png','jpeg');//设置文件上传类型
-            //$up -> savePath = 'Goods/';//设置附件上传(子)目录
-            $z = $up->uploadOne($_FILES['goods_logo']);
-            if (!$z){
+            $up->rootPath = './Common/Uploads/';//设置附件上传跟目录
+            $up->savePath = 'Goods/';//设置附件上传(子)目录./Common/Uploads/Goods/
+            //上传文件
+            $info = $up->upload();
+            if (!$info){
                 //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
                 $this->error = $up->getError();
                 return FALSE;
             }else{
-
-                //$z会返回成功上传附件的相关信息
-                //拼装图片的路径名信息，存储到数据库里面
-                $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];
-                $data['goods_big_logo'] = $big_path_name;
-
-                //缩略图的名字：“small_原图名字”；
-                $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
-                $msmall_path_name = $up->rootPath.$z['savepath']."msmall_".$z['savename'];
+                //var_dump($info);exit;二维数组
+                /***************生成缩略图***************************/
+                //先拼装原图上的路径
+                $big_path_name = $info['goods_logo']['savepath'].$info['goods_logo']['savename'];
+                //再拼出缩略图的路径和名称
+                $smlogo  = $info['goods_logo']['savepath'].'sm_'.$info['goods_logo']['savename'];
+                $sm1logo = $info['goods_logo']['savepath'].'sm1_'.$info['goods_logo']['savename'];
+                $sm2logo = $info['goods_logo']['savepath'].'sm2_'.$info['goods_logo']['savename'];
+                $sm3logo = $info['goods_logo']['savepath'].'sm3_'.$info['goods_logo']['savename'];//缩略图的名字：“sm_原图名字”；
                 //根据原图($big_path_name)制作缩略图
                 $im = new \Think\Image();//实例化对象
-                $im->open($big_path_name);//打开原图
-                $im->thumb(60,60)->save($small_path_name);//制作缩略图
-                $im->thumb(30,30)->save($msmall_path_name);//制作缩略图
-                //$im->save($small_path_name);//存储缩略图到服务器
-                //保存缩略图到数据库：
-                $data['goods_small_logo'] = $small_path_name;
-                $data['goods_msmall_logo'] = $msmall_path_name;
+                //打开要生成缩略图的图片
+                $im->open('./Common/Uploads/'.$big_path_name);//打开原图
+                //生成缩略图
+                $im->thumb(700,700)->save('./Common/Uploads/'.$smlogo);
+                $im->thumb(350,350)->save('./Common/Uploads/'.$sm1logo);
+                $im->thumb(130,130)->save('./Common/Uploads/'.$sm2logo);
+                $im->thumb(50,50)->save('./Common/Uploads/'.$sm3logo);
+                /********把路径放到表单中******************/
+                $data['goods_big_logo'] = $big_path_name;
+                $data['goods_small_logo'] = $smlogo;
+                $data['goods_small1_logo'] = $sm1logo;
+                $data['goods_small2_logo'] = $sm2logo;
+                $data['goods_small3_logo'] = $sm3logo;
             }
 
-            //// 获取当前时间并添加到表单中这样就会插入到数据库中
+            //// 获取当前时间并添加到表单中这样就会插入到数据库中,上面自动完成了
             //$data['addtime'] = date('Y-m-d H:i:s', time());
             //// 我们自己来过滤这个字段
+            $data['goods_introduce'] = fanXSS($_POST['goods_introduce']);
             //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
         }
 
 
     }
+    /***********  以上********20180109新版钩子写法，重构图片上传  ********************************/
+    //protected function _before_insert(&$data,$options) {
+    //    //上传图片处理：判断有没有选择图片
+    //    if($_FILES['goods_logo']['error']===0) {
+    //        //通过Think/Upload.class.php实现附件上传  使用$up重写
+    //        $cfg = array(
+    //            'rootPath' => './Common/Uploads/', //保存根路径
+    //        );
+    //        $up = new \Think\Upload($cfg);//实例化上传类
+    //        $up->maxSize = 1024 * 1024;//1M
+    //        $up->exts = array('jpg','gif','png','jpeg');//设置文件上传类型
+    //        //$up -> savePath = 'Goods/';//设置附件上传(子)目录
+    //        $z = $up->uploadOne($_FILES['goods_logo']);
+    //        if (!$z){
+    //            //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
+    //            $this->error = $up->getError();
+    //            return FALSE;
+    //        }else{
+    //
+    //            //$z会返回成功上传附件的相关信息
+    //            //拼装图片的路径名信息，存储到数据库里面
+    //            $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];
+    //            $data['goods_big_logo'] = $big_path_name;
+    //
+    //            //缩略图的名字：“small_原图名字”；
+    //            $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
+    //            $msmall_path_name = $up->rootPath.$z['savepath']."msmall_".$z['savename'];
+    //            //根据原图($big_path_name)制作缩略图
+    //            $im = new \Think\Image();//实例化对象
+    //            $im->open($big_path_name);//打开原图
+    //            $im->thumb(60,60)->save($small_path_name);//制作缩略图
+    //            $im->thumb(30,30)->save($msmall_path_name);//制作缩略图
+    //            //$im->save($small_path_name);//存储缩略图到服务器
+    //            //保存缩略图到数据库：
+    //            $data['goods_small_logo'] = $small_path_name;
+    //            $data['goods_msmall_logo'] = $msmall_path_name;
+    //        }
+    //
+    //        //// 获取当前时间并添加到表单中这样就会插入到数据库中
+    //        //$data['addtime'] = date('Y-m-d H:i:s', time());
+    //        //// 我们自己来过滤这个字段
+    //        //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
+    //    }
+    //
+    //
+    //}
+
+
+    //protected function _before_insert(&$data,$options) {
+    //    //上传图片处理：判断有没有选择图片
+    //    if($_FILES['goods_logo']['error']===0) {
+    //        //通过Think/Upload.class.php实现附件上传  使用$up重写
+    //        $cfg = array(
+    //            'rootPath' => './Common/Uploads/', //保存根路径
+    //        );
+    //        $up = new \Think\Upload($cfg);//实例化上传类
+    //        $up->maxSize = 1024 * 1024;//1M
+    //        $up->exts = array('jpg','gif','png','jpeg');//设置文件上传类型
+    //        //$up -> savePath = 'Goods/';//设置附件上传(子)目录
+    //        $z = $up->uploadOne($_FILES['goods_logo']);
+    //        if (!$z){
+    //            //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
+    //            $this->error = $up->getError();
+    //            return FALSE;
+    //        }else{
+    //
+    //            //$z会返回成功上传附件的相关信息
+    //            //拼装图片的路径名信息，存储到数据库里面
+    //            $big_path_name = $up->rootPath . $z['savepath'] . $z['savename'];
+    //            $data['goods_big_logo'] = $big_path_name;
+    //
+    //            //缩略图的名字：“small_原图名字”；
+    //            $small_path_name = $up->rootPath.$z['savepath']."small_".$z['savename'];
+    //            $msmall_path_name = $up->rootPath.$z['savepath']."msmall_".$z['savename'];
+    //            //根据原图($big_path_name)制作缩略图
+    //            $im = new \Think\Image();//实例化对象
+    //            $im->open($big_path_name);//打开原图
+    //            $im->thumb(60,60)->save($small_path_name);//制作缩略图
+    //            $im->thumb(30,30)->save($msmall_path_name);//制作缩略图
+    //            //$im->save($small_path_name);//存储缩略图到服务器
+    //            //保存缩略图到数据库：
+    //            $data['goods_small_logo'] = $small_path_name;
+    //            $data['goods_msmall_logo'] = $msmall_path_name;
+    //        }
+    //
+    //        //// 获取当前时间并添加到表单中这样就会插入到数据库中
+    //        //$data['addtime'] = date('Y-m-d H:i:s', time());
+    //        //// 我们自己来过滤这个字段
+    //        //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
+    //    }
+    //
+    //
+    //}
     // 插入成功后的回调方法
     protected function _after_insert($data,$options) {
         //收集属性并存储

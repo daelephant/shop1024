@@ -49,7 +49,7 @@ class GoodsController extends BackController{
             if($data = $goods->create(I('post.'),1)){
 
                 //htmlpurifier过滤
-                $data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);
+                //$data['goods_introduce'] = \fanXSS($_POST['goods_introduce']);
                 //插入到数据库中
                 if($goods->add($data)){//在add()里面先调用了_before_insert方法
                     $this->success('添加商品成功',U('showlist'),1);//页面跳转

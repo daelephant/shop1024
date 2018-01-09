@@ -7,6 +7,15 @@
 
     <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
+    <!--引入时间显示插件-->
+    <link href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/datepicker-zh_cn.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.css" />
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.js"></script>
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+    <!--引入时间显示插件-->
 </head>
 <body>
 <style>
@@ -139,7 +148,9 @@
                 </script>
                 <tr>
                     <td>商品logo图片</td>
-                    <td><input type="file" name="goods_logo" id="goods_logo" />
+                    <!--maxlength="10"：表示输入框最多输入 10 个字符(中文也算一个字符)，超过之后将不能再输入；-->
+                    <!--size="5"：表示输入框只显示 5 个可见的字符，但可以输入无数多的字符；-->
+                    <td><input type="file" name="goods_logo" id="goods_logo"  size="60"/>
                         <div id="goods_logo_dv"><img src="" alt="" id="goods_logo_im" width="160" height="160"/></div>
                     </td>
                 </tr>

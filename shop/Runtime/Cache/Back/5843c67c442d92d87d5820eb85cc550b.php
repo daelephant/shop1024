@@ -112,7 +112,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/29.html" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/36.html" method="post" enctype="multipart/form-data">
         <!--1:以变量的方式获取id-->
         <!--<input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>-->
         <!--1:以GET方式获取id-->
@@ -123,6 +123,7 @@
                 <!--1：TP引擎写法-->
                 <!--<td><input type="text" name="goods_name" value="<?php echo ($info["goods_name"]); ?>" /></td>-->
                 <!--2：原生写法-->
+                <!--"."是封装后的，而"[]"是原生的，“.”封装的越高的话，越容易出错-->
                 <td><input type="text" name="goods_name" value="<?php echo $info['goods_name']; ?>" /></td>
             </tr>
             <tr>
