@@ -112,7 +112,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/36.html" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/39.html" method="post" enctype="multipart/form-data">
         <!--1:以变量的方式获取id-->
         <!--<input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>-->
         <!--1:以GET方式获取id-->
@@ -169,7 +169,7 @@
                 <td>商品logo图片</td>
                 <td><input type="file" name="goods_logo_upd" id="goods_logo" />
                     <div id="goods_logo_dv"><img src="" alt="" id="goods_logo_im" width="160" height="160"/></div>
-                    <?php if(!empty($info["goods_big_logo"])): ?><img src='<?php echo (C("SITE_URL")); echo ($info["goods_big_logo"]); ?>' width='200' height='200' alt=''/>
+                    <?php if(!empty($info["goods_big_logo"])): ?><img src="/Common/Uploads/<?php echo $info['goods_big_logo']; ?>" width='200' height='200' alt=''/>
                         <span>如果选择上传新的logo图片，则会自动覆盖旧图片</span><?php endif; ?>
                 </td>
 

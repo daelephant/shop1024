@@ -152,7 +152,7 @@
                 <td><input type="file" name="goods_logo_upd" id="goods_logo" />
                     <div id="goods_logo_dv"><img src="" alt="" id="goods_logo_im" width="160" height="160"/></div>
                     <notempty name='info["goods_big_logo"]'>
-                        <img src='{$Think.config.SITE_URL}{$info.goods_big_logo}' width='200' height='200' alt=''/>
+                        <img src="/Common/Uploads/<?php echo $info['goods_big_logo']; ?>" width='200' height='200' alt=''/>
                         <span>如果选择上传新的logo图片，则会自动覆盖旧图片</span>
                     </notempty>
                 </td>
