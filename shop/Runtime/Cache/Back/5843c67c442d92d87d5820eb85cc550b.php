@@ -112,7 +112,7 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/39.html" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/40.html" method="post" enctype="multipart/form-data">
         <!--1:以变量的方式获取id-->
         <!--<input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>-->
         <!--1:以GET方式获取id-->

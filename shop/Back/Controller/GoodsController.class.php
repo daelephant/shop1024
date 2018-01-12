@@ -17,6 +17,8 @@ class GoodsController extends BackController{
         $info = $nowinfo['pageinfo'];//当前页数据信息
         $pagelist = $nowinfo['pagelist'];//页码列表信息
 
+
+
         //设置面包屑导航
         $bread = array(
             'first' => '商品管理',
@@ -71,6 +73,16 @@ class GoodsController extends BackController{
             $catinfo = D('Category')->order('cat_path')->select();
             $this->assign('catinfo',$catinfo);
             /********获得分类并传递显示*/
+
+            /********取出品牌************/
+            //取出所有品牌
+            //方法一
+            //$brandModel1 = D('Brand'); TP自带D方法
+            //方法二  原生写php代码 相对路径
+            $brandModel = new \Back\Model\BrandModel();
+            $brandData = $brandModel->select();
+            $this->assign('brandData',$brandData);
+            /********取出品牌************/
 
             //设置面包屑导航
             $bread = array(

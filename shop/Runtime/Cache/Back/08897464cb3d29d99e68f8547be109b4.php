@@ -116,10 +116,15 @@
                             <?php
  if($v['is_new'] == '新品'){ echo "<img src='".C('BACK_IMG_URL')."yes.gif"."' alt='新品'/>"; }else{ echo "<img src='".C('BACK_IMG_URL')."no.gif"."' alt='不新品'/>"; } ?>
                         </td>
-                        <!--写配置TP文件展示图片-->
+                        <!--1写配置TP文件展示图片-->
                         <!--<td><img src="<?php echo (C("SITE_URL")); echo (substr($v["goods_big_logo"],2)); ?>" alt="暂无图片" width="100" height="100"  ></td>-->
-                        <!--用函数实现展示图片（第一阶段）-->
-                        <td><img src="/Common/Uploads/<?php echo $v['goods_big_logo']; ?>" alt="暂无图片" width="100" height="100"  ></td>
+                        <!--2、用函数实现展示图片（第一阶段）-->
+                        <!--<td><img src="/Common/Uploads/<?php echo $v['goods_big_logo']; ?>" alt="暂无图片" width="100" height="100"  ></td>-->
+                        <!--3、后台配置变量展示图片-->
+                        <!--<td><img src="<?php echo C('IMAGE_CONFIG')['viewPath'].$v['goods_big_logo']; ?>" alt="暂无图片" width="100" height="100"  ></td>-->
+                        <!--4、封装函数：后台配置变量展示图片-->
+                            <td><?php showImage($v['goods_big_logo'],100,100); ?></td>
+
                         <td><img src="/Common/Uploads/<?php echo $v['goods_small1_logo']; ?>" alt="暂无图片" width="60" height="60"  ></td>
                         <td><?php echo (htmlspecialchars_decode($v["goods_introduce"])); ?></td>
                         <td><?php echo (date("Y-m-d H:i:s",$v["add_time"])); ?></td>

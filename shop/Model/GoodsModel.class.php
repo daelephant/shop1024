@@ -41,59 +41,91 @@ class GoodsModel extends Model{
     //参数：
     //$data是收集的表单信息$options是设置的各种条件
     /*******************20180109新版钩子写法，重构图片上传********************************/
+    //protected function _before_insert(&$data,$options) {
+    //    /**********处理LOGO*****************/
+    //    //上传图片处理：判断有没有选择图片
+    //    if($_FILES['goods_logo']['error'] == 0) {
+    //        //通过Think/Upload.class.php实现附件上传  使用$up重写
+    //        $up = new \Think\Upload();//实例化上传类
+    //        $up->maxSize = 1024 * 1024;//以下开始设置：1M
+    //        $up->exts = array('jpg','gif','png','jpeg');//设置文件上传类型
+    //        $up->rootPath = './Common/Uploads/';//设置附件上传跟目录
+    //        $up->savePath = 'Goods/';//设置附件上传(子)目录./Common/Uploads/Goods/
+    //        //上传文件
+    //        $info = $up->upload();
+    //        if (!$info){
+    //            //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
+    //            $this->error = $up->getError();
+    //            return FALSE;
+    //        }else{
+    //            //var_dump($info);exit;二维数组
+    //            /***************生成缩略图***************************/
+    //            //先拼装原图上的路径
+    //            $big_path_name = $info['goods_logo']['savepath'].$info['goods_logo']['savename'];
+    //            //再拼出缩略图的路径和名称
+    //            $smlogo  = $info['goods_logo']['savepath'].'sm_'.$info['goods_logo']['savename'];
+    //            $sm1logo = $info['goods_logo']['savepath'].'sm1_'.$info['goods_logo']['savename'];
+    //            $sm2logo = $info['goods_logo']['savepath'].'sm2_'.$info['goods_logo']['savename'];
+    //            $sm3logo = $info['goods_logo']['savepath'].'sm3_'.$info['goods_logo']['savename'];//缩略图的名字：“sm_原图名字”；
+    //            //根据原图($big_path_name)制作缩略图
+    //            $im = new \Think\Image();//实例化对象
+    //            //打开要生成缩略图的图片
+    //            $im->open('./Common/Uploads/'.$big_path_name);//打开原图
+    //            //生成缩略图
+    //            $im->thumb(700,700)->save('./Common/Uploads/'.$smlogo);
+    //            $im->thumb(350,350)->save('./Common/Uploads/'.$sm1logo);
+    //            $im->thumb(130,130)->save('./Common/Uploads/'.$sm2logo);
+    //            $im->thumb(50,50)->save('./Common/Uploads/'.$sm3logo);
+    //            /********把路径放到表单中******************/
+    //            $data['goods_big_logo'] = $big_path_name;
+    //            $data['goods_small_logo'] = $smlogo;
+    //            $data['goods_small1_logo'] = $sm1logo;
+    //            $data['goods_small2_logo'] = $sm2logo;
+    //            $data['goods_small3_logo'] = $sm3logo;
+    //        }
+    //
+    //        //// 获取当前时间并添加到表单中这样就会插入到数据库中,上面自动完成了
+    //        //$data['addtime'] = date('Y-m-d H:i:s', time());
+    //        //// 我们自己来过滤这个字段
+    //        $data['goods_introduce'] = fanXSS($_POST['goods_introduce']);
+    //        //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
+    //    }
+    //
+    //
+    //}
+    /***********  以上 * 以下对此再次封装*******20180109新版钩子写法，重构图片上传  ********************************/
     protected function _before_insert(&$data,$options) {
         /**********处理LOGO*****************/
         //上传图片处理：判断有没有选择图片
+        //var_dump($_FILES);exit();//确定接受表单上传的图片名：表单name=goods_logo
         if($_FILES['goods_logo']['error'] == 0) {
-            //通过Think/Upload.class.php实现附件上传  使用$up重写
-            $up = new \Think\Upload();//实例化上传类
-            $up->maxSize = 1024 * 1024;//以下开始设置：1M
-            $up->exts = array('jpg','gif','png','jpeg');//设置文件上传类型
-            $up->rootPath = './Common/Uploads/';//设置附件上传跟目录
-            $up->savePath = 'Goods/';//设置附件上传(子)目录./Common/Uploads/Goods/
-            //上传文件
-            $info = $up->upload();
-            if (!$info){
-                //获取失败原因把错误信息保存到 模型 的error属性中，然后控制器调用$model->getError()获取错误信息并由控制器打印
-                $this->error = $up->getError();
-                return FALSE;
-            }else{
-                //var_dump($info);exit;二维数组
-                /***************生成缩略图***************************/
-                //先拼装原图上的路径
-                $big_path_name = $info['goods_logo']['savepath'].$info['goods_logo']['savename'];
-                //再拼出缩略图的路径和名称
-                $smlogo  = $info['goods_logo']['savepath'].'sm_'.$info['goods_logo']['savename'];
-                $sm1logo = $info['goods_logo']['savepath'].'sm1_'.$info['goods_logo']['savename'];
-                $sm2logo = $info['goods_logo']['savepath'].'sm2_'.$info['goods_logo']['savename'];
-                $sm3logo = $info['goods_logo']['savepath'].'sm3_'.$info['goods_logo']['savename'];//缩略图的名字：“sm_原图名字”；
-                //根据原图($big_path_name)制作缩略图
-                $im = new \Think\Image();//实例化对象
-                //打开要生成缩略图的图片
-                $im->open('./Common/Uploads/'.$big_path_name);//打开原图
-                //生成缩略图
-                $im->thumb(700,700)->save('./Common/Uploads/'.$smlogo);
-                $im->thumb(350,350)->save('./Common/Uploads/'.$sm1logo);
-                $im->thumb(130,130)->save('./Common/Uploads/'.$sm2logo);
-                $im->thumb(50,50)->save('./Common/Uploads/'.$sm3logo);
-                /********把路径放到表单中******************/
-                $data['goods_big_logo'] = $big_path_name;
-                $data['goods_small_logo'] = $smlogo;
-                $data['goods_small1_logo'] = $sm1logo;
-                $data['goods_small2_logo'] = $sm2logo;
-                $data['goods_small3_logo'] = $sm3logo;
-            }
+            $ret = uploadOne('goods_logo','Goods',array(
+                array(700,700),
+                array(350,350),
+                array(130,130),
+                array(50,50)
+            ));
+            /********把路径放到表单中******************/
+            $data['goods_big_logo'] = $ret['images'][0];
+            $data['goods_small_logo'] = $ret['images'][1];
+            $data['goods_small1_logo'] = $ret['images'][2];
+            $data['goods_small2_logo'] = $ret['images'][3];
+            $data['goods_small3_logo'] = $ret['images'][4];
+        }
 
             //// 获取当前时间并添加到表单中这样就会插入到数据库中,上面自动完成了
             //$data['addtime'] = date('Y-m-d H:i:s', time());
             //// 我们自己来过滤这个字段
             $data['goods_introduce'] = fanXSS($_POST['goods_introduce']);
             //$data['goods_desc'] = removeXSS($_POST['goods_desc']);
-        }
+
 
 
     }
-    /***********  以上********20180109新版钩子写法，重构图片上传  ********************************/
+    /***********  以上对此再次封装*******20180109新版钩子写法，重构图片上传  ********************************/
+
+
+
     //protected function _before_insert(&$data,$options) {
     //    //上传图片处理：判断有没有选择图片
     //    if($_FILES['goods_logo']['error']===0) {
@@ -417,11 +449,14 @@ class GoodsModel extends Model{
                 $oldLogo = $this->field('goods_big_logo,goods_small_logo,goods_small1_logo,goods_small2_logo,goods_small3_logo')->find($id);
                 //var_dump($oldLogo);exit;
                 //从硬盘上删除
-                unlink('./Common/Uploads/'.$oldLogo['goods_big_logo']);
-                unlink('./Common/Uploads/'.$oldLogo['goods_small_logo']);
-                unlink('./Common/Uploads/'.$oldLogo['goods_small1_logo']);
-                unlink('./Common/Uploads/'.$oldLogo['goods_small2_logo']);
-                unlink('./Common/Uploads/'.$oldLogo['goods_small3_logo']);
+                //方法一：常规删除unlink
+                //unlink('./Common/Uploads/'.$oldLogo['goods_big_logo']);
+                //unlink('./Common/Uploads/'.$oldLogo['goods_small_logo']);
+                //unlink('./Common/Uploads/'.$oldLogo['goods_small1_logo']);
+                //unlink('./Common/Uploads/'.$oldLogo['goods_small2_logo']);
+                //unlink('./Common/Uploads/'.$oldLogo['goods_small3_logo']);
+                //方法一：封装成函数方便删除unlink
+                deleteImage($oldLogo);
             }
 
             //// 获取当前时间并添加到表单中这样就会插入到数据库中,上面自动完成了

@@ -7,6 +7,15 @@
 
     <link href="/Back/Public/css/mine.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="<?php echo (C("COMMON_URL")); ?>js/jquery-1.11.3.min.js"></script>
+
+    <!--引入时间显示插件-->
+    <link href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/datepicker-zh_cn.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.css" />
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/jquery-ui-timepicker-addon.min.js"></script>
+    <script type="text/javascript" src="<?php echo (C("PLUGIN_URL")); ?>datetimepicker/time/i18n/jquery-ui-timepicker-addon-i18n.min.js"></script>
+    <!--引入时间显示插件-->
 </head>
 <body>
 <style>
