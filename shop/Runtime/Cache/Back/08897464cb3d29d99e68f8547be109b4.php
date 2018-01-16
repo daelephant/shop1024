@@ -35,6 +35,10 @@
             <span>
                 <form action="/index.php/Back/Goods/showlist" method="get" name="searchForm">
                     <p>
+                        品　　牌：
+                        <?php buildSelect('brand','brand_id','id','brand_name',I('get.brand_id')); ?>
+                    </p>
+                    <p>
                         商品名称：
                         <input value="<?php echo I('get.goods_name') ?>" type="text" name="goods_name" size="60" />
                     </p>
@@ -79,6 +83,7 @@
             <table class="table_a" border="1" width="100%">
                 <tbody><tr style="font-weight: bold;">
                         <td>序号</td>
+                        <td>品牌</td>
                         <td>商品名称</td>
                         <td>价格</td>
                         <td>重量</td>
@@ -96,6 +101,7 @@
                 <?php if(is_array($info)): foreach($info as $key=>$v): ?><!--为每一个tr添加一个样式-->
                     <tr class="tron" id="product_<?php echo ($v["goods_id"]); ?>"><!--给每个商品都设置唯一标识，以方便获得、删除-->
                         <td><?php echo ($v["goods_id"]); ?></td>
+                        <td><?php echo $v['brand_name']; ?></td>
                         <td><a href="/index.php/Back/Goods/upd/goods_id/<?php echo ($v['goods_id']); ?>"><?php echo ($v["goods_name"]); ?></a></td>
                         <td><?php echo ($v["goods_price"]); ?></td>
                         <td><?php echo ($v["goods_weight"]); ?></td>

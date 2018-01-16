@@ -14,6 +14,7 @@ class GoodsController extends BackController{
     public function showlist(){
         $goods = new \Model\GoodsModel();
         $nowinfo = $goods->fetchData();
+        //var_dump($nowinfo);exit();
         $info = $nowinfo['pageinfo'];//当前页数据信息
         $pagelist = $nowinfo['pagelist'];//页码列表信息
 
@@ -133,6 +134,12 @@ class GoodsController extends BackController{
             $typeinfo = D('Type')->select();
             $this->assign('typeinfo',$typeinfo);
             /********获得商品展示信息*/
+            /********获得商品的品牌信息*/
+            $brandModel = new \Back\Model\BrandModel();
+            $brandData = $brandModel->select();
+            $this->assign('brandData',$brandData);
+            /********获得商品展示信息*/
+
 
             /********获得主分类并传递显示*/
             $catinfo = D('Category')->order('cat_path')->select();

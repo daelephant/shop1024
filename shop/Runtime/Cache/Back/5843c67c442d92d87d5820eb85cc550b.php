@@ -112,12 +112,23 @@
     </p>
 </div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form action="/index.php/Back/Goods/upd/goods_id/40.html" method="post" enctype="multipart/form-data">
+    <form action="/index.php/Back/Goods/upd/goods_id/41.html" method="post" enctype="multipart/form-data">
         <!--1:以变量的方式获取id-->
         <!--<input type="hidden" name="goods_id" value="<?php echo ($info["goods_id"]); ?>"/>-->
         <!--1:以GET方式获取id-->
         <input type="hidden" name="goods_id" value="<?php echo I('get.goods_id'); ?>"/>
         <table border="1" width="100%" class="table_a" id="general-tab-tb">
+            <tr>
+                <td>商品品牌</td>
+                <td>
+                    <!--*********方法一：手写select下拉框*************************-->
+ 
+                    <!--*********方法一：手写select下拉框*************************-->
+                    <!--*********方法二：调用封装的函数制作下拉框*************************-->
+                    <?php buildSelect('brand','brand_id','id','brand_name',$info['brand_id']); ?>
+                    <!--*********方法二：调用封装的函数制作下拉框*************************-->
+                </td>
+            </tr>
             <tr>
                 <td>商品名称</td>
                 <!--1：TP引擎写法-->
